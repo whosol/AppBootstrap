@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="928229cc2c4544efb1b0e85bb7d65911" Name="StratusEntityDiagram" ZoomLevel="111" >
+        <EntityTypeShape EntityType="Database.Company" Width="1.5" PointX="8" PointY="3.75" />
+        <EntityTypeShape EntityType="Database.Product" Width="1.5" PointX="11.25" PointY="9.25" />
+        <EntityTypeShape EntityType="Database.Plant" Width="1.5" PointX="5.75" PointY="3.75" />
+        <EntityTypeShape EntityType="Database.Zone" Width="1.5" PointX="4.75" PointY="6.875" />
+        <EntityTypeShape EntityType="Database.Cell" Width="1.5" PointX="3.875" PointY="11.5" />
+        <EntityTypeShape EntityType="Database.ProductType" Width="1.5" PointX="12" PointY="12.625" />
+        <EntityTypeShape EntityType="Database.Visit" Width="1.5" PointX="7.5" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database.SequenceExecution" Width="1.5" PointX="12" PointY="5.875" />
+        <AssociationConnector Association="Database.VisitSequenceExecution" />
+        <EntityTypeShape EntityType="Database.Sequence" Width="1.5" PointX="9.75" PointY="6.5" />
+        <AssociationConnector Association="Database.SequenceSequenceExecution" />
+        <EntityTypeShape EntityType="Database.Result" Width="1.5" PointX="14.875" PointY="5.375" />
+        <AssociationConnector Association="Database.SequenceExecutionResult" />
+        <EntityTypeShape EntityType="Database.Location" Width="1.5" PointX="5.375" PointY="15" />
+        <EntityTypeShape EntityType="Database.Tester" Width="1.5" PointX="3.75" PointY="0.5" />
+        <EntityTypeShape EntityType="Database.Process" Width="1.5" PointX="2.5" PointY="5.125" />
+        <AssociationConnector Association="Database.ProductVisit" />
+        <AssociationConnector Association="Database.ProductTypeProduct" />
+        <AssociationConnector Association="Database.VisitTester" />
+        <AssociationConnector Association="Database.ZoneVisit" ></AssociationConnector>
+        <AssociationConnector Association="Database.CellVisit" />
+        <AssociationConnector Association="Database.LocationVisit" ManuallyRouted="true" >
+          <ConnectorPoint PointX="6.875" PointY="15" />
+          <ConnectorPoint PointX="7.4999999999999938" PointY="14.816712239583334" />
+        </AssociationConnector>
+        <AssociationConnector Association="Database.ProcessVisit" ManuallyRouted="false" >
+        </AssociationConnector>
+        <AssociationConnector Association="Database.PlantVisit" />
+        <AssociationConnector Association="Database.CompanyVisit" />
+        <EntityTypeShape EntityType="Database.ResultDescription" Width="1.5" PointX="15" PointY="3.125" />
+        <AssociationConnector Association="Database.ResultDescriptionResult" />
+        <AssociationConnector Association="Database.CompanyProduct" />
+        <AssociationConnector Association="Database.CompanyPlant" />
+        <AssociationConnector Association="Database.PlantTester" />
+        <AssociationConnector Association="Database.TesterProcess" />
+        <AssociationConnector Association="Database.ProcessZone" />
+        <AssociationConnector Association="Database.ZoneCell" />
+        <AssociationConnector Association="Database.CellLocation" />
+        <AssociationConnector Association="Database.ResultResult" />
+        <AssociationConnector Association="Database.ProductResult" />
+        <AssociationConnector Association="Database.SequenceResult" />
+        <EntityTypeShape EntityType="Database.User" Width="1.5" PointX="14.375" PointY="14.625" />
+        <EntityTypeShape EntityType="Database.UserClaim" Width="1.5" PointX="16.625" PointY="13.125" />
+        <EntityTypeShape EntityType="Database.UserLogin" Width="1.5" PointX="16.625" PointY="15.875" />
+        <EntityTypeShape EntityType="Database.UserRole" Width="1.5" PointX="16.625" PointY="18.375" />
+        <AssociationConnector Association="Database.FK_UserClaim_User" />
+        <AssociationConnector Association="Database.FK_UserLogin_User" />
+        <AssociationConnector Association="Database.UserUserRole" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
