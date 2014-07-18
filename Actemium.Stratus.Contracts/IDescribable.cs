@@ -5,5 +5,7 @@ namespace Actemium.Stratus.Contracts
     {
         string Name { get; }
         string Description { get; }
+        string Version { get; }
+        string Location { get; }
     }
 }

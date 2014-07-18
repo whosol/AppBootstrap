@@ -1,4 +1,5 @@
 ﻿using Actemium.Stratus.Contracts;
+using Ninject.Extensions.Logging;
 
 namespace Actemium.Stratus.SignalRPlugin
 {
@@ -9,8 +10,8 @@ namespace Actemium.Stratus.SignalRPlugin
             get { return "SignalR plugin for service controller"; }
         }
 
-        public SignalRPlugin(IConfiguration configuration)
-            : base(configuration)
+        public SignalRPlugin(ILogger logger, IConfiguration configuration)
+            : base(logger, configuration)
         {
 
         }

@@ -22,5 +22,10 @@ namespace Actemium.Stratus.ServiceController
 
             return output is T ? (T)output : default(T);
         }
+
+        public Dictionary<T1, Dictionary<T2, object>> GetModuleConfig<T1, T2>(string moduleName)
+        {
+            return Get<Dictionary<T1, Dictionary<T2, object>>>(moduleName);
+        }
     }
 }

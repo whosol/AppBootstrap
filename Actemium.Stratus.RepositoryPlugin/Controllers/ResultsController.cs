@@ -23,7 +23,7 @@ namespace Actemium.Stratus.RepositoryPlugin.Controllers
             this.uow = uow;
         }
 
-        public IEnumerable<ResultDto> Get([FromUri]int page = 0, [FromUri]int pageSize = 100)
+        public ResultsDto Get(int page = 0, int pageSize = 100)
         {
             try
             {
@@ -41,19 +41,22 @@ namespace Actemium.Stratus.RepositoryPlugin.Controllers
                 var results = query.Take(pageSize).ToArray();
 
 
-                var ret = results.Select(r => new
-                ResultDto
+                return new ResultsDto
                 {
-                    ProductUniqueId = r.Product.ProductUniqueId,
-                    SequenceName = r.Sequence.Name,
-                    ResultName = r.ResultDescription.Name,
-                    Value = r.Value,
-                    UpperLimit = r.UpperLimit,
-                    LowerLimit = r.LowerLimit,
-                    Units = r.Units
-                }).ToArray();
+                    Results = results.Select(r => new
+                        ResultDto
+                        {
+                            ProductUniqueId = r.Product.ProductUniqueId,
+                            SequenceName = r.Sequence.Name,
+                            ResultName = r.ResultDescription.Name,
+                            Value = r.Value,
+                            UpperLimit = r.UpperLimit,
+                            LowerLimit = r.LowerLimit,
+                            Units = r.Units
+                        }).ToArray(),
+                    Total = uow.Results.FindAll().Count()
+                };
 
-                return ret;
             }
             catch (Exception)
             {
@@ -162,9 +165,11 @@ namespace Actemium.Stratus.RepositoryPlugin.Controllers
                 });
             }
 
+            var flag = sequenceWrappers.Any(s => s.CurrentStatus == (SequenceStatus.Fail | SequenceStatus.Aborted)) || !sequenceWrappers.Any() ? "F" : "P";
+
             var xml = new XElement("HISTORY", new XAttribute("rds", "3.0"),
                 new XAttribute("vin", productUniqueId),
-                new XAttribute("flags", sequenceWrappers.Any(s => s.CurrentStatus == SequenceStatus.Fail) ? "F" : "P"));
+                new XAttribute("flags", flag));
 
             if (visitInfo)
                 xml.Add(CreateRds3HistoricVisits(sequenceWrappers));

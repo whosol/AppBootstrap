@@ -48,8 +48,8 @@ namespace Actemium.Stratus.MailboxPlugin.Write
                     {
                         LogEvent(this, new LogEventArgs
                         {
-                            Level = LogLevel.Error,
-                            Message = "Successfully persisted visit for" + e.Data.Element("VEHICLE").Attribute("vin")
+                            Level = LogLevel.Information,
+                            Message = "Successfully persisted visit for " + (string)e.Data.Element("VEHICLE").Attribute("vin")
                         });
                         e.PersistStatus = PersistStatus.OK;
                     }

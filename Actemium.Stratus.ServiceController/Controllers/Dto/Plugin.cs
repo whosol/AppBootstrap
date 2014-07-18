@@ -11,5 +11,9 @@ namespace Actemium.Stratus.ServiceController.Controllers.Dto
         public string Name { get; set; }
         [DataMember(Order = 2)]
         public string Description { get; set; }
+        [DataMember(Order = 3)]
+        public string Version { get; set; }
+        [DataMember(Order = 4)]
+        public string Location { get; set; }
     }
 }

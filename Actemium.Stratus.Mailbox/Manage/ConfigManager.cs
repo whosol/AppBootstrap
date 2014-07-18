@@ -1,7 +1,8 @@
-﻿using Actemium.Stratus.MailboxPlugin.Bootstrapper;
+﻿using Actemium.Stratus.Contracts;
+using Actemium.Stratus.MailboxPlugin.Bootstrapper;
 using Actemium.Stratus.MailboxPlugin.Enums;
 using Actemium.Stratus.MailboxPlugin.Events;
-using Actemium.Stratus.MailboxPlugin.Helpers;
+using Actemium.Stratus.Utilities;
 using Appccelerate.EventBroker;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,7 @@ namespace Actemium.Stratus.MailboxPlugin.Manage
         private Dictionary<ConfigSection, Dictionary<ConfigKey, object>> configuration;
         private readonly CancellationTokenSource cts = new CancellationTokenSource();
         private Task parseConfigFileTask;
-
+        private readonly IConfiguration config;
         #endregion
 
         #region Events
@@ -30,16 +31,16 @@ namespace Actemium.Stratus.MailboxPlugin.Manage
 
         #region Constructors
 
-        public ConfigManager()
+        public ConfigManager(IConfiguration config)
         {
-
+            this.config = config;
         }
 
         private async Task ParseConfigFile(CancellationToken ct)
         {
             while (!ct.IsCancellationRequested)
             {
-                this.configuration = ConfigFile<ConfigSection, ConfigKey>.Parse("Actemium.Stratus.MailboxPlugin.pisettings", "PluginSettings");
+                this.configuration = ConfigFile<ConfigSection, ConfigKey>.Parse(this, config.Get<string>("PluginDirectory"), "PluginSettings");
 
                 if (ConfigFile<ConfigSection, ConfigKey>.Updated)
                 {

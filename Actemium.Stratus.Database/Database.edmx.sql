@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 07/11/2014 13:02:53
+-- Date Created: 07/16/2014 12:38:26
 -- Generated from EDMX file: C:\Users\mpitt.ACTEMIUM-FAS\Documents\Visual Studio 2013\Projects\Actemium.Stratus.ServiceController\Actemium.Stratus.Database\Database.edmx
 -- --------------------------------------------------
 

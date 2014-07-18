@@ -1,0 +1,50 @@
+<ul kendo-panel-bar k-options="resultFilterOptions" ng-controller="ResultFilterController">
+    <li>
+        Date Time Range
+        <div>
+            <div class="drop-down-group">
+                <label for="from-date">From</label>
+                <input kendo-date-time-picker ng-model="fromDate" id="from-date"/>
+                <label for="to-date">To</label>
+                <input kendo-date-time-picker ng-model="toDate" id="to-date"/>
+            </div>
+        </div>
+    </li>
+    <li>
+        By Product
+        <div>
+            <div class="drop-down-group">
+                <label for="product-types">Product Types</label>
+                <select kendo-drop-down-list k-data-source="productTypes" k-data-text-field="'Name'" k-data-value-field="'Id'" id="product-types"></select>
+                <label for="products">Products</label>
+                <select kendo-drop-down-list k-data-source="products" k-data-text-field="'ProductUniqueId'" k-data-value-field="'Id'" id="products"></select>
+            </div>
+        </div>
+    </li>
+    <li>
+        By Sequence
+        <div>
+            <div class="drop-down-group">
+                <label for="sequences">Sequences</label>
+                <select kendo-drop-down-list id="sequences"></select>
+            </div>
+        </div>
+    </li>
+    <li>
+        By Location
+        <div>
+            <div class="drop-down-group">
+                <label for="plants">Plants</label>
+                <select kendo-drop-down-list id="plants"></select>
+                <label for="processes">Processes</label>
+                <select kendo-drop-down-list id="processes"></select>
+                <label for="locations">Locationz</label>
+                <select kendo-drop-down-list id="locations"></select>
+                <label for="zones">Zones</label>
+                <select kendo-drop-down-list id="zones"></select>
+                <label for="cells">Cells</label>
+                <select kendo-drop-down-list id="cells"></select>
+            </div>
+        </div>
+    </li>
+</ul>

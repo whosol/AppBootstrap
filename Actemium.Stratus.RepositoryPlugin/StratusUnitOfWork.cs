@@ -52,7 +52,15 @@ namespace Actemium.Stratus.RepositoryPlugin
 
         public void Initialise()
         {
-            dbContext.Database.Connection.Open();
+            try
+            {
+                dbContext.Database.Connection.Open();
+            }
+            catch (SqlException e)
+            {
+                
+                throw;
+            }
         }
 
         public IRepository<Cell> Cells

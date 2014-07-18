@@ -1,4 +1,8 @@
 ﻿using Actemium.Stratus.Contracts;
+using Actemium.Stratus.Contracts.Enums;
+using Actemium.Stratus.Contracts.Exceptions;
+using System;
+using System.Diagnostics;
 
 namespace Actemium.Stratus.ServiceController
 {
@@ -15,7 +19,6 @@ namespace Actemium.Stratus.ServiceController
         {
             foreach (var plugin in plugins)
             {
-                //    Console.WriteLine("Name:" + plugin.Name + " Description:" + plugin.Description);
                 plugin.Stop();
             }
         }
@@ -24,8 +27,26 @@ namespace Actemium.Stratus.ServiceController
         {
             foreach (var plugin in plugins)
             {
-                //    Console.WriteLine("Name:" + plugin.Name + " Description:" + plugin.Description);
-                plugin.Start();
+                try
+                {
+                    plugin.Start();
+                }
+                catch (StratusException ex)
+                {
+                    switch (ex.ErrorLevel)
+                    {
+                        case ErrorLevel.Fatal:
+                            throw ex;
+                        case ErrorLevel.Recoverable:
+                        case ErrorLevel.Warning:
+                        case ErrorLevel.Information:
+                            //TODO: Log to Error log
+                            break;
+                        default:
+                            break;
+                    }
+
+                }
             }
         }
     }

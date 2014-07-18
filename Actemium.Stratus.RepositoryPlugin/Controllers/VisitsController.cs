@@ -24,15 +24,33 @@ namespace Actemium.Stratus.RepositoryPlugin.Controllers
             this.importer = importer;
         }
 
-        public VisitsDto Get(bool getXml = false)
+        public VisitsDto Get(int page = 0, int pageSize = 100, bool getXml = false)
         {
+            var query = uow.Visits.FindAll()
+                .Include(v => v.Product)
+                .OrderBy(v => v.EndTime);
+
+            if (page > 0)
+            {
+                query = (IOrderedQueryable<Visit>)query.Skip((page - 1) * pageSize);
+            }
+
+            var visits = query.Take(pageSize).ToArray();
+
             return new VisitsDto
             {
-                Visits = uow.Visits.FindAll()
-                    .Include(v => v.Product)
-                    .ToList()
-                    .Select(v => CreateVisitDto(getXml, v)),
-                Count = uow.Visits.FindAll().Count()
+                Visits = visits.Select(v => new
+                    VisitDto
+                    {
+                        Duration = v.Duration,
+                        EndTime = v.EndTime,
+                        Id = v.Id,
+                        ProductUniqueId = v.Product.ProductUniqueId,
+                        StartTime = v.StartTime,
+                        Status = v.Status,
+                        VisitXml = getXml ? v.VisitXml : null
+                    }).ToArray(),
+                Total = uow.Visits.FindAll().Count()
             };
         }
 
@@ -57,7 +75,7 @@ namespace Actemium.Stratus.RepositoryPlugin.Controllers
                     .Include(v => v.Product)
                     .ToList()
                     .Select(v => CreateVisitDto(getXml, v)),
-                Count = uow.Visits.FindBy(v => v.Product.ProductUniqueId == productUniqueId).Count()
+                Total = uow.Visits.FindBy(v => v.Product.ProductUniqueId == productUniqueId).Count()
             };
         }
 

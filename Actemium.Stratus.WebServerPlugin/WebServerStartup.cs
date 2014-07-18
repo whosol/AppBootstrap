@@ -1,5 +1,7 @@
 ﻿using Actemium.Stratus.Contracts;
+using Microsoft.Owin;
 using Microsoft.Owin.FileSystems;
+using Microsoft.Owin.StaticFiles;
 using Ninject;
 using Owin;
 using System.IO;
@@ -20,8 +22,20 @@ namespace Actemium.Stratus.WebServerPlugin
 
         public void Configuration(IAppBuilder app)
         {
-            //var staticFilesDir = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Web");
-            //app.UseStaticFiles(new Microsoft.Owin.StaticFiles.StaticFileOptions { FileSystem = new PhysicalFileSystem(staticFilesDir)});
+            var staticFilesDir = Path.Combine(configuration.Get<string>("PluginDirectory"), "Web");
+
+
+            var clientOptions = new FileServerOptions
+            {
+                RequestPath = new PathString(""),
+                FileSystem = new PhysicalFileSystem(staticFilesDir),
+                EnableDefaultFiles = true,
+                EnableDirectoryBrowsing = false
+            };
+            clientOptions.DefaultFilesOptions.DefaultFileNames.Add("index.html");
+            clientOptions.StaticFileOptions.ServeUnknownFileTypes = true;
+
+            app.UseFileServer(clientOptions);
         }
     }
 }

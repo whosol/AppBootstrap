@@ -53,11 +53,13 @@ namespace Actemium.Stratus.ImporterPlugin
                 visitStartTime = (DateTime)visitXml.Element("VEHICLE").Element("VISIT").Attribute("start");
                 visitEndTime = (DateTime)visitXml.Element("VEHICLE").Element("VISIT").Attribute("end");
                 visitDuration = (int)visitXml.Element("VEHICLE").Element("VISIT").Attribute("dur");
+                productUniqueId = (string)visitXml.Element("VEHICLE").Attribute("vin");
                 visitXmlData = visitXml.ToString();
 
                 if (uow.Visits.FindBy(v => v.StartTime == visitStartTime &&
                     v.EndTime == visitEndTime &&
-                    v.Duration == visitDuration).SingleOrDefault() == null)
+                    v.Duration == visitDuration &&
+                    v.Product.ProductUniqueId == productUniqueId).SingleOrDefault() == null)
                 {
                     CreateTables();
                     companyName = (string)visitXml.Element("VEHICLE").Element("VISIT").Attribute("co");
@@ -67,7 +69,6 @@ namespace Actemium.Stratus.ImporterPlugin
                     zoneName = (string)visitXml.Element("VEHICLE").Element("VISIT").Attribute("zo");
                     cellName = (string)visitXml.Element("VEHICLE").Element("VISIT").Attribute("cell");
                     locationName = (string)visitXml.Element("VEHICLE").Element("VISIT").Attribute("lo");
-                    productUniqueId = (string)visitXml.Element("VEHICLE").Attribute("vin");
                     productTypeName = (string)visitXml.Element("VEHICLE").Attribute("model");
                     visitStatus = GetVisitStatus(visitXml.Element("VEHICLE").Element("VISIT").Attribute("flags").Value.Split(','));
 
@@ -116,7 +117,8 @@ namespace Actemium.Stratus.ImporterPlugin
 
                 if (uow.SequenceExecutions.FindBy(se => (se.Sequence.Name == sequenceName) &&
                     (se.StartTime == startTime) &&
-                    (se.Duration == duration)).FirstOrDefault() == null)
+                    (se.Duration == duration) &&
+                    (se.Visit.Product.ProductUniqueId == productUniqueId)).FirstOrDefault() == null)
                 {
                     var status = GetSequenceStatus(xmlElement.Attribute("flags").Value.Split(','));
 

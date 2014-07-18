@@ -1,13 +1,17 @@
-﻿
+﻿using System;
+using Ninject.Extensions.Logging;
+
 namespace Actemium.Stratus.Contracts
 {
     public abstract class PluginBase : IPlugin
     {
         protected readonly IConfiguration configuration;
+        protected readonly ILogger logger;
 
-        public PluginBase(IConfiguration configuration)
+        public PluginBase(ILogger logger, IConfiguration configuration)
         {
             this.configuration = configuration;
+            this.logger = logger;
         }
 
         public virtual void Start()
@@ -26,5 +30,21 @@ namespace Actemium.Stratus.Contracts
         }
 
         public abstract string Description { get; }
+
+        public string Version
+        {
+            get
+            {
+                return this.GetType().Assembly.GetName().Version.ToString();
+            }
+        }
+
+        public string Location
+        {
+            get
+            {
+                return this.GetType().Assembly.Location;
+            }
+        }
     }
 }

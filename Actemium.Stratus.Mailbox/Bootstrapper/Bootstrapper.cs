@@ -6,6 +6,7 @@ using Actemium.Stratus.MailboxPlugin.Respond;
 using Actemium.Stratus.MailboxPlugin.Write;
 using Appccelerate.Bootstrapper;
 using Appccelerate.EventBroker;
+using Ninject;
 
 namespace Actemium.Stratus.MailboxPlugin.Bootstrapper
 {
@@ -21,7 +22,7 @@ namespace Actemium.Stratus.MailboxPlugin.Bootstrapper
 
         #region Public Methods
 
-        public static void Start()
+        public static void Start(IKernel kernel)
         {
             logManager = new LogManager();
             bootstrapper = new DefaultBootstrapper<IShopFloorResultsExtension>();
@@ -50,7 +51,7 @@ namespace Actemium.Stratus.MailboxPlugin.Bootstrapper
 
             RegisterExtension(new Rds1Parser());
 
-            RegisterExtension(new ConfigManager());
+            RegisterExtension(kernel.Get<IShopFloorResultsExtension>());
 
             bootstrapper.Run();
             

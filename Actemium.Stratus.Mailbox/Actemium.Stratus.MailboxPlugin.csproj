@@ -18,7 +18,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\StagingArea\Debug\Plugins\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -26,7 +26,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\StagingArea\Release\Plugins\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -37,15 +37,23 @@
   <ItemGroup>
     <Reference Include="Appccelerate.Bootstrapper">
       <HintPath>..\packages\Appccelerate.Bootstrapper.2.1.0\lib\net45\Appccelerate.Bootstrapper.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Appccelerate.EventBroker">
       <HintPath>..\packages\Appccelerate.EventBroker.3.1.0\lib\net45\Appccelerate.EventBroker.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Appccelerate.Fundamentals">
       <HintPath>..\packages\Appccelerate.Fundamentals.2.1.0\lib\portable-windows8+net45\Appccelerate.Fundamentals.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Ninject">
       <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Ninject.Extensions.Logging">
+      <HintPath>..\packages\Ninject.Extensions.Logging.3.2.0.0\lib\net45-full\Ninject.Extensions.Logging.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -54,6 +62,7 @@
     <Reference Include="System.Web.Http, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.0\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
@@ -78,8 +87,6 @@
     <Compile Include="Events\LogLevel.cs" />
     <Compile Include="Events\TcpStreamReceivedEventArgs.cs" />
     <Compile Include="Events\XDocumentAvailableEventArgs.cs" />
-    <Compile Include="Helpers\ConfigFile.cs" />
-    <Compile Include="Helpers\UniqueQueue.cs" />
     <Compile Include="IComponentBase.cs" />
     <Compile Include="MailboxModule.cs" />
     <Compile Include="MailboxPlugin.cs" />
@@ -117,6 +124,12 @@
     <ProjectReference Include="..\Actemium.Stratus.Contracts\Actemium.Stratus.Contracts.csproj">
       <Project>{D4A30411-3DFF-4516-B30F-8071E5975599}</Project>
       <Name>Actemium.Stratus.Contracts</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Actemium.Stratus.Utilities\Actemium.Stratus.Utilities.csproj">
+      <Project>{04AE621B-2B85-4695-BE42-46D070C76782}</Project>
+      <Name>Actemium.Stratus.Utilities</Name>
+      <Private>False</Private>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -136,8 +149,8 @@
     <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
   </Target>
   <PropertyGroup>
-    <PostBuildEvent>copy "$(TargetDir)*.dll" "$(SolutionDir)Actemium.Stratus.ServiceController\bin\$(ConfigurationName)\."
-copy "$(TargetDir)*.pisettings" "$(SolutionDir)Actemium.Stratus.ServiceController\bin\$(ConfigurationName)\."</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

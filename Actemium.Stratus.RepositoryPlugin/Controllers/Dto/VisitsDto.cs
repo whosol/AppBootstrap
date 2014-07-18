@@ -9,6 +9,6 @@ namespace Actemium.Stratus.RepositoryPlugin.Controllers.Dto
         [DataMember(IsRequired = false, EmitDefaultValue = false)]
         public IEnumerable<VisitDto> Visits { get; set; }
         [DataMember]
-        public int Count { get; set; }
+        public int Total { get; set; }
     }
 }

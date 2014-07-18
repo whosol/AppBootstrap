@@ -32,6 +32,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Actemium.Stratus.SignalRPlu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Actemium.Stratus.OwinSelfHostPlugin", "Actemium.Stratus.OwinSelfHostPlugin\Actemium.Stratus.OwinSelfHostPlugin.csproj", "{B5BD75B4-90B4-4BDE-9A6E-76A23A6D8B2D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Plugins", "Plugins", "{BD738764-F441-4CF1-A2C7-1D042E764AD9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Actemium.Stratus.ThirdParty", "Actemium.Stratus.ThirdParty\Actemium.Stratus.ThirdParty.csproj", "{FFA826DE-DC5B-4C21-A72C-88CAEA3D218A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Actemium.Stratus.Utilities", "Actemium.Stratus.Utilities\Actemium.Stratus.Utilities.csproj", "{04AE621B-2B85-4695-BE42-46D070C76782}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -82,8 +88,25 @@ Global
 		{B5BD75B4-90B4-4BDE-9A6E-76A23A6D8B2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B5BD75B4-90B4-4BDE-9A6E-76A23A6D8B2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B5BD75B4-90B4-4BDE-9A6E-76A23A6D8B2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFA826DE-DC5B-4C21-A72C-88CAEA3D218A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFA826DE-DC5B-4C21-A72C-88CAEA3D218A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFA826DE-DC5B-4C21-A72C-88CAEA3D218A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFA826DE-DC5B-4C21-A72C-88CAEA3D218A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04AE621B-2B85-4695-BE42-46D070C76782}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04AE621B-2B85-4695-BE42-46D070C76782}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04AE621B-2B85-4695-BE42-46D070C76782}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04AE621B-2B85-4695-BE42-46D070C76782}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C4E71B99-8BB3-413F-B6C9-ACF1C63CDD64} = {BD738764-F441-4CF1-A2C7-1D042E764AD9}
+		{7D161F5B-E039-4155-BC66-D2FF760903A8} = {BD738764-F441-4CF1-A2C7-1D042E764AD9}
+		{986DE740-0E51-48ED-A558-8CD094C8A075} = {BD738764-F441-4CF1-A2C7-1D042E764AD9}
+		{C15E4496-35E3-4EDE-8F21-94C1B6E6F9D3} = {BD738764-F441-4CF1-A2C7-1D042E764AD9}
+		{CE9DD8BE-D281-4AEA-9DA2-0E99CE5EDEF2} = {BD738764-F441-4CF1-A2C7-1D042E764AD9}
+		{4D120018-56D3-4127-87B9-289433B8DCE3} = {BD738764-F441-4CF1-A2C7-1D042E764AD9}
+		{B5BD75B4-90B4-4BDE-9A6E-76A23A6D8B2D} = {BD738764-F441-4CF1-A2C7-1D042E764AD9}
 	EndGlobalSection
 EndGlobal

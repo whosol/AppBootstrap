@@ -1,4 +1,5 @@
 ﻿using Actemium.Stratus.Contracts;
+using Ninject.Extensions.Logging;
 
 namespace Actemium.Stratus.ImporterPlugin
 {
@@ -9,8 +10,8 @@ namespace Actemium.Stratus.ImporterPlugin
             get { return "RDS3 File format importer"; }
         }
 
-        public ImporterPlugin(IConfiguration configuration)
-            : base(configuration)
+        public ImporterPlugin(ILogger logger,IConfiguration configuration)
+            : base(logger, configuration)
         {
         }
     }

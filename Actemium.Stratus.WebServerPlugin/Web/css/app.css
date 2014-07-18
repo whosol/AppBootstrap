@@ -1,0 +1,43 @@
+/* app css stylesheet */
+
+body {
+    padding-top: 70px;
+    margin-bottom: 60px;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    background-color: #f5f5f5;
+}
+
+.library-description > ul{
+    list-style-type: none;
+    padding: 0;
+}
+
+.library-description.panel-body{
+   word-wrap: break-word;
+}
+
+.drop-down-group{
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+}
+.drop-down-group > label{
+    width: 100%;
+    padding-top: 10px;
+}
+
+.drop-down-group > .k-widget{
+    width: 100%;
+}

@@ -1,4 +1,5 @@
 ﻿using Actemium.Stratus.Contracts;
+using Ninject.Extensions.Logging;
 using System;
 
 namespace Actemium.Stratus.WebServerPlugin
@@ -10,8 +11,8 @@ namespace Actemium.Stratus.WebServerPlugin
             get { return "WebServer plugin for service controller"; }
         }
 
-        public WebServerPlugin(IConfiguration configuration)
-            : base(configuration)
+        public WebServerPlugin(ILogger logger, IConfiguration configuration)
+            : base(logger, configuration)
         {
         }
     }

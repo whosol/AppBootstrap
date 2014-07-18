@@ -18,7 +18,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\StagingArea\Debug\Plugins\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -26,7 +26,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\StagingArea\Release\Plugins\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -38,6 +38,11 @@
     <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Ninject.Extensions.Logging">
+      <HintPath>..\packages\Ninject.Extensions.Logging.3.2.0.0\lib\net45-full\Ninject.Extensions.Logging.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -57,10 +62,12 @@
     <ProjectReference Include="..\Actemium.Stratus.Contracts\Actemium.Stratus.Contracts.csproj">
       <Project>{D4A30411-3DFF-4516-B30F-8071E5975599}</Project>
       <Name>Actemium.Stratus.Contracts</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\Actemium.Stratus.DataObjects\Actemium.Stratus.DataObjects.csproj">
       <Project>{3eaea93c-6a66-4671-b465-c003cdb23dc4}</Project>
       <Name>Actemium.Stratus.DataObjects</Name>
+      <Private>False</Private>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -68,7 +75,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy "$(TargetDir)*.dll" "$(SolutionDir)Actemium.Stratus.ServiceController\bin\$(ConfigurationName)\."</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

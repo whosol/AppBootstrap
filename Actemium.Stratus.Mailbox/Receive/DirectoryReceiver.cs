@@ -2,8 +2,8 @@
 using Actemium.Stratus.MailboxPlugin.Bootstrapper;
 using Actemium.Stratus.MailboxPlugin.Enums;
 using Actemium.Stratus.MailboxPlugin.Events;
-using Actemium.Stratus.MailboxPlugin.Helpers;
 using Actemium.Stratus.MailboxPlugin.Parse;
+using Actemium.Stratus.Utilities;
 using System;
 using System.Collections.Generic;
 using System.IO;

@@ -2,7 +2,7 @@
 
 namespace Actemium.Stratus.RepositoryPlugin.Controllers.Dto
 {
-    [DataContract]
+    [DataContract(Name = "StratusApi")]
     public class ResultDto
     {
         [DataMember]

@@ -1,4 +1,5 @@
 ﻿using Actemium.Stratus.Contracts;
+using Ninject.Extensions.Logging;
 using System;
 
 namespace Actemium.Stratus.WebApi
@@ -10,8 +11,8 @@ namespace Actemium.Stratus.WebApi
             get { return "WebApi plugin for service controller"; }
         }
 
-        public WebApiPlugin(IConfiguration configuration)
-            : base(configuration)
+        public WebApiPlugin(ILogger logger, IConfiguration configuration)
+            : base(logger, configuration)
         {
         }
     }
