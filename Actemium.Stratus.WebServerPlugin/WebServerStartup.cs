@@ -2,21 +2,17 @@
 using Microsoft.Owin;
 using Microsoft.Owin.FileSystems;
 using Microsoft.Owin.StaticFiles;
-using Ninject;
 using Owin;
 using System.IO;
-using System.Reflection;
 
 namespace Actemium.Stratus.WebServerPlugin
 {
     public class WebServerStartup : IStartup
     {
-        private readonly IKernel kernel;
         private readonly IConfiguration configuration;
 
-        public WebServerStartup(IKernel kernel, IConfiguration configuration)
+        public WebServerStartup(IConfiguration configuration)
         {
-            this.kernel = kernel;
             this.configuration = configuration;
         }
 

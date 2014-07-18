@@ -1,6 +1,4 @@
 ﻿using Actemium.Stratus.Contracts;
-using Actemium.Stratus.OwinSelfHostPlugin.Enums;
-using Actemium.Stratus.Utilities;
 using Owin;
 
 namespace Actemium.Stratus.OwinSelfHostPlugin

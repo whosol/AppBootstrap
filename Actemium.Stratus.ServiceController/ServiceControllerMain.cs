@@ -1,8 +1,6 @@
 ﻿using Actemium.Stratus.Contracts;
 using Actemium.Stratus.Contracts.Enums;
 using Actemium.Stratus.Contracts.Exceptions;
-using System;
-using System.Diagnostics;
 
 namespace Actemium.Stratus.ServiceController
 {

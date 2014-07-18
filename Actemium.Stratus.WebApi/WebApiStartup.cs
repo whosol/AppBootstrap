@@ -17,14 +17,13 @@ namespace Actemium.Stratus.WebApi
         {
             this.kernel = kernel;
             this.configuration = configuration;
-            configuration.Set("WebApiPort", 9090);
         }
 
         public void Configuration(IAppBuilder app)
         {
             var webApiConfiguration = new HttpConfiguration();
 
-            webApiConfiguration.DependencyResolver = new NinjectDependencyResolver(kernel);
+            webApiConfiguration.DependencyResolver = new NinjectDependencyResolver(this.kernel);
 
             webApiConfiguration.MapHttpAttributeRoutes();
 

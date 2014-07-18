@@ -59,7 +59,7 @@ namespace Actemium.Stratus.RepositoryPlugin
             catch (SqlException e)
             {
                 
-                throw;
+                throw e;
             }
         }
 

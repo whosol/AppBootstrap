@@ -1,18 +1,14 @@
 ﻿using Actemium.Stratus.Contracts;
-using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace Actemium.Stratus.ThirdParty.Controllers
 {
     public class ThirdPartyController : ApiController
     {
-        IConfiguration config;
+        private readonly IConfiguration config;
         public ThirdPartyController(IConfiguration config)
         {
             this.config = config;

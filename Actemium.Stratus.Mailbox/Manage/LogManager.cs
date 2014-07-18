@@ -1,12 +1,10 @@
 ﻿using Actemium.Stratus.MailboxPlugin.Bootstrapper;
 using Actemium.Stratus.MailboxPlugin.Enums;
 using Actemium.Stratus.MailboxPlugin.Events;
-using Appccelerate.Bootstrapper;
 using Appccelerate.EventBroker;
 using Appccelerate.EventBroker.Handlers;
 using System;
 using System.Diagnostics;
-using System.Linq;
 
 namespace Actemium.Stratus.MailboxPlugin.Manage
 {

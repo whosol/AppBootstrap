@@ -4,15 +4,13 @@ using Actemium.Stratus.Utilities;
 using Microsoft.Owin.Hosting;
 using Ninject.Extensions.Logging;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 
 namespace Actemium.Stratus.OwinSelfHostPlugin
 {
     public class OwinSelfHostPlugin : PluginBase
     {
         private IDisposable owinServer;
-        private OwinSelfHostStartup startup;
+        private readonly OwinSelfHostStartup startup;
 
         public override string Description
         {
@@ -22,6 +20,11 @@ namespace Actemium.Stratus.OwinSelfHostPlugin
         public override void Start()
         {
             owinServer = WebApp.Start(string.Format("http://*:{0}", configuration.GetModuleConfig<ConfigSection,ConfigKey>("OwinSelfHost")[ConfigSection.WebServer][ConfigKey.Port]), this.startup.Configuration);
+        }
+
+        public override void Stop()
+        {
+            owinServer.Dispose();
         }
 
         public OwinSelfHostPlugin(ILogger logger, IConfiguration configuration, OwinSelfHostStartup startup)
