@@ -7,6 +7,10 @@ angular.module('resultsExplorer.controllers', [])
 
     }])
 
+    .controller('DashboardController', ['$scope', function ($scope) {
+
+    }])
+
     .controller('ResultsController', ['$scope', function ($scope) {
 
         $scope.resultPanelOptions = {
@@ -141,8 +145,9 @@ angular.module('resultsExplorer.controllers', [])
                 return "";
             }
         };
-    }]).
-    controller('ResultFilterController', ['$scope', function ($scope) {
+    }])
+
+    .controller('ResultFilterController', ['$scope', function ($scope) {
 
         $scope.visible = false;
 

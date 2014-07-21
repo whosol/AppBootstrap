@@ -13,6 +13,7 @@ angular.module('resultsExplorer', [
 ]).
     config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/home', {templateUrl: 'partials/home.html', controller: 'HomeController'});
+        $routeProvider.when('/dashboard', {templateUrl: 'partials/dashboard.html', controller: 'DashboardController'});
         $routeProvider.when('/results', { templateUrl: 'partials/results.html', controller: 'ResultsController' });
         $routeProvider.when('/visits', { templateUrl: 'partials/visits.html', controller: 'VisitsController' });
         $routeProvider.when('/about', { templateUrl: 'partials/about.html', controller: 'AboutController' });

@@ -63,3 +63,9 @@ html {
 .fade-animate.ng-enter.ng-enter-active {
     opacity:1;
 }
+
+.k-grid td {
+    padding-top: 0;
+    padding-bottom: 0;
+    line-height: normal;
+}
