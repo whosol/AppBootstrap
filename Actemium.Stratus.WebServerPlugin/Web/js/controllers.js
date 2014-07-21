@@ -165,4 +165,58 @@ angular.module('resultsExplorer.controllers', [])
                 data: "Products"
             }
         };
+
+        $scope.sequences = {
+            transport: {
+                read: '/api/sequences'
+            },
+            schema: {
+                data: "Sequences"
+            }
+        };
+
+        $scope.plants = {
+            transport: {
+                read: '/api/plants'
+            },
+            schema: {
+                data: "Plants"
+            }
+        };
+
+        $scope.processes = {
+            transport: {
+                read: '/api/processes'
+            },
+            schema: {
+                data: "Processes"
+            }
+        };
+
+        $scope.locations = {
+            transport: {
+                read: '/api/locations'
+            },
+            schema: {
+                data: "Locations"
+            }
+        };
+
+        $scope.zones = {
+            transport: {
+                read: '/api/zones'
+            },
+            schema: {
+                data: "Zones"
+            }
+        };
+
+        $scope.cells = {
+            transport: {
+                read: '/api/cells'
+            },
+            schema: {
+                data: "Cells"
+            }
+        };
     }]);

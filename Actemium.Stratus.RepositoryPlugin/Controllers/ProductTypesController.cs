@@ -1,16 +1,15 @@
 ﻿using Actemium.Stratus.Contracts;
 using Actemium.Stratus.RepositoryPlugin.Controllers.Dto;
 using System.Linq;
-using System.Web.Http;
 
 namespace Actemium.Stratus.RepositoryPlugin.Controllers
 {
-    public class ProductTypesController : ApiController
+    public class ProductTypesController : BaseController
     {
-        private readonly IUnitOfWork uow;
         public ProductTypesController(IUnitOfWork uow)
+            : base(uow)
         {
-            this.uow = uow;
+
         }
 
         public ProductTypesDto Get()

@@ -13,14 +13,13 @@ using Actemium.Stratus.Contracts.Enums;
 namespace Actemium.Stratus.RepositoryPlugin.Controllers
 {
     [RoutePrefix("api/visits")]
-    public class VisitsController : ApiController
+    public class VisitsController : BaseController
     {
-        private readonly IUnitOfWork uow;
         private readonly IImporter importer;
 
         public VisitsController(IUnitOfWork uow, IImporter importer)
+            : base(uow)
         {
-            this.uow = uow;
             this.importer = importer;
         }
 

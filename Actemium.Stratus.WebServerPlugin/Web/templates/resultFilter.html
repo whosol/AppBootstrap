@@ -4,9 +4,9 @@
         <div>
             <div class="drop-down-group">
                 <label for="from-date">From</label>
-                <input kendo-date-time-picker ng-model="fromDate" id="from-date"/>
+                <input kendo-date-time-picker ng-model="fromDate" id="from-date" />
                 <label for="to-date">To</label>
-                <input kendo-date-time-picker ng-model="toDate" id="to-date"/>
+                <input kendo-date-time-picker ng-model="toDate" id="to-date" />
             </div>
         </div>
     </li>
@@ -26,7 +26,7 @@
         <div>
             <div class="drop-down-group">
                 <label for="sequences">Sequences</label>
-                <select kendo-drop-down-list id="sequences"></select>
+                <select kendo-drop-down-list k-data-source="sequences" k-data-text-field="'Name'" k-data-value-field="'Id'" id="sequences"></select>
             </div>
         </div>
     </li>
@@ -35,15 +35,15 @@
         <div>
             <div class="drop-down-group">
                 <label for="plants">Plants</label>
-                <select kendo-drop-down-list id="plants"></select>
+                <select kendo-drop-down-list k-data-source="plants" k-data-text-field="'Name'" k-data-value-field="'Id'" id="plants"></select>
                 <label for="processes">Processes</label>
-                <select kendo-drop-down-list id="processes"></select>
+                <select kendo-drop-down-list k-data-source="processes" k-data-text-field="'Name'" k-data-value-field="'Id'" id="processes"></select>
                 <label for="locations">Locationz</label>
-                <select kendo-drop-down-list id="locations"></select>
+                <select kendo-drop-down-list k-data-source="locations" k-data-text-field="'Name'" k-data-value-field="'Id'" id="locations"></select>
                 <label for="zones">Zones</label>
-                <select kendo-drop-down-list id="zones"></select>
+                <select kendo-drop-down-list k-data-source="zones" k-data-text-field="'Name'" k-data-value-field="'Id'" id="zones"></select>
                 <label for="cells">Cells</label>
-                <select kendo-drop-down-list id="cells"></select>
+                <select kendo-drop-down-list k-data-source="cells" k-data-text-field="'Name'" k-data-value-field="'Id'" id="cells"></select>
             </div>
         </div>
     </li>

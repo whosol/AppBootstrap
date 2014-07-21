@@ -77,6 +77,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\CellsController.cs" />
     <Compile Include="Controllers\Dto\CellDto.cs" />
     <Compile Include="Controllers\Dto\CellsDto.cs" />
     <Compile Include="Controllers\Dto\CompaniesDto.cs" />
@@ -93,18 +95,25 @@
     <Compile Include="Controllers\Dto\ProductTypesDto.cs" />
     <Compile Include="Controllers\Dto\ResultDto.cs" />
     <Compile Include="Controllers\Dto\ResultsDto.cs" />
+    <Compile Include="Controllers\Dto\SequenceDto.cs" />
+    <Compile Include="Controllers\Dto\SequencesDto.cs" />
     <Compile Include="Controllers\Dto\TesterDto.cs" />
     <Compile Include="Controllers\Dto\TestersDto.cs" />
     <Compile Include="Controllers\Dto\VisitDto.cs" />
     <Compile Include="Controllers\Dto\VisitsDto.cs" />
     <Compile Include="Controllers\Dto\ZoneDto.cs" />
     <Compile Include="Controllers\Dto\ZonesDto.cs" />
+    <Compile Include="Controllers\LocationsController.cs" />
+    <Compile Include="Controllers\PlantsController.cs" />
+    <Compile Include="Controllers\ProcessesController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\ProductTypesController.cs" />
     <Compile Include="Controllers\ResultsController.cs" />
+    <Compile Include="Controllers\SequencesController.cs" />
     <Compile Include="Controllers\VisitsController.cs" />
     <Compile Include="Controllers\Wrapper\ResultWrapper.cs" />
     <Compile Include="Controllers\Wrapper\SequenceWrapper.cs" />
+    <Compile Include="Controllers\ZonesController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Exceptions\RepositoryException.cs" />
     <Compile Include="RepositoryModule.cs" />

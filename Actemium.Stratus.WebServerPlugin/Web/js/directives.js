@@ -10,8 +10,9 @@ angular.module('resultsExplorer.directives', []).
         }
     }]).
     directive('resultFilter', function () {
-        return{
+        var ret = {
             restrict: 'E',
             templateUrl: 'templates/resultFilter.html'
         };
+        return ret;
     });

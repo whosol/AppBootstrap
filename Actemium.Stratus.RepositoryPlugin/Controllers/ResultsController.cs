@@ -14,13 +14,12 @@ using Actemium.Stratus.RepositoryPlugin.Controllers.Wrapper;
 namespace Actemium.Stratus.RepositoryPlugin.Controllers
 {
     [RoutePrefix("api/Results")]
-    public class ResultsController : ApiController
+    public class ResultsController : BaseController
     {
-        private readonly IUnitOfWork uow;
-
         public ResultsController(IUnitOfWork uow)
+            : base(uow)
         {
-            this.uow = uow;
+
         }
 
         public ResultsDto Get(int page = 0, int pageSize = 100)
