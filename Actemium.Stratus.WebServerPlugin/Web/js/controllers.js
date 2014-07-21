@@ -24,7 +24,7 @@ angular.module('resultsExplorer.controllers', [])
                 },
                 error: function (e) {
                     if (e.xhr.status == 404) {
-                        alert('WebApi at /api/results not found');
+                      //  alert('WebApi at /api/results not found');
                     }
                 },
                 pageSize: 20,
@@ -77,7 +77,7 @@ angular.module('resultsExplorer.controllers', [])
                 },
                 error: function (e) {
                     if (e.xhr.status == 404) {
-                        alert('WebApi at /api/visits not found');
+                      //  alert('WebApi at /api/visits not found');
                     }
                 },
                 pageSize: 20,
@@ -143,6 +143,8 @@ angular.module('resultsExplorer.controllers', [])
         };
     }]).
     controller('ResultFilterController', ['$scope', function ($scope) {
+
+        $scope.visible = false;
 
         $scope.fromDate = new Date();
 
@@ -219,4 +221,8 @@ angular.module('resultsExplorer.controllers', [])
                 data: "Cells"
             }
         };
+
+        $scope.$on("kendoRendered", function(){
+            $scope.visible = true;
+        });
     }]);

@@ -3,6 +3,7 @@
 
 // Declare app level module which depends on filters, and services
 angular.module('resultsExplorer', [
+    'ngAnimate',
     'ngRoute',
     'resultsExplorer.filters',
     'resultsExplorer.services',

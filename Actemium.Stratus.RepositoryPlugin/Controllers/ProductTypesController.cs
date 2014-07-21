@@ -16,13 +16,20 @@ namespace Actemium.Stratus.RepositoryPlugin.Controllers
         {
             return new ProductTypesDto
             {
-                ProductTypes = uow.ProductTypes.FindAll()
+                ProductTypes = new[]{ 
+                    new ProductTypeDto
+                    {
+                        Id = -1,
+                        Name = "[All]"
+                    }
+                }
+                .Concat(uow.ProductTypes.FindAll()
                 .OrderBy(pt => pt.Name)
                 .Select(pt => new ProductTypeDto
                 {
                     Id = pt.Id,
                     Name = pt.Name
-                })
+                }))
             };
         }
     }

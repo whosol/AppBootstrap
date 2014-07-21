@@ -41,3 +41,25 @@ html {
 .drop-down-group > .k-widget{
     width: 100%;
 }
+
+.fade-animate.ng-enter, .view-animate.ng-leave {
+    -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+    transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+
+    display:block;
+
+    position:absolute;
+    top:70px;
+    left:0;
+    right:0;
+    bottom:0;
+}
+
+.fade-animate.ng-enter,
+.fade-animate.ng-leave.ng-leave-active {
+    opacity:0;
+}
+.fade-animate.ng-leave,
+.fade-animate.ng-enter.ng-enter-active {
+    opacity:1;
+}
