@@ -19,53 +19,57 @@ html {
     background-color: #f5f5f5;
 }
 
-.library-description > ul{
+.library-description > ul {
     list-style-type: none;
     padding: 0;
 }
 
-.library-description.panel-body{
-   word-wrap: break-word;
+.library-description.panel-body {
+    word-wrap: break-word;
 }
 
-.drop-down-group{
+.drop-down-group {
     padding-left: 10px;
     padding-right: 10px;
     padding-bottom: 10px;
 }
-.drop-down-group > label{
-    width: 100%;
-    padding-top: 10px;
-}
 
-.drop-down-group > .k-widget{
-    width: 100%;
-}
+    .drop-down-group > label {
+        width: 100%;
+        padding-top: 10px;
+    }
+
+    .drop-down-group > .k-widget {
+        width: 100%;
+    }
 
 .fade-animate.ng-enter, .view-animate.ng-leave {
-    -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
-    transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
-
-    display:block;
-
-    position:absolute;
-    top:70px;
-    left:0;
-    right:0;
-    bottom:0;
+    -webkit-transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.5s;
+    transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.5s;
+    display: block;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
 
 .fade-animate.ng-enter,
 .fade-animate.ng-leave.ng-leave-active {
-    opacity:0;
+    opacity: 0;
 }
-.fade-animate.ng-leave,
-.fade-animate.ng-enter.ng-enter-active {
-    opacity:1;
-}
+
+    .fade-animate.ng-leave,
+    .fade-animate.ng-enter.ng-enter-active {
+        opacity: 1;
+    }
 
 .k-grid td {
     padding-top: 0;
     padding-bottom: 0;
     line-height: normal;
+}
+
+.nav, .pagination, .carousel, .panel-title a {
+    cursor: pointer;
 }

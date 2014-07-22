@@ -1,6 +1,7 @@
 ﻿'use strict';
 
-angular.module('resultsExplorer')
+angular
+    .module('resultsExplorer')
     .controller('ResultFilterController', ['$scope', function ($scope) {
 
         $scope.visible = false;

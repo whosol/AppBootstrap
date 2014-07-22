@@ -1,6 +1,7 @@
 ﻿'use strict';
 
-angular.module('resultsExplorer')
+angular
+    .module('resultsExplorer')
     .controller('NavController', ['$scope', '$location', function ($scope, $location) {
 
         $scope.isCollapsed = true;

@@ -1,12 +1,11 @@
 'use strict';
 
-
-// Declare app level module which depends on filters, and services
 angular
     .module('resultsExplorer', [
-    'ngAnimate',
-    'ngRoute',
-    'kendo.directives'
+        'ngAnimate',
+        'ngRoute',
+        'ui.bootstrap',
+        'kendo.directives'
     ])
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider

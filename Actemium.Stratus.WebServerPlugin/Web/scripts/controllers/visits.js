@@ -1,6 +1,7 @@
 ﻿'use strict';
 
-angular.module('resultsExplorer')
+angular
+    .module('resultsExplorer')
     .controller('VisitsController', ['$scope', function ($scope) {
 
         $scope.visitGridOptions = {

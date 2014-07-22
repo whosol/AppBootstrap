@@ -1,16 +1,8 @@
 ﻿'use strict';
 
-angular.module('resultsExplorer')
-
+angular
+    .module('resultsExplorer')
     .controller('ResultsController', ['$scope', function ($scope) {
-
-        $scope.resultPanelOptions = {
-
-        };
-
-        $scope.fromDate = [];
-
-        $scope.toDate = [];
 
         $scope.resultGridOptions = {
             dataSource: {

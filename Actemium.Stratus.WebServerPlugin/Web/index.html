@@ -6,7 +6,7 @@
 <!--[if IE 8]>
 <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!-->
-<html lang="en" ng-app="resultsExplorer" class="no-js">
+<html lang="en" ng-app="resultsExplorer">
 <!--<![endif]-->
 <head>
     <meta charset="utf-8" />
@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="styles/kendo/kendo.metroblack.min.css" />
     <link rel="stylesheet" href="styles/main.css" />
     <link rel="stylesheet" href="styles/app.css" />
-    <script src="scripts/third-party/modernizr-2.6.2.min.js"></script>
+    <script src="scripts/third-party/modernizr/2.6.2/modernizr-2.6.2.min.js"></script>
 </head>
 <body role="document">
     <nav ng-controller="NavController" class="navbar-wrapper navbar-inverse navbar-fixed-top" role="navigation">
@@ -67,14 +67,11 @@
         </div>
     </div>
 
-    <!-- In production use:
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
-    -->
     <script src="scripts/third-party/jquery/1.11.1/jquery-1.11.1.min.js"></script>
-    <script src="scripts/third-party/bootstrap/3.2.0/bootstrap.min.js"></script>
     <script src="scripts/third-party/angular/1.2.20/angular.min.js"></script>
     <script src="scripts/third-party/angular/1.2.20/angular-route.min.js"></script>
     <script src="scripts/third-party/angular/1.2.20/angular-animate.js"></script>
+    <script src="scripts/third-party/angular-ui.bootstrap/0.11.0/ui-bootstrap-tpls-0.11.0.js"></script>
     <script src="scripts/third-party/kendo/2014.2.716/kendo.all.min.js"></script>
     <script src="scripts/app.js"></script>
     <script src="scripts/services/version.js"></script>
@@ -82,11 +79,17 @@
     <script src="scripts/controllers/dashboard.js"></script>
     <script src="scripts/controllers/home.js"></script>
     <script src="scripts/controllers/nav.js"></script>
-    <script src="scripts/controllers/resultFilter.js"></script>
+    <script src="scripts/controllers/controls/resultFilter.js"></script>
     <script src="scripts/controllers/results.js"></script>
     <script src="scripts/controllers/visits.js"></script>
+    <script src="scripts/controllers/charts/failurePareto.js"></script>
+    <script src="scripts/controllers/charts/weeklyFailures.js"></script>
     <script src="scripts/filters/version.js"></script>
     <script src="scripts/directives/appVersion.js"></script>
-    <script src="scripts/directives/resultFilter.js"></script>
+    <script src="scripts/directives/disableAnimation.js"></script>
+    <script src="scripts/directives/controls/resultFilter.js"></script>
+    <script src="scripts/directives/charts/failurePareto.js"></script>
+    <script src="scripts/directives/charts/weeklyFailures.js"></script>
+    <script src="scripts/third-party/bootstrap/3.2.0/bootstrap.min.js"></script>
 </body>
 </html>
