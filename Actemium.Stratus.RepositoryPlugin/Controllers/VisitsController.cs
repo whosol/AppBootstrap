@@ -9,6 +9,7 @@ using Actemium.Stratus.DataObjects;
 using System.Xml.Linq;
 using System.Net;
 using Actemium.Stratus.Contracts.Enums;
+using Ninject.Extensions.Logging;
 
 namespace Actemium.Stratus.RepositoryPlugin.Controllers
 {
@@ -17,8 +18,8 @@ namespace Actemium.Stratus.RepositoryPlugin.Controllers
     {
         private readonly IImporter importer;
 
-        public VisitsController(IUnitOfWork uow, IImporter importer)
-            : base(uow)
+        public VisitsController(IUnitOfWork uow, ILogger logger, IImporter importer)
+            : base(uow, logger)
         {
             this.importer = importer;
         }

@@ -19,7 +19,9 @@ namespace Actemium.Stratus.OwinSelfHostPlugin
 
         public override void Start()
         {
-            owinServer = WebApp.Start(string.Format("http://*:{0}", configuration.GetModuleConfig<ConfigSection,ConfigKey>("OwinSelfHost")[ConfigSection.WebServer][ConfigKey.Port]), this.startup.Configuration);
+            owinServer = WebApp.Start(
+                string.Format("http://*:{0}", 
+                configuration.GetModuleConfig<ConfigSection,ConfigKey>("OwinSelfHost")[ConfigSection.WebServer][ConfigKey.Port]), this.startup.Configuration);
         }
 
         public override void Stop()

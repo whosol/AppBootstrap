@@ -44,7 +44,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Appccelerate.Fundamentals">
-      <HintPath>..\packages\Appccelerate.Fundamentals.2.1.0\lib\portable-windows8+net45\Appccelerate.Fundamentals.dll</HintPath>
+      <HintPath>..\packages\Appccelerate.Fundamentals.2.2.0\lib\portable-windows8+net45\Appccelerate.Fundamentals.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Ninject">

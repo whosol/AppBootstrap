@@ -1,13 +1,14 @@
 ﻿using Actemium.Stratus.Contracts;
 using Actemium.Stratus.RepositoryPlugin.Controllers.Dto;
+using Ninject.Extensions.Logging;
 using System.Linq;
 
 namespace Actemium.Stratus.RepositoryPlugin.Controllers
 {
     public class ProcessesController : BaseController
     {
-        public ProcessesController(IUnitOfWork uow)
-            :base(uow)
+        public ProcessesController(IUnitOfWork uow, ILogger logger)
+            :base(uow, logger)
         {
 
         }

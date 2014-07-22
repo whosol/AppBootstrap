@@ -11,5 +11,7 @@ namespace Actemium.Stratus.ThirdParty.Controllers
         public string Version { get; set; }
         [DataMember]
         public string Location { get; set; }
+        [DataMember]
+        public string FileVersion { get; set; }
     }
 }

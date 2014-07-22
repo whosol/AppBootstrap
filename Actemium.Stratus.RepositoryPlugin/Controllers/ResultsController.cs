@@ -10,14 +10,15 @@ using System.Net.Http;
 using System.Text;
 using System.Xml.Linq;
 using Actemium.Stratus.RepositoryPlugin.Controllers.Wrapper;
+using Ninject.Extensions.Logging;
 
 namespace Actemium.Stratus.RepositoryPlugin.Controllers
 {
     [RoutePrefix("api/Results")]
     public class ResultsController : BaseController
     {
-        public ResultsController(IUnitOfWork uow)
-            : base(uow)
+        public ResultsController(IUnitOfWork uow, ILogger logger)
+            : base(uow, logger)
         {
 
         }

@@ -1,5 +1,6 @@
 ﻿using Actemium.Stratus.Contracts;
 using Actemium.Stratus.RepositoryPlugin.Controllers.Dto;
+using Ninject.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,8 +11,8 @@ namespace Actemium.Stratus.RepositoryPlugin.Controllers
 {
     public class PlantsController : BaseController
     {
-        public PlantsController(IUnitOfWork uow)
-            : base(uow)
+        public PlantsController(IUnitOfWork uow, ILogger logger)
+            : base(uow, logger)
         {
 
         }

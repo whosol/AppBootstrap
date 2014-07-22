@@ -1,4 +1,5 @@
 ﻿using Actemium.Stratus.Contracts;
+using Ninject.Extensions.Logging;
 using Owin;
 
 namespace Actemium.Stratus.OwinSelfHostPlugin
@@ -6,9 +7,11 @@ namespace Actemium.Stratus.OwinSelfHostPlugin
     public class OwinSelfHostStartup : IStartup
     {
         private readonly IStartup[] serverStartups;
-        
-        public OwinSelfHostStartup(IStartup[] serverStartups)
+        private readonly ILogger logger;
+
+        public OwinSelfHostStartup(ILogger logger, IStartup[] serverStartups)
         {
+            this.logger = logger;
             this.serverStartups = serverStartups;
         }
 

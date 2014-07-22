@@ -36,7 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="log4net">
-      <HintPath>..\packages\log4net.2.0.0\lib\net40-full\log4net.dll</HintPath>
+      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Ninject">
@@ -71,8 +71,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configuration.cs" />
-    <Compile Include="Controllers\Dto\Plugin.cs" />
-    <Compile Include="Controllers\Dto\ServiceStatus.cs" />
+    <Compile Include="Controllers\Dto\PluginDto.cs" />
+    <Compile Include="Controllers\Dto\ServiceStatusDto.cs" />
     <Compile Include="Controllers\ServiceStatusController.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

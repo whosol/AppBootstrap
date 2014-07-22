@@ -1,6 +1,7 @@
 ﻿using Actemium.Stratus.Contracts;
 using Actemium.Stratus.Contracts.Enums;
 using Actemium.Stratus.DataObjects;
+using Ninject.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -16,6 +17,7 @@ namespace Actemium.Stratus.ImporterPlugin
         #region Fields
 
         private readonly IUnitOfWork uow;
+        private readonly ILogger logger;
         private DataTable resultTable;
         private DataTable resultDescriptionTable;
         private DataTable sequenceTable;
@@ -38,9 +40,10 @@ namespace Actemium.Stratus.ImporterPlugin
 
         #endregion
 
-        public Rds3Importer(IUnitOfWork uow)
+        public Rds3Importer(IUnitOfWork uow, ILogger logger)
         {
             this.uow = uow;
+            this.logger = logger;
         }
 
 

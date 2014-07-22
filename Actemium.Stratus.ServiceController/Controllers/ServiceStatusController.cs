@@ -14,16 +14,17 @@ namespace Actemium.Stratus.ServiceController.Controllers
             this.plugins = plugins;
         }
 
-        public ServiceStatus Get()
+        public ServiceStatusDto Get()
         {
-            return new ServiceStatus
+            return new ServiceStatusDto
             {
                 Plugins = (from plugin in plugins
-                           select new Plugin
+                           select new PluginDto
                            {
                                Name = plugin.Name,
                                Description = plugin.Description,
                                Version = plugin.Version,
+                               FileVersion = plugin.FileVersion,
                                Location = plugin.Location
                            }).ToArray()
             };

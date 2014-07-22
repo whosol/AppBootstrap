@@ -1,5 +1,6 @@
 ﻿using System;
 using Ninject.Extensions.Logging;
+using System.Diagnostics;
 
 namespace Actemium.Stratus.Contracts
 {
@@ -36,6 +37,14 @@ namespace Actemium.Stratus.Contracts
             get
             {
                 return this.GetType().Assembly.GetName().Version.ToString();
+            }
+        }
+
+        public string FileVersion
+        {
+            get
+            {
+                return FileVersionInfo.GetVersionInfo(this.GetType().Assembly.Location).FileVersion;
             }
         }
 
