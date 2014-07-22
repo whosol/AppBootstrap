@@ -5,7 +5,9 @@ angular
         'ngAnimate',
         'ngRoute',
         'ui.bootstrap',
-        'kendo.directives'
+        'kendo.directives',
+        'stratusRepository',
+        'serviceStatus'
     ])
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider

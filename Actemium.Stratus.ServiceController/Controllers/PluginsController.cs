@@ -5,18 +5,18 @@ using System.Linq;
 
 namespace Actemium.Stratus.ServiceController.Controllers
 {
-    public class ServiceStatusController : ApiController
+    public class PluginsController : ApiController
     {
         private readonly IPlugin[] plugins;
 
-        public ServiceStatusController(IPlugin[] plugins)
+        public PluginsController(IPlugin[] plugins)
         {
             this.plugins = plugins;
         }
 
-        public ServiceStatusDto Get()
+        public PluginsDto Get()
         {
-            return new ServiceStatusDto
+            return new PluginsDto
             {
                 Plugins = (from plugin in plugins
                            select new PluginDto

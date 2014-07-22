@@ -2,11 +2,7 @@
 
 angular
     .module('resultsExplorer')
-    .controller('AboutController', ['$scope', '$http', function ($scope, $http) {
-        $http.get('/api/servicestatus').success(function (data) {
-            $scope.plugins = data.Plugins;
-        });
-        $http.get('/api/thirdparty').success(function (data) {
-            $scope.libraries = data.Libraries;
-        });
+    .controller('AboutController', ['$scope', 'ThirdParty', 'Plugins', function ($scope, ThirdParty, Plugins) {
+        $scope.plugins = Plugins.query();
+        $scope.libraries = ThirdParty.query();
     }]);
