@@ -2,13 +2,13 @@
 
 angular
     .module('resultsExplorer')
-    .controller('VisitsController', ['$scope', 'Visits', function ($scope, Visits) {
+    .controller('VisitsController', ['$scope', 'StratusData', function ($scope, StratusData) {
 
         $scope.visitGridOptions = {
             dataSource: {
                 transport: {
                     read: function (options) {
-                        Visits.query(options.data, function (response) {
+                        StratusData.getVisits(options.data, function (response) {
                             console.log(response);
                             options.success(response);
                         });

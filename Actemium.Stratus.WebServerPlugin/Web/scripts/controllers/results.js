@@ -2,13 +2,15 @@
 
 angular
     .module('resultsExplorer')
-    .controller('ResultsController', ['$scope', 'Results', function ($scope, Results) {
+    .controller('ResultsController', ['$scope', 'StratusData', function ($scope, StratusData) {
+
+        $scope.cell = StratusData.getCell(2);
 
         $scope.resultGridOptions = {
             dataSource: {
                 transport: {
                     read: function (options) {
-                        Results.query(options.data, function (response) {
+                        StratusData.getResults(options.data, function (response) {
                             console.log(response);
                             options.success(response);
                         });
