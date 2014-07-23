@@ -2,15 +2,20 @@
 
 angular
     .module('resultsExplorer')
-    .controller('VisitsController', ['$scope', function ($scope) {
+    .controller('VisitsController', ['$scope', 'Visits', function ($scope, Visits) {
 
         $scope.visitGridOptions = {
             dataSource: {
                 transport: {
-                    read: "/api/visits",
+                    read: function (options) {
+                        Visits.query(options.data, function (response) {
+                            console.log(response);
+                            options.success(response);
+                        });
+                    }
                 },
                 error: function (e) {
-                    if (e.xhr.status == 404) {
+                    if (e.xhr.status === 404) {
                         //  alert('WebApi at /api/visits not found');
                     }
                 },
@@ -21,6 +26,7 @@ angular
                     total: "Total"
                 }
             },
+
             sortable: true,
             pageable: true,
             columns: [

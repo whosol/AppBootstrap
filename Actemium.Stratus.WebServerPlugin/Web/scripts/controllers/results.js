@@ -2,15 +2,20 @@
 
 angular
     .module('resultsExplorer')
-    .controller('ResultsController', ['$scope', function ($scope) {
+    .controller('ResultsController', ['$scope', 'Results', function ($scope, Results) {
 
         $scope.resultGridOptions = {
             dataSource: {
                 transport: {
-                    read: "/api/results"
+                    read: function (options) {
+                        Results.query(options.data, function (response) {
+                            console.log(response);
+                            options.success(response);
+                        });
+                    }
                 },
                 error: function (e) {
-                    if (e.xhr.status == 404) {
+                    if (e.xhr.status === 404) {
                         //  alert('WebApi at /api/results not found');
                     }
                 },

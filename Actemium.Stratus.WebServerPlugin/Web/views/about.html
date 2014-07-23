@@ -13,7 +13,7 @@
                 <h3>Stratus Plugins</h3>
             </div>
             <div class="panel-body library-description">
-                <ul ng-repeat="plugin in plugins">
+                <ul ng-repeat="plugin in pluginContainer.Plugins">
                     <li>
                         <h3>{{plugin.Name}}</h3>
                         <h5>Assembly Version: {{plugin.Version}} - File Version: {{plugin.FileVersion}}</h5>
@@ -34,7 +34,7 @@
                 <h3>Third Party Libraries</h3>
             </div>
             <div class="panel-body library-description">
-                <ul ng-repeat="library in libraries">
+                <ul ng-repeat="library in thirdPartyContainer.Libraries">
                     <li>
                         <h3>{{library.Name}}</h3>
                         <h5>Assembly Version: {{library.Version}} - File Version: {{library.FileVersion}}</h5>
