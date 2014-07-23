@@ -4,8 +4,8 @@ using System.Runtime.Serialization;
 
 namespace Actemium.Stratus.RepositoryPlugin.Controllers.Dto
 {
-    [DataContract(Name = "Plant")]
-    public class PlantDto
+    [DataContract]
+    public class PlantDto : WrapperBaseDto
     {
         [DataMember(Order = 1)]
         public int Id { get; set; }

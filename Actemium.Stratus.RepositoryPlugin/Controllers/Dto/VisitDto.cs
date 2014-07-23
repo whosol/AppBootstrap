@@ -1,12 +1,11 @@
-﻿using Actemium.Stratus.DataObjects;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System;
 using System.Runtime.Serialization;
 using System.Xml;
 
 namespace Actemium.Stratus.RepositoryPlugin.Controllers.Dto
 {
-    [DataContract(Name = "Visit")]
+    [DataContract]
     public class VisitDto
     {
         [DataMember(Order = 1)]
@@ -25,7 +24,7 @@ namespace Actemium.Stratus.RepositoryPlugin.Controllers.Dto
         public int Duration { get; set; }
 
         [DataMember(Order = 6)]
-        public VisitStatus Status { get; set; }
+        public string Status { get; set; }
 
         /// <summary>
         /// Serialised only for the XML return type. Parses VisitXml to create an XmlElement to add to XML DTO

@@ -4,19 +4,23 @@ angular
     .module('resultsExplorer')
     .controller('VisitsController', ['$scope', 'StratusData', function ($scope, StratusData) {
 
+        $scope.serverStatus = '';
+
         $scope.visitGridOptions = {
             dataSource: {
                 transport: {
                     read: function (options) {
-                        StratusData.getVisits(options.data, function (response) {
+                        StratusData.getVisits({
+                            page: options.data.page,
+                            pageSize: options.data.pageSize
+                        }, function (response) {
                             console.log(response);
                             options.success(response);
+                        }, function (response) {
+                            if (response.status === 404) {
+                                $scope.serverStatus = 'Server is offline. Please check configuration.';
+                            }
                         });
-                    }
-                },
-                error: function (e) {
-                    if (e.xhr.status === 404) {
-                        //  alert('WebApi at /api/visits not found');
                     }
                 },
                 pageSize: 20,

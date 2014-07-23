@@ -11,12 +11,12 @@ angular
             }
         });
 
-        this.getCells = function (query, callback) {
-            return this.$$cells.query(query, callback);
+        this.getCells = function (query, success, error) {
+            return this.$$cells.query(query, success, error);
         };
 
-        this.getCell = function (cellId, callback) {
-            return this.$$cells.get({ id: cellId }, callback);
+        this.getCell = function (cellId, success, error) {
+            return this.$$cells.get({ id: cellId }, success, error);
         };
 
 
@@ -29,30 +29,30 @@ angular
             }
         });
 
-        this.getCompanies = function (query, callback) {
-            return this.$$companies.query(query, callback);
+        this.getCompanies = function (query, success, error) {
+            return this.$$companies.query(query, success, error);
         };
 
-        this.getCompany = function (companyId, callback) {
-            return this.$$companies.get({ id: companyId }, callback);
+        this.getCompany = function (companyId, success, error) {
+            return this.$$companies.get({ id: companyId }, success, error);
         };
 
 
 
 
-        this.$$locations = $resource('/api/locaitons/:id', { id: '@id' }, {
+        this.$$locations = $resource('/api/locations/:id', { id: '@id' }, {
             query: {
                 method: 'GET',
                 isArray: false
             }
         });
 
-        this.getLocations = function (query, callback) {
-            return this.$$locations.query(query, callback);
+        this.getLocations = function (query, success, error) {
+            return this.$$locations.query(query, success, error);
         };
 
-        this.getLocation = function (locationId, callback) {
-            return this.$$locations.get({ id: LocationId }, callback);
+        this.getLocation = function (locationId, success, error) {
+            return this.$$locations.get({ id: locationId }, success, error);
         };
 
 
@@ -65,12 +65,12 @@ angular
             }
         });
 
-        this.getPlants = function (query, callback) {
-            return this.$$plants.query(query, callback);
+        this.getPlants = function (query, success, error) {
+            return this.$$plants.query(query, success, error);
         };
 
-        this.getPlant = function (plantId, callback) {
-            return this.$$plants.get({ id: plantId }, callback);
+        this.getPlant = function (plantId, success, error) {
+            return this.$$plants.get({ id: plantId }, success, error);
         };
 
 
@@ -83,12 +83,12 @@ angular
             }
         });
 
-        this.getProcesses = function (query, callback) {
-            return this.$$processes.query(query, callback);
+        this.getProcesses = function (query, success, error) {
+            return this.$$processes.query(query, success, error);
         };
 
-        this.getProcess = function (processId, callback) {
-            return this.$$processes.get({ id: processId }, callback);
+        this.getProcess = function (processId, success, error) {
+            return this.$$processes.get({ id: processId }, success, error);
         };
 
 
@@ -102,12 +102,12 @@ angular
         });
 
 
-        this.getProducts = function (query, callback) {
-            return this.$$products.query(query, callback);
+        this.getProducts = function (query, success, error) {
+            return this.$$products.query(query, success, error);
         };
 
-        this.getProduct = function (productId, callback) {
-            return this.$$products.get({ id: productId }, callback);
+        this.getProduct = function (productId, success, error) {
+            return this.$$products.get({ id: productId }, success, error);
         };
 
 
@@ -120,12 +120,12 @@ angular
             }
         });
 
-        this.getProductTypes = function (query, callback) {
-            return this.$$productTypes.query(query, callback);
+        this.getProductTypes = function (query, success, error) {
+            return this.$$productTypes.query(query, success, error);
         };
 
-        this.getProductType = function (productTypeId, callback) {
-            return this.$$productTypes.get({ id: productTypeId }, callback);
+        this.getProductType = function (productTypeId, success, error) {
+            return this.$$productTypes.get({ id: productTypeId }, success, error);
         };
 
 
@@ -138,12 +138,12 @@ angular
             }
         });
 
-        this.getResults = function (query, callback) {
-            return this.$$results.query(query, callback);
+        this.getResults = function (query, success, error) {
+            return this.$$results.query(query, success, error);
         };
 
-        this.getResult = function (resultId, callback) {
-            return this.$$results.get({ id: resultId }, callback);
+        this.getResult = function (resultId, success, error) {
+            return this.$$results.get({ id: resultId }, success, error);
         };
 
 
@@ -156,12 +156,12 @@ angular
             }
         });
 
-        this.getSequences = function (query, callback) {
-            return this.$$sequences.query(query, callback);
+        this.getSequences = function (query, success, error) {
+            return this.$$sequences.query(query, success, error);
         };
 
-        this.getSequence = function (sequenceId, callback) {
-            return this.$$sequences.get({ id: sequenceId }, callback);
+        this.getSequence = function (sequenceId, success, error) {
+            return this.$$sequences.get({ id: sequenceId }, success, error);
         };
 
 
@@ -174,12 +174,12 @@ angular
             }
         });
 
-        this.getTesters = function (query, callback) {
-            return this.$$testers.query(query, callback);
+        this.getTesters = function (query, success, error) {
+            return this.$$testers.query(query, success, error);
         };
 
-        this.getTester = function (testerId, callback) {
-            return this.$$testers.get({ id: testerId }, callback);
+        this.getTester = function (testerId, success, error) {
+            return this.$$testers.get({ id: testerId }, success, error);
         };
 
 
@@ -192,12 +192,12 @@ angular
             }
         });
 
-        this.getVisits = function (query, callback) {
-            return this.$$visits.query(query, callback);
+        this.getVisits = function (query, success, error) {
+            return this.$$visits.query(query, success, error);
         };
 
-        this.getVisit = function (visitId, callback) {
-            return this.$$visits.get({ id: visitId }, callback);
+        this.getVisit = function (visitId, success, error) {
+            return this.$$visits.get({ id: visitId }, success, error);
         };
 
 
@@ -210,11 +210,11 @@ angular
             }
         });
 
-        this.getZones = function (query, callback) {
-            return this.$$zones.query(query, callback);
+        this.getZones = function (query, success, error) {
+            return this.$$zones.query(query, success, error);
         };
 
-        this.getZone = function (zoneId, callback) {
-            return this.$$zones.get({ id: zoneId }, callback);
+        this.getZone = function (zoneId, success, error) {
+            return this.$$zones.get({ id: zoneId }, success, error);
         };
     }]);

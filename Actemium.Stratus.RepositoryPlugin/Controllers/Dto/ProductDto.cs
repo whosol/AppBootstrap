@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 
 namespace Actemium.Stratus.RepositoryPlugin.Controllers.Dto
 {
-    [DataContract(Name = "Product")]
+    [DataContract]
     public class ProductDto
     {
         [DataMember(Order = 1)]
@@ -15,7 +15,7 @@ namespace Actemium.Stratus.RepositoryPlugin.Controllers.Dto
         public string ProductUniqueId { get; set; }
 
         [DataMember(IsRequired = false, EmitDefaultValue = false, Order = 3)]
-        public ProductTypeDto ProductType { get; set; }
+        public string ProductType { get; set; }
 
         [DataMember(IsRequired = false, EmitDefaultValue = false, Order = 4)]
         public IEnumerable<CompanyDto> Companies { get; set; }

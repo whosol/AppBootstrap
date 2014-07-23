@@ -4,7 +4,7 @@ using System.Web.Http;
 
 namespace Actemium.Stratus.RepositoryPlugin.Controllers
 {
-    public abstract class BaseController : ApiController
+    public abstract class BaseController<T1, T2, T3> : ApiController
     {
         protected readonly IUnitOfWork uow;
         protected readonly ILogger logger;
@@ -14,5 +14,12 @@ namespace Actemium.Stratus.RepositoryPlugin.Controllers
             this.uow = uow;
             this.logger = logger;
         }
+
+        public abstract T2 CreateDto(T1 dataObject);
+
+        public abstract T3 Get();
+
+        public abstract T2 Get(int id);
+
     }
 }

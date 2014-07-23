@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 
 namespace Actemium.Stratus.RepositoryPlugin.Controllers.Dto
 {
-    [DataContract(Name = "Location")]
+    [DataContract]
     public class LocationDto
     {
         [DataMember(Order = 1)]

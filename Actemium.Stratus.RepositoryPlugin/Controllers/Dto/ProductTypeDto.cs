@@ -7,7 +7,7 @@ using System.Runtime.Serialization;
 namespace Actemium.Stratus.RepositoryPlugin.Controllers.Dto
 {
     [DebuggerDisplay("{Name}")]
-    [DataContract(Name = "ProductType")]
+    [DataContract]
     public class ProductTypeDto
     {
         [DataMember(Order = 1)]

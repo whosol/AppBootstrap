@@ -1,15 +1,13 @@
-﻿using Actemium.Stratus.Contracts;
+﻿using System;
+using Actemium.Stratus.Contracts;
+using Actemium.Stratus.DataObjects;
 using Actemium.Stratus.RepositoryPlugin.Controllers.Dto;
 using Ninject.Extensions.Logging;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Actemium.Stratus.RepositoryPlugin.Controllers
 {
-    public class PlantsController : BaseController
+    public class PlantsController : BaseController<Plant, PlantDto, PlantsDto>
     {
         public PlantsController(IUnitOfWork uow, ILogger logger)
             : base(uow, logger)
@@ -17,18 +15,30 @@ namespace Actemium.Stratus.RepositoryPlugin.Controllers
 
         }
 
-        public PlantsDto Get()
+        public override PlantDto CreateDto(Plant dataObject)
+        {
+            return new PlantDto
+            {
+                Id = dataObject.Id,
+                Name = dataObject.Name
+            };
+        }
+
+        public override PlantsDto Get()
         {
             return new PlantsDto
             {
                 Plants = uow.Plants.FindAll()
                 .OrderBy(p => p.Name)
-                .Select(p => new PlantDto 
-                {
-                    Id = p.Id,
-                    Name = p.Name
-                })
+                .ToList()
+                .Select(p => CreateDto(p))
             };
+        }
+
+        public override PlantDto Get(int id)
+        {
+            var plant = uow.Plants.FindById(id);
+            return plant != null ? CreateDto(plant) : null;
         }
     }
 }

@@ -5,9 +5,13 @@ using System.Runtime.Serialization;
 
 namespace Actemium.Stratus.RepositoryPlugin.Controllers.Dto
 {
-    [DataContract(Name = "StratusApi")]
-    public class ProductTypesDto
+    [DataContract]
+    public class ProductTypesDto : WrapperBaseDto
     {
+        public ProductTypesDto()
+        {
+            controllerName = "producttypes";
+        }
         [DataMember(IsRequired = false, EmitDefaultValue = false)]
         public IEnumerable<ProductTypeDto> ProductTypes { get; set; }
 

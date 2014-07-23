@@ -34,7 +34,7 @@ namespace Actemium.Stratus.RepositoryPlugin
 
         public T FindById(int id)
         {
-            return objectSet.Single(o => o.Id == id);
+            return objectSet.SingleOrDefault(o => o.Id == id);
         }
 
         public void Add(T newEntity)

@@ -3,9 +3,14 @@ using System.Runtime.Serialization;
 
 namespace Actemium.Stratus.RepositoryPlugin.Controllers.Dto
 {
-    [DataContract(Name = "StratusApi")]
-    public class PlantsDto
+    [DataContract]
+    public class PlantsDto : WrapperBaseDto
     {
+        public PlantsDto()
+        {
+            controllerName = "plants";
+        }
+
         [DataMember(IsRequired = false, EmitDefaultValue = false)]
         public IEnumerable<PlantDto> Plants { get; set; }
     }

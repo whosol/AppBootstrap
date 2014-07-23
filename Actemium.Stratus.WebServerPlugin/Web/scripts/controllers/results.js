@@ -4,21 +4,24 @@ angular
     .module('resultsExplorer')
     .controller('ResultsController', ['$scope', 'StratusData', function ($scope, StratusData) {
 
-        $scope.cell = StratusData.getCell(2);
+
+        $scope.serverStatus = '';
 
         $scope.resultGridOptions = {
             dataSource: {
                 transport: {
                     read: function (options) {
-                        StratusData.getResults(options.data, function (response) {
+                        StratusData.getResults({
+                            page: options.data.page,
+                            pageSize: options.data.pageSize
+                        }, function (response) {
                             console.log(response);
                             options.success(response);
+                        }, function (response) {
+                            if (response.status === 404) {
+                                $scope.serverStatus = 'Server is offline. Please check configuration.';
+                            }
                         });
-                    }
-                },
-                error: function (e) {
-                    if (e.xhr.status === 404) {
-                        //  alert('WebApi at /api/results not found');
                     }
                 },
                 pageSize: 20,
@@ -57,8 +60,12 @@ angular
                 },
                 {
                     field: "Units"
+                },
+                {
+                    field: "Status"
                 }
-            ]
+            ],
+            enabled: $scope.enabled
         };
     }]);
 

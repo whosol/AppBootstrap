@@ -14,7 +14,7 @@ using Ninject.Extensions.Logging;
 namespace Actemium.Stratus.RepositoryPlugin.Controllers
 {
     [RoutePrefix("api/visits")]
-    public class VisitsController : BaseController
+    public class VisitsController : BaseController<Visit, VisitDto, VisitsDto>
     {
         private readonly IImporter importer;
 
@@ -24,7 +24,22 @@ namespace Actemium.Stratus.RepositoryPlugin.Controllers
             this.importer = importer;
         }
 
-        public VisitsDto Get(int page = 0, int pageSize = 100, bool getXml = false)
+        public override VisitDto CreateDto(Visit dataObject)
+        {
+            return CreateVisitDto(dataObject);
+        }
+
+        public override VisitsDto Get()
+        {
+            return Get(0, 100);
+        }
+
+        public override VisitDto Get(int id)
+        {
+            return Get(id, false);
+        }
+
+        public VisitsDto Get(int page, int pageSize, bool getXml = false)
         {
             var query = uow.Visits.FindAll()
                 .Include(v => v.Product)
@@ -35,30 +50,23 @@ namespace Actemium.Stratus.RepositoryPlugin.Controllers
                 query = (IOrderedQueryable<Visit>)query.Skip((page - 1) * pageSize);
             }
 
-            var visits = query.Take(pageSize).ToArray();
+            var visits = query.Take(pageSize).ToList();
 
             return new VisitsDto
             {
-                Visits = visits.Select(v => new
-                    VisitDto
-                    {
-                        Duration = v.Duration,
-                        EndTime = v.EndTime,
-                        Id = v.Id,
-                        ProductUniqueId = v.Product.ProductUniqueId,
-                        StartTime = v.StartTime,
-                        Status = v.Status,
-                        VisitXml = getXml ? v.VisitXml : null
-                    }).ToArray(),
-                Total = uow.Visits.FindAll().Count()
+                Visits = visits.Select(v => CreateVisitDto(v)).ToArray(),
+                Total = uow.Visits.FindAll().Count(),
+                Page = page,
+                PageSize = pageSize
             };
         }
 
+        [Route("{id}/getXml={getXml}")]
         public VisitDto Get(int? id, bool getXml = false)
         {
             if (id != null)
             {
-                return CreateVisitDto(getXml, uow.Visits.FindBy(v => v.Id == id).Include(v => v.Product).SingleOrDefault());
+                return CreateVisitDto(uow.Visits.FindBy(v => v.Id == id).Include(v => v.Product).SingleOrDefault(), getXml);
             }
             else
             {
@@ -74,7 +82,7 @@ namespace Actemium.Stratus.RepositoryPlugin.Controllers
                 Visits = uow.Visits.FindBy(v => v.Product.ProductUniqueId == productUniqueId)
                     .Include(v => v.Product)
                     .ToList()
-                    .Select(v => CreateVisitDto(getXml, v)),
+                    .Select(v => CreateVisitDto(v, getXml)),
                 Total = uow.Visits.FindBy(v => v.Product.ProductUniqueId == productUniqueId).Count()
             };
         }
@@ -112,7 +120,7 @@ namespace Actemium.Stratus.RepositoryPlugin.Controllers
         }
 
 
-        private static VisitDto CreateVisitDto(bool getXml, Visit v)
+        private static VisitDto CreateVisitDto(Visit v, bool getXml = false)
         {
             return v != null ?
                 new VisitDto
@@ -122,7 +130,7 @@ namespace Actemium.Stratus.RepositoryPlugin.Controllers
                     StartTime = v.StartTime,
                     EndTime = v.EndTime,
                     Duration = v.Duration,
-                    Status = v.Status,
+                    Status = v.Status.ToString(),
                     VisitXml = getXml ? v.VisitXml : null
                 } : null;
         }

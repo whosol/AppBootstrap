@@ -102,6 +102,7 @@
     <Compile Include="Controllers\Dto\TestersDto.cs" />
     <Compile Include="Controllers\Dto\VisitDto.cs" />
     <Compile Include="Controllers\Dto\VisitsDto.cs" />
+    <Compile Include="Controllers\Dto\WrapperBaseDto.cs" />
     <Compile Include="Controllers\Dto\ZoneDto.cs" />
     <Compile Include="Controllers\Dto\ZonesDto.cs" />
     <Compile Include="Controllers\LocationsController.cs" />

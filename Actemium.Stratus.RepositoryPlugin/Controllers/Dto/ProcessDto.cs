@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 
 namespace Actemium.Stratus.RepositoryPlugin.Controllers.Dto
 {
-    [DataContract(Name = "Process")]
+    [DataContract]
     public class ProcessDto
     {
         [DataMember(Order = 1)]

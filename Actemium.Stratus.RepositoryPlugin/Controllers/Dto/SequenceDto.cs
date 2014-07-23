@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 
 namespace Actemium.Stratus.RepositoryPlugin.Controllers.Dto
 {
-    [DataContract(Name = "Sequence")]
+    [DataContract]
     public class SequenceDto
     {
         [DataMember]

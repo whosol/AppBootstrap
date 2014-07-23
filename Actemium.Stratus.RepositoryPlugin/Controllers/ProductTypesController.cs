@@ -1,11 +1,13 @@
-﻿using Actemium.Stratus.Contracts;
+﻿using System;
+using Actemium.Stratus.Contracts;
+using Actemium.Stratus.DataObjects;
 using Actemium.Stratus.RepositoryPlugin.Controllers.Dto;
 using Ninject.Extensions.Logging;
 using System.Linq;
 
 namespace Actemium.Stratus.RepositoryPlugin.Controllers
 {
-    public class ProductTypesController : BaseController
+    public class ProductTypesController : BaseController<ProductType, ProductTypeDto, ProductTypesDto>
     {
         public ProductTypesController(IUnitOfWork uow, ILogger logger)
             : base(uow, logger)
@@ -13,11 +15,21 @@ namespace Actemium.Stratus.RepositoryPlugin.Controllers
 
         }
 
-        public ProductTypesDto Get()
+        public override ProductTypeDto CreateDto(ProductType dataObject)
+        {
+            return new ProductTypeDto
+            {
+                Id = dataObject.Id,
+                Name = dataObject.Name
+            };
+        }
+
+        public override ProductTypesDto Get()
         {
             return new ProductTypesDto
             {
-                ProductTypes = new[]{ 
+                ProductTypes = new[]
+                { 
                     new ProductTypeDto
                     {
                         Id = -1,
@@ -26,12 +38,15 @@ namespace Actemium.Stratus.RepositoryPlugin.Controllers
                 }
                 .Concat(uow.ProductTypes.FindAll()
                 .OrderBy(pt => pt.Name)
-                .Select(pt => new ProductTypeDto
-                {
-                    Id = pt.Id,
-                    Name = pt.Name
-                }))
+                .ToList()
+                .Select(pt => CreateDto(pt)))
             };
+        }
+
+        public override ProductTypeDto Get(int id)
+        {
+            var productType = uow.ProductTypes.FindById(id);
+            return productType != null ? CreateDto(productType) : null;
         }
     }
 }

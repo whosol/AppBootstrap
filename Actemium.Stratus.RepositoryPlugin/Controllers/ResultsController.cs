@@ -15,7 +15,7 @@ using Ninject.Extensions.Logging;
 namespace Actemium.Stratus.RepositoryPlugin.Controllers
 {
     [RoutePrefix("api/Results")]
-    public class ResultsController : BaseController
+    public class ResultsController : BaseController<Result, ResultDto, ResultsDto>
     {
         public ResultsController(IUnitOfWork uow, ILogger logger)
             : base(uow, logger)
@@ -23,7 +23,12 @@ namespace Actemium.Stratus.RepositoryPlugin.Controllers
 
         }
 
-        public ResultsDto Get(int page = 0, int pageSize = 100)
+        public override ResultsDto Get()
+        {
+            return Get(0, 100);
+        }
+
+        public ResultsDto Get(int page, int pageSize)
         {
             try
             {
@@ -31,6 +36,7 @@ namespace Actemium.Stratus.RepositoryPlugin.Controllers
                     .Include(r => r.Sequence)
                     .Include(r => r.ResultDescription)
                     .Include(r => r.Product)
+                    .Include(r => r.ChildResults)
                     .OrderBy(r => r.Id);
 
                 if (page > 0)
@@ -39,22 +45,16 @@ namespace Actemium.Stratus.RepositoryPlugin.Controllers
                 }
 
                 var results = query.Take(pageSize).ToArray();
-
+                var total = uow.Results.FindAll().Count();
 
                 return new ResultsDto
                 {
-                    Results = results.Select(r => new
-                        ResultDto
-                        {
-                            ProductUniqueId = r.Product.ProductUniqueId,
-                            SequenceName = r.Sequence.Name,
-                            ResultName = r.ResultDescription.Name,
-                            Value = r.Value,
-                            UpperLimit = r.UpperLimit,
-                            LowerLimit = r.LowerLimit,
-                            Units = r.Units
-                        }).ToArray(),
-                    Total = uow.Results.FindAll().Count()
+                    Results = results.Select(r => CreateDto(r)).ToArray(),
+                    Total = total,
+                    Page = page,
+                    PageSize = pageSize,
+                    //PrevPageUrl = page > 0 ? string.Format("/api/results?page={0}&pageSize={1}", page - 1, pageSize) : string.Empty,
+                    //NextPageUrl = page * pageSize <= total ? string.Format("/api/results?page={0}&pageSize={1}", page + 1, pageSize) : string.Empty,
                 };
 
             }
@@ -65,9 +65,10 @@ namespace Actemium.Stratus.RepositoryPlugin.Controllers
             }
         }
 
-        public Result Get(int id)
+        public override ResultDto Get(int id)
         {
-            return uow.Results.FindById(id);
+            var result = uow.Results.FindBy(r => r.Id == id).Include(r => r.ChildResults).SingleOrDefault();
+            return result != null ? CreateDto(result) : null;
         }
 
         public HttpResponseMessage Get([FromUri]string productUniqueId, [FromUri]string[] sequences = null, [FromUri]bool visitInfo = false, [FromUri]bool sequenceVisitInfo = false)
@@ -192,6 +193,29 @@ namespace Actemium.Stratus.RepositoryPlugin.Controllers
                 new XAttribute("name", se.Visit.Process.Name)))));
 
             return ret;
+        }
+
+        public override ResultDto CreateDto(Result r)
+        {
+            return new ResultDto
+            {
+                DataType = r.DataType != null ? r.DataType.Value.ToString() : string.Empty,
+                Id = r.Id,
+                IsChild = r.ParentResultId != null,
+                IsFixedLimit = r.IsFixed,
+                IsParent = r.ChildResults.Any(),
+                LowerLimit = r.LowerLimit,
+                ProductUniqueId = r.Product.ProductUniqueId,
+                RelativeTime = r.RelativeTime,
+                ResultName = r.ResultDescription.Name,
+                SequenceName = r.Sequence.Name,
+                Source = r.ResultSource.ToString(),
+                Status = r.Status.ToString(),
+                Type = r.Type.ToString(),
+                Units = r.Units,
+                UpperLimit = r.UpperLimit,
+                Value = r.Value
+            };
         }
 
     }

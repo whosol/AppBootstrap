@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Actemium.Stratus.RepositoryPlugin.Controllers.Dto
 {
-    [DataContract(Name = "Tester")]
+    [DataContract]
     public class TesterDto
     {
         [DataMember(Order = 1)]
