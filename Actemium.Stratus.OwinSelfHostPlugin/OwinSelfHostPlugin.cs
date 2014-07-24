@@ -1,4 +1,5 @@
 ﻿using Actemium.Stratus.Contracts;
+using Actemium.Stratus.Contracts.Base;
 using Actemium.Stratus.OwinSelfHostPlugin.Enums;
 using Actemium.Stratus.Utilities;
 using Microsoft.Owin.Hosting;
@@ -7,7 +8,7 @@ using System;
 
 namespace Actemium.Stratus.OwinSelfHostPlugin
 {
-    public class OwinSelfHostPlugin : PluginBase
+    public class OwinSelfHostPlugin : BasePlugin
     {
         private IDisposable owinServer;
         private readonly OwinSelfHostStartup startup;

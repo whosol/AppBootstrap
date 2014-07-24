@@ -10,6 +10,7 @@ using System.Xml.Linq;
 using System.Net;
 using Actemium.Stratus.Contracts.Enums;
 using Ninject.Extensions.Logging;
+using Actemium.Stratus.Contracts.Base;
 
 namespace Actemium.Stratus.RepositoryPlugin.Controllers
 {

@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using Actemium.Stratus.Contracts.Base;
+using System.Collections.Generic;
 using System.Runtime.Serialization;
 
 namespace Actemium.Stratus.RepositoryPlugin.Controllers.Dto
 {
     [DataContract]
-    public class ProcessesDto : WrapperBaseDto
+    public class ProcessesDto : BaseCollectionDto
     {
         public ProcessesDto()
         {

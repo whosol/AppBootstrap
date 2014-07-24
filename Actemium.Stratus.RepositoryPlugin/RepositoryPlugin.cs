@@ -4,10 +4,11 @@ using Actemium.Stratus.Contracts;
 using System.Data.SqlClient;
 using Actemium.Stratus.Contracts.Enums;
 using Ninject.Extensions.Logging;
+using Actemium.Stratus.Contracts.Base;
 
 namespace Actemium.Stratus.RepositoryPlugin
 {
-    public class RepositoryPlugin : PluginBase
+    public class RepositoryPlugin : BasePlugin
     {
         private readonly IUnitOfWork uow;
 

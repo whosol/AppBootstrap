@@ -11,6 +11,7 @@ using System.Text;
 using System.Xml.Linq;
 using Actemium.Stratus.RepositoryPlugin.Controllers.Wrapper;
 using Ninject.Extensions.Logging;
+using Actemium.Stratus.Contracts.Base;
 
 namespace Actemium.Stratus.RepositoryPlugin.Controllers
 {
@@ -53,8 +54,6 @@ namespace Actemium.Stratus.RepositoryPlugin.Controllers
                     Total = total,
                     Page = page,
                     PageSize = pageSize,
-                    //PrevPageUrl = page > 0 ? string.Format("/api/results?page={0}&pageSize={1}", page - 1, pageSize) : string.Empty,
-                    //NextPageUrl = page * pageSize <= total ? string.Format("/api/results?page={0}&pageSize={1}", page + 1, pageSize) : string.Empty,
                 };
 
             }

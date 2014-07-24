@@ -78,7 +78,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CellsController.cs" />
     <Compile Include="Controllers\Dto\CellDto.cs" />
     <Compile Include="Controllers\Dto\CellsDto.cs" />
@@ -102,7 +101,6 @@
     <Compile Include="Controllers\Dto\TestersDto.cs" />
     <Compile Include="Controllers\Dto\VisitDto.cs" />
     <Compile Include="Controllers\Dto\VisitsDto.cs" />
-    <Compile Include="Controllers\Dto\WrapperBaseDto.cs" />
     <Compile Include="Controllers\Dto\ZoneDto.cs" />
     <Compile Include="Controllers\Dto\ZonesDto.cs" />
     <Compile Include="Controllers\LocationsController.cs" />

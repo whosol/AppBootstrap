@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Actemium.Stratus.Contracts.Base;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -6,7 +7,7 @@ using System.Runtime.Serialization;
 namespace Actemium.Stratus.RepositoryPlugin.Controllers.Dto
 {
     [DataContract]
-    public class CompaniesDto : WrapperBaseDto
+    public class CompaniesDto : BaseCollectionDto
     {
         public CompaniesDto()
         {

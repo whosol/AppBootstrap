@@ -1,11 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using Actemium.Stratus.Contracts.Base;
+using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 
 namespace Actemium.Stratus.RepositoryPlugin.Controllers.Dto
 {
     [DataContract]
-    public class PlantDto : WrapperBaseDto
+    public class PlantDto : BaseCollectionDto
     {
         [DataMember(Order = 1)]
         public int Id { get; set; }

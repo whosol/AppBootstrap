@@ -1,5 +1,5 @@
-﻿using System;
-using Actemium.Stratus.Contracts;
+﻿using Actemium.Stratus.Contracts;
+using Actemium.Stratus.Contracts.Base;
 using Actemium.Stratus.DataObjects;
 using Actemium.Stratus.RepositoryPlugin.Controllers.Dto;
 using Ninject.Extensions.Logging;

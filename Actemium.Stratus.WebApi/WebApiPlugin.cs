@@ -1,10 +1,11 @@
 ﻿using Actemium.Stratus.Contracts;
+using Actemium.Stratus.Contracts.Base;
 using Ninject.Extensions.Logging;
 using System;
 
 namespace Actemium.Stratus.WebApi
 {
-    public class WebApiPlugin : PluginBase
+    public class WebApiPlugin : BasePlugin
     {
         public override string Description
         {

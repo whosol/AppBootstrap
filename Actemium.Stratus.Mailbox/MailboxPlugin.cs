@@ -3,10 +3,11 @@ using Actemium.Stratus.Contracts;
 using Actemium.Stratus.MailboxPlugin.Bootstrapper;
 using Ninject.Extensions.Logging;
 using Ninject;
+using Actemium.Stratus.Contracts.Base;
 
 namespace Actemium.Stratus.Mailbox
 {
-    public class MailboxPlugin : PluginBase
+    public class MailboxPlugin : BasePlugin
     {
         private readonly IKernel kernel;
 

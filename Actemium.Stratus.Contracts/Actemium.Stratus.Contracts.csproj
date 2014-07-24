@@ -46,6 +46,12 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web.Http, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.0\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -53,6 +59,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base\BaseController.cs" />
+    <Compile Include="Base\BaseCollectionDto.cs" />
     <Compile Include="Enums\PersistStatus.cs" />
     <Compile Include="Enums\ErrorLevel.cs" />
     <Compile Include="Exceptions\StratusException.cs" />
@@ -64,7 +72,7 @@
     <Compile Include="IRepository.cs" />
     <Compile Include="IStartup.cs" />
     <Compile Include="IUnitOfWork.cs" />
-    <Compile Include="PluginBase.cs" />
+    <Compile Include="Base\BasePlugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

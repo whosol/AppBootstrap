@@ -1,9 +1,10 @@
 ﻿using Actemium.Stratus.Contracts;
+using Actemium.Stratus.Contracts.Base;
 using Ninject.Extensions.Logging;
 
 namespace Actemium.Stratus.SignalRPlugin
 {
-    public class SignalRPlugin : PluginBase
+    public class SignalRPlugin : BasePlugin
     {
         public override string Description
         {

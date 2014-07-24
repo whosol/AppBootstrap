@@ -3,7 +3,6 @@ using Actemium.Stratus.Contracts;
 using Actemium.Stratus.ServiceController.Properties;
 using Ninject;
 using Topshelf;
-using System.Diagnostics;
 using System.Reflection;
 using System;
 using Actemium.Stratus.Contracts.Exceptions;
@@ -21,8 +20,6 @@ namespace Actemium.Stratus.ServiceController
 
         private static void Main(string[] args)
         {
-            Debugger.Launch();
-
             CreateKernel();
 
             InitialiseConfiguration();

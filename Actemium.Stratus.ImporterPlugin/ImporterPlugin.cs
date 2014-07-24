@@ -1,9 +1,10 @@
 ﻿using Actemium.Stratus.Contracts;
+using Actemium.Stratus.Contracts.Base;
 using Ninject.Extensions.Logging;
 
 namespace Actemium.Stratus.ImporterPlugin
 {
-    public class ImporterPlugin : PluginBase
+    public class ImporterPlugin : BasePlugin
     {
         public override string Description
         {

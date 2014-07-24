@@ -5,6 +5,7 @@ using Ninject.Extensions.Logging;
 using System.Linq;
 using System.Data.Entity;
 using Actemium.Stratus.DataObjects;
+using Actemium.Stratus.Contracts.Base;
 
 namespace Actemium.Stratus.RepositoryPlugin.Controllers
 {
