@@ -10,32 +10,29 @@ angular
 
         $scope.toDate = new Date();
 
+        $scope.foundServer;
+
+        $scope.commonOptions = {
+            change: function (ev) {
+                console.log(ev);
+            }
+        }
+
         $scope.productTypes = {
             transport: {
                 read: function (options) {
-                    StratusData.getProductTypes(options.data,
-                        function (response) {
-                            options.success(response);
-                        },
-                        function (response) {
-
-                        })
+                    getData(StratusData.getProductTypes, options);
                 }
             },
             schema: {
                 data: "ProductTypes"
-            }
+            },
         };
 
         $scope.products = {
             transport: {
                 read: function (options) {
-                    StratusData.getProducts(options.data,
-                        function (response) {
-                            options.success(response);
-                        },
-                        function (response) {
-                        })
+                    getData(StratusData.getProducts, options);
                 }
             },
             schema: {
@@ -46,12 +43,7 @@ angular
         $scope.sequences = {
             transport: {
                 read: function (options) {
-                    StratusData.getSequences(options.data,
-                        function (response) {
-                            options.success(response);
-                        },
-                        function (response) {
-                        })
+                    getData(StratusData.getSequences, options);
                 }
             },
             schema: {
@@ -62,12 +54,7 @@ angular
         $scope.plants = {
             transport: {
                 read: function (options) {
-                    StratusData.getPlants(options.data,
-                        function (response) {
-                            options.success(response);
-                        },
-                        function (response) {
-                        })
+                    getData(StratusData.getPlants, options);
                 }
             },
             schema: {
@@ -78,12 +65,7 @@ angular
         $scope.processes = {
             transport: {
                 read: function (options) {
-                    StratusData.getProcesses(options.data,
-                        function (response) {
-                            options.success(response);
-                        },
-                        function (response) {
-                        })
+                    getData(StratusData.getProcesses, options);
                 }
             },
             schema: {
@@ -94,12 +76,7 @@ angular
         $scope.locations = {
             transport: {
                 read: function (options) {
-                    StratusData.getLocations(options.data,
-                        function (response) {
-                            options.success(response);
-                        },
-                        function (response) {
-                        })
+                    getData(StratusData.getLocations, options);
                 }
             },
             schema: {
@@ -110,12 +87,7 @@ angular
         $scope.zones = {
             transport: {
                 read: function (options) {
-                    StratusData.getZones(options.data,
-                        function (response) {
-                            options.success(response);
-                        },
-                        function (response) {
-                        })
+                    getData(StratusData.getZones, options);
                 }
             },
             schema: {
@@ -126,12 +98,7 @@ angular
         $scope.cells = {
             transport: {
                 read: function (options) {
-                    StratusData.getCells(options.data,
-                        function (response) {
-                            options.success(response);
-                        },
-                        function (response) {
-                        })
+                    getData(StratusData.getCells, options);
                 }
             },
             schema: {
@@ -142,4 +109,17 @@ angular
         $scope.$on("kendoRendered", function () {
             $scope.visible = true;
         });
+
+        var getData = function (functionCall, options) {
+            functionCall(options.data,
+                        function (response) {
+                            $scope.foundServer = true;
+                            options.success(response);
+                        },
+                        function (response) {
+                            if (response === 404) {
+                                $scope.foundServer = false;
+                            }
+                        })
+        };
     }]);

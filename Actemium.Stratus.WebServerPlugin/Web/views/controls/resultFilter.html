@@ -18,15 +18,14 @@
                 <select kendo-drop-down-list
                         k-data-source="productTypes"
                         k-data-text-field="'Name'"
-                        k-data-value-field="'Id'" id="product-types"></select>
+                        k-data-value-field="'Id'"
+                        k-options="commonOptions" id="product-types"></select>
                 <label for="products">Products</label>
                 <select kendo-drop-down-list
                         k-data-source="products"
                         k-data-text-field="'ProductUniqueId'"
                         k-data-value-field="'Id'"
-                        k-cascade-from="'product-types'"
-                        k-cascade-from-field="'Id'"
-                        k-auto-bind="false" id="products"></select>
+                        k-options="commonOptions" id="products"></select>
             </div>
         </div>
     </li>
@@ -39,9 +38,7 @@
                         k-data-source="sequences"
                         k-data-text-field="'Name'"
                         k-data-value-field="'Id'"
-                        k-cascade-from="'product-types'"
-                        k-cascade-from-field="'Id'"
-                        k-auto-bind="false" id="sequences"></select>
+                        k-options="commonOptions" id="sequences"></select>
             </div>
         </div>
     </li>
@@ -54,41 +51,31 @@
                         k-data-source="plants"
                         k-data-text-field="'Name'"
                         k-data-value-field="'Id'"
-                        k-cascade-from="'product-types'"
-                        k-cascade-from-field="'Id'"
-                        k-auto-bind="false" id="plants"></select>
+                        k-options="commonOptions" id="plants"></select>
                 <label for="processes">Processes</label>
                 <select kendo-drop-down-list
                         k-data-source="processes"
                         k-data-text-field="'Name'"
                         k-data-value-field="'Id'"
-                        k-cascade-from="'product-types'"
-                        k-cascade-from-field="'Id'"
-                        k-auto-bind="false" id="processes"></select>
+                        k-options="commonOptions" id="processes"></select>
                 <label for="locations">Locationz</label>
                 <select kendo-drop-down-list
                         k-data-source="locations"
                         k-data-text-field="'Name'"
                         k-data-value-field="'Id'"
-                        k-cascade-from="'product-types'"
-                        k-cascade-from-field="'Id'"
-                        k-auto-bind="false" id="locations"></select>
+                        k-options="commonOptions" id="locations"></select>
                 <label for="zones">Zones</label>
                 <select kendo-drop-down-list
                         k-data-source="zones"
                         k-data-text-field="'Name'"
                         k-data-value-field="'Id'"
-                        k-cascade-from="'product-types'"
-                        k-cascade-from-field="'Id'"
-                        k-auto-bind="false" id="zones"></select>
+                        k-options="commonOptions" id="zones"></select>
                 <label for="cells">Cells</label>
                 <select kendo-drop-down-list
                         k-data-source="cells"
                         k-data-text-field="'Name'"
                         k-data-value-field="'Id'"
-                        k-cascade-from="'product-types'"
-                        k-cascade-from-field="'Id'"
-                        k-auto-bind="false" id="cells"></select>
+                        k-options="commonOptions" id="cells"></select>
             </div>
         </div>
     </li>

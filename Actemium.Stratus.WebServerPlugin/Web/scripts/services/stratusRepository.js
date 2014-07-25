@@ -3,98 +3,100 @@
 angular
     .module('stratusRepository', ['ngResource'])
     .service('StratusData', ['$resource', function ($resource) {
+        
+        var $scope = this;
 
-        this.$$cells = $resource('/api/cells/:id', { id: '@id' }, {
+        var cells = $resource('/api/cells/:id', { id: '@id' }, {
             query: {
                 method: 'GET',
                 isArray: false
             }
         });
 
-        this.getCells = function (query, success, error) {
-            return this.$$cells.query(query, success, error);
+        $scope.getCells = function (query, success, error) {
+            return cells.query(query, success, error);
         };
 
-        this.getCell = function (cellId, success, error) {
-            return this.$$cells.get({ id: cellId }, success, error);
+        $scope.getCell = function (cellId, success, error) {
+            return cells.get({ id: cellId }, success, error);
         };
 
 
 
 
-        this.$$companies = $resource('/api/companies/:id', { id: '@id' }, {
+        var companies = $resource('/api/companies/:id', { id: '@id' }, {
             query: {
                 method: 'GET',
                 isArray: false
             }
         });
 
-        this.getCompanies = function (query, success, error) {
-            return this.$$companies.query(query, success, error);
+        $scope.getCompanies = function (query, success, error) {
+            return companies.query(query, success, error);
         };
 
-        this.getCompany = function (companyId, success, error) {
-            return this.$$companies.get({ id: companyId }, success, error);
+        $scope.getCompany = function (companyId, success, error) {
+            return companies.get({ id: companyId }, success, error);
         };
 
 
 
 
-        this.$$locations = $resource('/api/locations/:id', { id: '@id' }, {
+        var locations = $resource('/api/locations/:id', { id: '@id' }, {
             query: {
                 method: 'GET',
                 isArray: false
             }
         });
 
-        this.getLocations = function (query, success, error) {
-            return this.$$locations.query(query, success, error);
+        $scope.getLocations = function (query, success, error) {
+            return locations.query(query, success, error);
         };
 
-        this.getLocation = function (locationId, success, error) {
-            return this.$$locations.get({ id: locationId }, success, error);
+        $scope.getLocation = function (locationId, success, error) {
+            return locations.get({ id: locationId }, success, error);
         };
 
 
 
 
-        this.$$plants = $resource('/api/plants/:id', { id: '@id' }, {
+        var plants = $resource('/api/plants/:id', { id: '@id' }, {
             query: {
                 method: 'GET',
                 isArray: false
             }
         });
 
-        this.getPlants = function (query, success, error) {
-            return this.$$plants.query(query, success, error);
+        $scope.getPlants = function (query, success, error) {
+            return plants.query(query, success, error);
         };
 
-        this.getPlant = function (plantId, success, error) {
-            return this.$$plants.get({ id: plantId }, success, error);
+        $scope.getPlant = function (plantId, success, error) {
+            return plants.get({ id: plantId }, success, error);
         };
 
 
 
 
-        this.$$processes = $resource('/api/processes/:id', { id: '@id' }, {
+        var processes = $resource('/api/processes/:id', { id: '@id' }, {
             query: {
                 method: 'GET',
                 isArray: false
             }
         });
 
-        this.getProcesses = function (query, success, error) {
-            return this.$$processes.query(query, success, error);
+        $scope.getProcesses = function (query, success, error) {
+            return processes.query(query, success, error);
         };
 
-        this.getProcess = function (processId, success, error) {
-            return this.$$processes.get({ id: processId }, success, error);
+        $scope.getProcess = function (processId, success, error) {
+            return processes.get({ id: processId }, success, error);
         };
 
 
 
 
-        this.$$products = $resource('/api/products/:id', { id: '@id' }, {
+        var products = $resource('/api/products/:id', { id: '@id' }, {
             query: {
                 method: 'GET',
                 isArray: false
@@ -102,119 +104,119 @@ angular
         });
 
 
-        this.getProducts = function (query, success, error) {
-            return this.$$products.query(query, success, error);
+        $scope.getProducts = function (query, success, error) {
+            return products.query(query, success, error);
         };
 
-        this.getProduct = function (productId, success, error) {
-            return this.$$products.get({ id: productId }, success, error);
+        $scope.getProduct = function (productId, success, error) {
+            return products.get({ id: productId }, success, error);
         };
 
 
 
 
-        this.$$productTypes = $resource('/api/productTypes/:id', { id: '@id' }, {
+        var productTypes = $resource('/api/productTypes/:id', { id: '@id' }, {
             query: {
                 method: 'GET',
                 isArray: false
             }
         });
 
-        this.getProductTypes = function (query, success, error) {
-            return this.$$productTypes.query(query, success, error);
+        $scope.getProductTypes = function (query, success, error) {
+            return productTypes.query(query, success, error);
         };
 
-        this.getProductType = function (productTypeId, success, error) {
-            return this.$$productTypes.get({ id: productTypeId }, success, error);
+        $scope.getProductType = function (productTypeId, success, error) {
+            return productTypes.get({ id: productTypeId }, success, error);
         };
 
 
 
 
-        this.$$results = $resource('/api/results/:id', { id: '@id' }, {
+        var results = $resource('/api/results/:id', { id: '@id' }, {
             query: {
                 method: 'GET',
                 isArray: false
             }
         });
 
-        this.getResults = function (query, success, error) {
-            return this.$$results.query(query, success, error);
+        $scope.getResults = function (query, success, error) {
+            return results.query(query, success, error);
         };
 
-        this.getResult = function (resultId, success, error) {
-            return this.$$results.get({ id: resultId }, success, error);
+        $scope.getResult = function (resultId, success, error) {
+            return results.get({ id: resultId }, success, error);
         };
 
 
 
 
-        this.$$sequences = $resource('/api/sequences/:id', { id: '@id' }, {
+        var sequences = $resource('/api/sequences/:id', { id: '@id' }, {
             query: {
                 method: 'GET',
                 isArray: false
             }
         });
 
-        this.getSequences = function (query, success, error) {
-            return this.$$sequences.query(query, success, error);
+        $scope.getSequences = function (query, success, error) {
+            return sequences.query(query, success, error);
         };
 
-        this.getSequence = function (sequenceId, success, error) {
-            return this.$$sequences.get({ id: sequenceId }, success, error);
+        $scope.getSequence = function (sequenceId, success, error) {
+            return sequences.get({ id: sequenceId }, success, error);
         };
 
 
 
 
-        this.$$testers = $resource('/api/testers/:id', { id: '@id' }, {
+        var testers = $resource('/api/testers/:id', { id: '@id' }, {
             query: {
                 method: 'GET',
                 isArray: false
             }
         });
 
-        this.getTesters = function (query, success, error) {
-            return this.$$testers.query(query, success, error);
+        $scope.getTesters = function (query, success, error) {
+            return testers.query(query, success, error);
         };
 
-        this.getTester = function (testerId, success, error) {
-            return this.$$testers.get({ id: testerId }, success, error);
+        $scope.getTester = function (testerId, success, error) {
+            return testers.get({ id: testerId }, success, error);
         };
 
 
 
 
-        this.$$visits = $resource('/api/visits/:id', { id: '@id' }, {
+        var visits = $resource('/api/visits/:id', { id: '@id' }, {
             query: {
                 method: 'GET',
                 isArray: false
             }
         });
 
-        this.getVisits = function (query, success, error) {
-            return this.$$visits.query(query, success, error);
+        $scope.getVisits = function (query, success, error) {
+            return visits.query(query, success, error);
         };
 
-        this.getVisit = function (visitId, success, error) {
-            return this.$$visits.get({ id: visitId }, success, error);
+        $scope.getVisit = function (visitId, success, error) {
+            return visits.get({ id: visitId }, success, error);
         };
 
 
 
 
-        this.$$zones = $resource('/api/zones/:id', { id: '@id' }, {
+        var zones = $resource('/api/zones/:id', { id: '@id' }, {
             query: {
                 method: 'GET',
                 isArray: false
             }
         });
 
-        this.getZones = function (query, success, error) {
-            return this.$$zones.query(query, success, error);
+        $scope.getZones = function (query, success, error) {
+            return zones.query(query, success, error);
         };
 
-        this.getZone = function (zoneId, success, error) {
-            return this.$$zones.get({ id: zoneId }, success, error);
+        $scope.getZone = function (zoneId, success, error) {
+            return zones.get({ id: zoneId }, success, error);
         };
     }]);
