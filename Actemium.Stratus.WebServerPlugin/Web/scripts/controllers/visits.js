@@ -13,7 +13,8 @@ angular
                         StratusData.getVisits({
                             page: options.data.page,
                             pageSize: options.data.pageSize
-                        }, function (response) {
+                        },
+                        function (response) {
                             console.log(response);
                             options.success(response);
                         }, function (response) {

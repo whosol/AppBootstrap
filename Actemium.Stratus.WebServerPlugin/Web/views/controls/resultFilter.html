@@ -24,7 +24,7 @@
                         k-data-source="products"
                         k-data-text-field="'ProductUniqueId'"
                         k-data-value-field="'Id'"
-                        k-cascade-from="product-types"
+                        k-cascade-from="'product-types'"
                         k-cascade-from-field="'Id'"
                         k-auto-bind="false" id="products"></select>
             </div>
@@ -39,7 +39,7 @@
                         k-data-source="sequences"
                         k-data-text-field="'Name'"
                         k-data-value-field="'Id'"
-                        k-cascade-from="product-types"
+                        k-cascade-from="'product-types'"
                         k-cascade-from-field="'Id'"
                         k-auto-bind="false" id="sequences"></select>
             </div>
@@ -54,7 +54,7 @@
                         k-data-source="plants"
                         k-data-text-field="'Name'"
                         k-data-value-field="'Id'"
-                        k-cascade-from="product-types"
+                        k-cascade-from="'product-types'"
                         k-cascade-from-field="'Id'"
                         k-auto-bind="false" id="plants"></select>
                 <label for="processes">Processes</label>
@@ -62,7 +62,7 @@
                         k-data-source="processes"
                         k-data-text-field="'Name'"
                         k-data-value-field="'Id'"
-                        k-cascade-from="product-types"
+                        k-cascade-from="'product-types'"
                         k-cascade-from-field="'Id'"
                         k-auto-bind="false" id="processes"></select>
                 <label for="locations">Locationz</label>
@@ -70,7 +70,7 @@
                         k-data-source="locations"
                         k-data-text-field="'Name'"
                         k-data-value-field="'Id'"
-                        k-cascade-from="product-types"
+                        k-cascade-from="'product-types'"
                         k-cascade-from-field="'Id'"
                         k-auto-bind="false" id="locations"></select>
                 <label for="zones">Zones</label>
@@ -78,7 +78,7 @@
                         k-data-source="zones"
                         k-data-text-field="'Name'"
                         k-data-value-field="'Id'"
-                        k-cascade-from="product-types"
+                        k-cascade-from="'product-types'"
                         k-cascade-from-field="'Id'"
                         k-auto-bind="false" id="zones"></select>
                 <label for="cells">Cells</label>
@@ -86,7 +86,7 @@
                         k-data-source="cells"
                         k-data-text-field="'Name'"
                         k-data-value-field="'Id'"
-                        k-cascade-from="product-types"
+                        k-cascade-from="'product-types'"
                         k-cascade-from-field="'Id'"
                         k-auto-bind="false" id="cells"></select>
             </div>

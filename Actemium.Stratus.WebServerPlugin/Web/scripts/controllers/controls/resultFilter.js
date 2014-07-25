@@ -2,7 +2,7 @@
 
 angular
     .module('resultsExplorer')
-    .controller('ResultFilterController', ['$scope', function ($scope) {
+    .controller('ResultFilterController', ['$scope', 'StratusData', function ($scope, StratusData) {
 
         $scope.visible = false;
 
@@ -12,7 +12,15 @@ angular
 
         $scope.productTypes = {
             transport: {
-                read: '/api/productTypes'
+                read: function (options) {
+                    StratusData.getProductTypes(options.data,
+                        function (response) {
+                            options.success(response);
+                        },
+                        function (response) {
+
+                        })
+                }
             },
             schema: {
                 data: "ProductTypes"
@@ -21,7 +29,14 @@ angular
 
         $scope.products = {
             transport: {
-                read: '/api/products'
+                read: function (options) {
+                    StratusData.getProducts(options.data,
+                        function (response) {
+                            options.success(response);
+                        },
+                        function (response) {
+                        })
+                }
             },
             schema: {
                 data: "Products"
@@ -30,7 +45,14 @@ angular
 
         $scope.sequences = {
             transport: {
-                read: '/api/sequences'
+                read: function (options) {
+                    StratusData.getSequences(options.data,
+                        function (response) {
+                            options.success(response);
+                        },
+                        function (response) {
+                        })
+                }
             },
             schema: {
                 data: "Sequences"
@@ -39,7 +61,14 @@ angular
 
         $scope.plants = {
             transport: {
-                read: '/api/plants'
+                read: function (options) {
+                    StratusData.getPlants(options.data,
+                        function (response) {
+                            options.success(response);
+                        },
+                        function (response) {
+                        })
+                }
             },
             schema: {
                 data: "Plants"
@@ -48,7 +77,14 @@ angular
 
         $scope.processes = {
             transport: {
-                read: '/api/processes'
+                read: function (options) {
+                    StratusData.getProcesses(options.data,
+                        function (response) {
+                            options.success(response);
+                        },
+                        function (response) {
+                        })
+                }
             },
             schema: {
                 data: "Processes"
@@ -57,7 +93,14 @@ angular
 
         $scope.locations = {
             transport: {
-                read: '/api/locations'
+                read: function (options) {
+                    StratusData.getLocations(options.data,
+                        function (response) {
+                            options.success(response);
+                        },
+                        function (response) {
+                        })
+                }
             },
             schema: {
                 data: "Locations"
@@ -66,7 +109,14 @@ angular
 
         $scope.zones = {
             transport: {
-                read: '/api/zones'
+                read: function (options) {
+                    StratusData.getZones(options.data,
+                        function (response) {
+                            options.success(response);
+                        },
+                        function (response) {
+                        })
+                }
             },
             schema: {
                 data: "Zones"
@@ -75,7 +125,14 @@ angular
 
         $scope.cells = {
             transport: {
-                read: '/api/cells'
+                read: function (options) {
+                    StratusData.getCells(options.data,
+                        function (response) {
+                            options.success(response);
+                        },
+                        function (response) {
+                        })
+                }
             },
             schema: {
                 data: "Cells"

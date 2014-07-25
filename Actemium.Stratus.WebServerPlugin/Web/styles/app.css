@@ -114,7 +114,7 @@ html {
         /*bottom: 20px;*/
     }
 
-    .news-carousel img{
+    .news-carousel img {
         padding-top: 50px;
     }
 
@@ -128,7 +128,7 @@ html {
 }
 
     .top-footer > img {
-        padding-left: 150px;
+        /*padding-left: 150px;*/
     }
 
     .top-footer > span {
@@ -136,7 +136,8 @@ html {
         font-size: 40px;
         color: #fff;
         background-color: transparent;
-        position: relative;
+        position: absolute;
+        width: 400px;
     }
 
 .bottom-footer-logo {
