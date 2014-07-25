@@ -70,7 +70,7 @@ namespace Actemium.Stratus.RepositoryPlugin.Controllers
                     query = query.Where(r => r.SequenceExecution.Visit.CellId == cells);
                 }
 
-                query = query.OrderBy(r => r.Id);
+                query = query.OrderBy(r => r.SequenceExecution.StartTime);
                 var total = query.Count();
 
                 if (page > 0)
@@ -83,7 +83,7 @@ namespace Actemium.Stratus.RepositoryPlugin.Controllers
                     query = query
                         .Include(r => r.Sequence)
                         .Include(r => r.ResultDescription)
-                        .Include(r => r.Product)
+                        //.Include(r => r.Product)
                         .Include(r => r.ChildResults);
 
                 }
@@ -247,7 +247,7 @@ namespace Actemium.Stratus.RepositoryPlugin.Controllers
                 IsFixedLimit = r.IsFixed,
                 IsParent = r.ChildResults.Any(),
                 LowerLimit = r.LowerLimit,
-                ProductUniqueId = r.Product.ProductUniqueId,
+                //ProductUniqueId = r.Product.ProductUniqueId,
                 RelativeTime = r.RelativeTime,
                 ResultName = r.ResultDescription.Name,
                 SequenceName = r.Sequence.Name,
