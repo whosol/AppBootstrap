@@ -16,15 +16,16 @@
     <meta name="description" content="" />
     <link rel="stylesheet" href="styles/normalize.css" />
     <link rel="stylesheet" href="styles/bootstrap/bootstrap.min.css" />
-    <link rel="stylesheet" href="styles/bootstrap/bootstrap-theme.min.css" />
+    <!--<link rel="stylesheet" href="styles/bootstrap/bootstrap-theme.min.css" />-->
     <link rel="stylesheet" href="styles/kendo/kendo.common.min.css" />
-    <link rel="stylesheet" href="styles/kendo/kendo.metroblack.min.css" />
+    <link rel="stylesheet" href="styles/kendo/kendo.metro.min.css" />
+    <link rel="stylesheet" href="styles/font-awesome/font-awesome.min.css" />
     <link rel="stylesheet" href="styles/main.css" />
     <link rel="stylesheet" href="styles/app.css" />
     <script src="scripts/third-party/modernizr/2.6.2/modernizr-2.6.2.min.js"></script>
 </head>
 <body role="document">
-    <nav ng-controller="NavController" class="navbar-wrapper navbar-inverse navbar-fixed-top" role="navigation">
+    <nav ng-controller="NavController" class="navbar-wrapper navbar-default navbar-fixed-top" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" ng-click="isCollapsed = !isCollapsed">
@@ -36,12 +37,19 @@
                 <a class="navbar-brand" href="#/home">Results Explorer</a>
             </div>
             <div class="navbar-collapse collapse" ng-class="isCollapsed ? 'collapse': 'in'">
-                <ul class="nav navbar-nav">
-                    <li ng-class="getClass('/home')"><a href="#/home">Home</a></li>
-                    <li ng-class="getClass('/dashboard')"><a href="#/dashboard">Dashboard</a></li>
-                    <li ng-class="getClass('/results')"><a href="#/results">Results</a></li>
-                    <li ng-class="getClass('/visits')"><a href="#/visits">Visits</a></li>
-                    <li ng-class="getClass('/about')"><a href="#/about">About</a></li>
+                <ul class="nav navbar-nav navbar-left">
+                    <li ng-class="getClass('/home')"><a href="#/home"><span class="fa fa-home"></span> Home</a></li>
+                    <li ng-class="getClass('/dashboard')"><a href="#/dashboard"><span class="fa fa-tachometer"></span> Dashboard</a></li>
+                    <li ng-class="getClass('/results')"><a href="#/results"><span class="fa fa-bullseye"></span> Results</a></li>
+                    <li ng-class="getClass('/visits')"><a href="#/visits"><span class="fa fa-book"></span> Visits</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li ng-class="getClass('/about')"><a href="#/about"><span class="fa fa-info"></span> About</a></li>
+                    <li>
+                        <a class="logo-link" href="http://www.actemium.co.uk">
+                            <img src="images/logo.png" />
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -61,8 +69,13 @@
 
     <div class="footer">
         <div class="container-fluid">
-            <div>
-                Results Explorer: v<span app-version></span>
+            <div class="row top-footer">
+                <span>A unique brand 100% dedicated to industry</span>
+                <img src="images/network-bottom-768.png" align="middle" />
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"><h6>Results Explorer: v<span app-version></span></h6></div>
+                <div class="col-lg-6 col-md-6 col-sm-6 bottom-footer-logo"><img src="images/vinci-logo.png" align="right" /></div>
             </div>
         </div>
     </div>
