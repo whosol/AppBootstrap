@@ -124,6 +124,9 @@
     <Content Include="Web\scripts\directives\charts\failurePareto.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Web\scripts\services\filterData.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Web\scripts\services\serviceStatus.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

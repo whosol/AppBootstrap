@@ -29,24 +29,67 @@ namespace Actemium.Stratus.RepositoryPlugin.Controllers
             return Get(0, 100);
         }
 
-        public ResultsDto Get(int page, int pageSize)
+        public ResultsDto Get(int page, int pageSize, int? productTypes = null, int? products = null, int? sequences = null, int? plants = null, int? processes = null, int? locations = null, int? zones = null, int? cells = null)
         {
             try
             {
-                var query = uow.Results.FindAll()
-                    .Include(r => r.Sequence)
-                    .Include(r => r.ResultDescription)
-                    .Include(r => r.Product)
-                    .Include(r => r.ChildResults)
-                    .OrderBy(r => r.Id);
+                var query = uow.Results.FindBy(r => r.IsHidden != true);
+
+                if (productTypes != null)
+                {
+                    query = query.Where(r => r.Product.ProductTypeId == productTypes);
+                }
+
+                if (products != null)
+                {
+                    query = query.Where(r => r.ProductId == products);
+                }
+
+                if (sequences != null)
+                {
+                    query = query.Where(r => r.SequenceId == sequences);
+                }
+                if (plants != null)
+                {
+                    query = query.Where(r => r.SequenceExecution.Visit.PlantId == plants);
+                }
+                if (processes != null)
+                {
+                    query = query.Where(r => r.SequenceExecution.Visit.ProcessId == processes);
+                }
+                if (locations != null)
+                {
+                    query = query.Where(r => r.SequenceExecution.Visit.LocationId == locations);
+                }
+                if (zones != null)
+                {
+                    query = query.Where(r => r.SequenceExecution.Visit.ZoneId == zones);
+                }
+                if (cells != null)
+                {
+                    query = query.Where(r => r.SequenceExecution.Visit.CellId == cells);
+                }
+
+                query = query.OrderBy(r => r.Id);
+                var total = query.Count();
 
                 if (page > 0)
                 {
                     query = (IOrderedQueryable<Result>)query.Skip((page - 1) * pageSize);
                 }
 
+                if (query != null)
+                {
+                    query = query
+                        .Include(r => r.Sequence)
+                        .Include(r => r.ResultDescription)
+                        .Include(r => r.Product)
+                        .Include(r => r.ChildResults);
+
+                }
+
                 var results = query.Take(pageSize).ToArray();
-                var total = uow.Results.FindAll().Count();
+
 
                 return new ResultsDto
                 {

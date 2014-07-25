@@ -2,7 +2,7 @@
 
 angular
     .module('resultsExplorer')
-    .controller('ResultFilterController', ['$scope', 'StratusData', function ($scope, StratusData) {
+    .controller('ResultFilterController', ['$scope', 'StratusData', 'FilterData', function ($scope, StratusData, FilterData) {
 
         $scope.visible = false;
 
@@ -12,11 +12,38 @@ angular
 
         $scope.foundServer;
 
-        $scope.commonOptions = {
-            change: function (ev) {
-                console.log(ev);
+        $scope.options = {};
+
+        $scope.datetimeOptions = {
+            change: function (e) {
+                if ($scope.fromDate < $scope.toDate) {
+                    $scope.options[this.element.prop('id')] = this.element.val();               
+                }
+                else {
+
+                }
             }
         }
+
+        $scope.comboboxOptions = {
+            change: function (e) {
+                var item = this.dataItem(this.select());
+                if (item && item.Id > 0) {
+                    $scope.options[this.element.prop('id')] =  item.Id
+                }
+                else if (item && item.Id < 0) {
+                    $scope.options = {};
+                }
+                else {
+                    delete $scope.options[this.element.prop('id')];
+                }
+
+                FilterData.updateFilters($scope.options);
+
+                console.log($scope.options);
+            }
+        }
+
 
         $scope.productTypes = {
             transport: {

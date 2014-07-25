@@ -2,26 +2,38 @@
 
 angular
     .module('resultsExplorer')
-    .controller('ResultsController', ['$scope', 'StratusData', function ($scope, StratusData) {
-
+    .controller('ResultsController', ['$scope', 'StratusData', 'FilterData', function ($scope, StratusData, FilterData) {
 
         $scope.serverStatus = '';
+
+        $scope.$on('filtersUpdated', function () {
+            var grid = $('#result-grid').data('kendoGrid');
+            grid.dataSource.read()
+        });
 
         $scope.resultGridOptions = {
             dataSource: {
                 transport: {
                     read: function (options) {
-                        StratusData.getResults({
+                        var data = {
                             page: options.data.page,
                             pageSize: options.data.pageSize
-                        }, function (response) {
-                            console.log(response);
-                            options.success(response);
-                        }, function (response) {
-                            if (response.status === 404) {
-                                $scope.serverStatus = 'Server is offline. Please check configuration.';
-                            }
-                        });
+                        };
+                        //add the filters to the data object
+                        for (var attrname in FilterData.filters) {
+                            data[attrname] = FilterData.filters[attrname]
+                        }
+
+                        StratusData.getResults(data,
+                            function (response) {
+                                console.log(response);
+                                options.success(response);
+                            },
+                            function (response) {
+                                if (response.status === 404) {
+                                    $scope.serverStatus = 'Server is offline. Please check configuration.';
+                                }
+                            });
                     }
                 },
                 pageSize: 20,

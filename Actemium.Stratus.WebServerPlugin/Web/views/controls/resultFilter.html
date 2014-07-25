@@ -4,9 +4,13 @@
         <div>
             <div class="drop-down-group">
                 <label for="from-date">From</label>
-                <input kendo-date-time-picker ng-model="fromDate" id="from-date" />
+                <input kendo-date-time-picker
+                       k-options="datetimeOptions"
+                       ng-model="fromDate" id="from-date" />
                 <label for="to-date">To</label>
-                <input kendo-date-time-picker ng-model="toDate" id="to-date" />
+                <input kendo-date-time-picker
+                       k-options="datetimeOptions"
+                       ng-model="toDate" id="to-date" />
             </div>
         </div>
     </li>
@@ -15,17 +19,17 @@
         <div>
             <div class="drop-down-group">
                 <label for="product-types">Product Types</label>
-                <select kendo-drop-down-list
+                <select kendo-combo-box
                         k-data-source="productTypes"
                         k-data-text-field="'Name'"
                         k-data-value-field="'Id'"
-                        k-options="commonOptions" id="product-types"></select>
+                        k-options="comboboxOptions" id="producttypes"></select>
                 <label for="products">Products</label>
-                <select kendo-drop-down-list
+                <select kendo-combo-box
                         k-data-source="products"
                         k-data-text-field="'ProductUniqueId'"
                         k-data-value-field="'Id'"
-                        k-options="commonOptions" id="products"></select>
+                        k-options="comboboxOptions" id="products"></select>
             </div>
         </div>
     </li>
@@ -34,11 +38,11 @@
         <div>
             <div class="drop-down-group">
                 <label for="sequences">Sequences</label>
-                <select kendo-drop-down-list
+                <select kendo-combo-box
                         k-data-source="sequences"
                         k-data-text-field="'Name'"
                         k-data-value-field="'Id'"
-                        k-options="commonOptions" id="sequences"></select>
+                        k-options="comboboxOptions" id="sequences"></select>
             </div>
         </div>
     </li>
@@ -47,35 +51,35 @@
         <div>
             <div class="drop-down-group">
                 <label for="plants">Plants</label>
-                <select kendo-drop-down-list
+                <select kendo-combo-box
                         k-data-source="plants"
                         k-data-text-field="'Name'"
                         k-data-value-field="'Id'"
-                        k-options="commonOptions" id="plants"></select>
+                        k-options="comboboxOptions" id="plants"></select>
                 <label for="processes">Processes</label>
-                <select kendo-drop-down-list
+                <select kendo-combo-box
                         k-data-source="processes"
                         k-data-text-field="'Name'"
                         k-data-value-field="'Id'"
-                        k-options="commonOptions" id="processes"></select>
-                <label for="locations">Locationz</label>
-                <select kendo-drop-down-list
+                        k-options="comboboxOptions" id="processes"></select>
+                <label for="locations">Locations</label>
+                <select kendo-combo-box
                         k-data-source="locations"
                         k-data-text-field="'Name'"
                         k-data-value-field="'Id'"
-                        k-options="commonOptions" id="locations"></select>
+                        k-options="comboboxOptions" id="locations"></select>
                 <label for="zones">Zones</label>
-                <select kendo-drop-down-list
+                <select kendo-combo-box
                         k-data-source="zones"
                         k-data-text-field="'Name'"
                         k-data-value-field="'Id'"
-                        k-options="commonOptions" id="zones"></select>
+                        k-options="comboboxOptions" id="zones"></select>
                 <label for="cells">Cells</label>
-                <select kendo-drop-down-list
+                <select kendo-combo-box
                         k-data-source="cells"
                         k-data-text-field="'Name'"
                         k-data-value-field="'Id'"
-                        k-options="commonOptions" id="cells"></select>
+                        k-options="comboboxOptions" id="cells"></select>
             </div>
         </div>
     </li>

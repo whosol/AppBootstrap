@@ -2,22 +2,34 @@
 
 angular
     .module('resultsExplorer')
-    .controller('VisitsController', ['$scope', 'StratusData', function ($scope, StratusData) {
+    .controller('VisitsController', ['$scope', 'StratusData', 'FilterData', function ($scope, StratusData, FilterData) {
 
         $scope.serverStatus = '';
+
+        $scope.$on('filtersUpdated', function () {
+            var grid = $('#visit-grid').data('kendoGrid');
+            grid.dataSource.read()
+        });
 
         $scope.visitGridOptions = {
             dataSource: {
                 transport: {
                     read: function (options) {
-                        StratusData.getVisits({
+                        var data = {
                             page: options.data.page,
                             pageSize: options.data.pageSize
-                        },
+                        };
+                        //add the filters to the data object
+                        for (var attrname in FilterData.filters) {
+                            data[attrname] = FilterData.filters[attrname]
+                        }
+
+                        StratusData.getVisits(data,
                         function (response) {
                             console.log(response);
                             options.success(response);
-                        }, function (response) {
+                        },
+                        function (response) {
                             if (response.status === 404) {
                                 $scope.serverStatus = 'Server is offline. Please check configuration.';
                             }
@@ -31,7 +43,6 @@ angular
                     total: "Total"
                 }
             },
-
             sortable: true,
             pageable: true,
             columns: [
