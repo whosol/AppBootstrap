@@ -1,0 +1,86 @@
+<ul kendo-panel-bar k-options="resultFilterOptions" ng-controller="ResultFilterController" ng-show="visible" class="fade-animate">
+    <li>
+        Date Time Range
+        <div>
+            <div class="drop-down-group">
+                <label for="from-date">From</label>
+                <input kendo-date-time-picker
+                       k-options="datetimeOptions"
+                       ng-model="fromDate" id="from-date" />
+                <label for="to-date">To</label>
+                <input kendo-date-time-picker
+                       k-options="datetimeOptions"
+                       ng-model="toDate" id="to-date" />
+            </div>
+        </div>
+    </li>
+    <li>
+        By Product
+        <div>
+            <div class="drop-down-group">
+                <label for="product-types">Product Types</label>
+                <select kendo-combo-box
+                        k-data-source="productTypes"
+                        k-data-text-field="'Name'"
+                        k-data-value-field="'Id'"
+                        k-options="comboboxOptions" id="producttypes"></select>
+                <label for="products">Products</label>
+                <select kendo-combo-box
+                        k-data-source="products"
+                        k-data-text-field="'ProductUniqueId'"
+                        k-data-value-field="'Id'"
+                        k-options="comboboxOptions" id="products"></select>
+            </div>
+        </div>
+    </li>
+    <li>
+        By Sequence
+        <div>
+            <div class="drop-down-group">
+                <label for="sequences">Sequences</label>
+                <select kendo-combo-box
+                        k-data-source="sequences"
+                        k-data-text-field="'Name'"
+                        k-data-value-field="'Id'"
+                        k-options="comboboxOptions" id="sequences"></select>
+            </div>
+        </div>
+    </li>
+    <li>
+        By Location
+        <div>
+            <div class="drop-down-group">
+                <label for="plants">Plants</label>
+                <select kendo-combo-box
+                        k-data-source="plants"
+                        k-data-text-field="'Name'"
+                        k-data-value-field="'Id'"
+                        k-options="comboboxOptions" id="plants"></select>
+                <label for="processes">Processes</label>
+                <select kendo-combo-box
+                        k-data-source="processes"
+                        k-data-text-field="'Name'"
+                        k-data-value-field="'Id'"
+                        k-options="comboboxOptions" id="processes"></select>
+                <label for="locations">Locations</label>
+                <select kendo-combo-box
+                        k-data-source="locations"
+                        k-data-text-field="'Name'"
+                        k-data-value-field="'Id'"
+                        k-options="comboboxOptions" id="locations"></select>
+                <label for="zones">Zones</label>
+                <select kendo-combo-box
+                        k-data-source="zones"
+                        k-data-text-field="'Name'"
+                        k-data-value-field="'Id'"
+                        k-options="comboboxOptions" id="zones"></select>
+                <label for="cells">Cells</label>
+                <select kendo-combo-box
+                        k-data-source="cells"
+                        k-data-text-field="'Name'"
+                        k-data-value-field="'Id'"
+                        k-options="comboboxOptions" id="cells"></select>
+            </div>
+        </div>
+    </li>
+</ul>

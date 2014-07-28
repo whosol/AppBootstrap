@@ -1,0 +1,47 @@
+﻿<div class="row-fluid">
+    <div class="panel">
+        <div class="panel-heading">
+            <h3>Results Explorer Website</h3>
+            v<span app_version></span>
+        </div>
+    </div>
+</div>
+<div class="row-fluid col-md-6 col-sm-12">
+    <div class="panel">
+        <div class="panel-heading">
+            <h3>Stratus Plugins</h3>
+        </div>
+        <div class="panel-body library-description">
+            <ul ng-repeat="plugin in pluginContainer.Plugins">
+                <li>
+                    <h3>{{plugin.Name}}</h3>
+                    <h5>Assembly Version: {{plugin.Version}} - File Version: {{plugin.FileVersion}}</h5>
+                </li>
+                <li>
+                    <h4>{{plugin.Description}}</h4>
+                </li>
+                <li>
+                    <h6>{{plugin.Location}}</h6>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="row-fluid col-md-6 col-sm-12">
+    <div class="panel">
+        <div class="panel-heading">
+            <h3>Third Party Libraries</h3>
+        </div>
+        <div class="panel-body library-description">
+            <ul ng-repeat="library in thirdPartyContainer.Libraries">
+                <li>
+                    <h3>{{library.Name}}</h3>
+                    <h5>Assembly Version: {{library.Version}} - File Version: {{library.FileVersion}}</h5>
+                </li>
+                <li>
+                    <h6>{{library.Location}}</h6>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

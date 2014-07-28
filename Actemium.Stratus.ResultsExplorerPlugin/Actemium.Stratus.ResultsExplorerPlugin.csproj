@@ -1,0 +1,1280 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E2E30230-0E6E-405E-A9B3-D0DF2698657F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Actemium.Stratus.ResultsExplorerPlugin</RootNamespace>
+    <AssemblyName>Actemium.Stratus.ResultsExplorerPlugin</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\StagingArea\Debug\Plugins\Web\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\StagingArea\Release\Plugins\Web\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ResultsExplorer\images\landing-vinci.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\images\logo-small.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\images\logo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\images\logo_footer.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\images\network-bottom-768.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\images\products-Vi-Mini.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\images\products-Vi-Roam.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\images\vinci-logo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\index.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\app.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\controllers\about.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\controllers\charts\failurePareto.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\controllers\charts\weeklyFailures.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\controllers\controls\resultFilter.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\controllers\dashboard.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\controllers\home.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\controllers\nav.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\controllers\results.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\controllers\visits.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\directives\appVersion.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\directives\charts\failurePareto.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\directives\charts\weeklyFailures.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\directives\controls\resultFilter.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\directives\disableAnimation.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\filters\version.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\services\filterData.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\services\serviceStatus.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\services\stratusRepository.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\services\version.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular-ui.bootstrap\0.11.0\ui-bootstrap-tpls-0.11.0.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular-ui.bootstrap\0.11.0\ui-bootstrap-tpls-0.11.0.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\angular-animate.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\angular-animate.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\angular-cookies.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\angular-cookies.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\angular-csp.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\angular-loader.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\angular-loader.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\angular-mocks.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\angular-resource.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\angular-resource.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\angular-route.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\angular-route.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\angular-sanitize.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\angular-sanitize.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\angular-scenario.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\angular-touch.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\angular-touch.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\angular.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\angular.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_af-na.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_af-za.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_af.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_am-et.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_am.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_ar-001.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_ar-ae.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_ar-bh.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_ar-dz.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_ar-eg.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_ar-iq.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_ar-jo.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_ar-kw.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_ar-lb.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_ar-ly.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_ar-ma.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_ar-om.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_ar-qa.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_ar-sa.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_ar-sd.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_ar-sy.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_ar-tn.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_ar-ye.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_ar.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_bg-bg.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_bg.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_bn-bd.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_bn-in.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_bn.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_ca-ad.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_ca-es.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_ca.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_cs-cz.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_cs.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_da-dk.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_da.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_de-at.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_de-be.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_de-ch.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_de-de.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_de-li.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_de-lu.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_de.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_el-cy.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_el-gr.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_el.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_en-as.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_en-au.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_en-bb.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_en-be.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_en-bm.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_en-bw.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_en-bz.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_en-ca.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_en-dsrt-us.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_en-dsrt.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_en-fm.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_en-gb.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_en-gu.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_en-gy.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_en-hk.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_en-ie.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_en-in.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_en-iso.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_en-jm.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_en-mh.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_en-mp.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_en-mt.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_en-mu.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_en-na.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_en-nz.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_en-ph.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_en-pk.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_en-pr.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_en-pw.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_en-sg.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_en-tc.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_en-tt.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_en-um.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_en-us.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_en-vg.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_en-vi.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_en-za.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_en-zw.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_en.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_es-419.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_es-ar.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_es-bo.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_es-cl.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_es-co.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_es-cr.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_es-do.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_es-ea.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_es-ec.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_es-es.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_es-gq.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_es-gt.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_es-hn.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_es-ic.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_es-mx.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_es-ni.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_es-pa.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_es-pe.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_es-pr.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_es-py.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_es-sv.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_es-us.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_es-uy.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_es-ve.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_es.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_et-ee.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_et.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_eu-es.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_eu.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_fa-af.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_fa-ir.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_fa.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_fi-fi.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_fi.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_fil-ph.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_fil.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_fr-be.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_fr-bf.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_fr-bi.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_fr-bj.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_fr-bl.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_fr-ca.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_fr-cd.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_fr-cf.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_fr-cg.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_fr-ch.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_fr-ci.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_fr-cm.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_fr-dj.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_fr-fr.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_fr-ga.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_fr-gf.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_fr-gn.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_fr-gp.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_fr-gq.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_fr-km.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_fr-lu.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_fr-mc.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_fr-mf.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_fr-mg.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_fr-ml.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_fr-mq.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_fr-ne.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_fr-re.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_fr-rw.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_fr-sn.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_fr-td.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_fr-tg.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_fr-yt.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_fr.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_gl-es.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_gl.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_gsw-ch.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_gsw.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_gu-in.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_gu.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_he-il.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_he.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_hi-in.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_hi.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_hr-hr.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_hr.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_hu-hu.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_hu.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_id-id.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_id.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_in.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_is-is.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_is.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_it-ch.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_it-it.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_it-sm.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_it.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_iw.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_ja-jp.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_ja.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_kn-in.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_kn.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_ko-kr.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_ko.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_ln-cd.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_ln-cg.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_ln.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_lt-lt.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_lt.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_lv-lv.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_lv.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_ml-in.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_ml.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_mr-in.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_mr.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_ms-bn.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_ms-my.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_ms.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_mt-mt.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_mt.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_nl-aw.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_nl-be.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_nl-cw.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_nl-nl.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_nl-sx.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_nl.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_no.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_or-in.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_or.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_pl-pl.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_pl.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_pt-ao.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_pt-br.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_pt-gw.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_pt-mz.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_pt-pt.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_pt-st.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_pt.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_ro-md.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_ro-ro.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_ro.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_ru-md.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_ru-ru.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_ru-ua.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_ru.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_sk-sk.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_sk.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_sl-si.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_sl.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_sq-al.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_sq.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_sr-cyrl-ba.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_sr-cyrl-me.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_sr-cyrl-rs.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_sr-cyrl.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_sr-latn-ba.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_sr-latn-me.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_sr-latn-rs.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_sr-latn.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_sr.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_sv-fi.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_sv-se.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_sv.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_sw-ke.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_sw-tz.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_sw.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_ta-in.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_ta-lk.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_ta.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_te-in.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_te.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_th-th.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_th.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_tl.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_tr-tr.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_tr.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_uk-ua.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_uk.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_ur-in.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_ur-pk.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_ur.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_vi-vn.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_vi.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_zh-cn.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_zh-hans-cn.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_zh-hans-hk.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_zh-hans-mo.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_zh-hans-sg.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_zh-hans.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_zh-hant-hk.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_zh-hant-mo.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_zh-hant-tw.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_zh-hant.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_zh-hk.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_zh-tw.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_zh.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_zu-za.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\i18n\angular-locale_zu.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\angular\1.2.20\version.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\bootstrap\3.2.0\bootstrap.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\bootstrap\3.2.0\bootstrap.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\jquery\1.11.1\jquery-1.11.1.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\jquery\1.11.1\jquery-1.11.1.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\kendo\2014.2.716\kendo.all.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\kendo\2014.2.716\kendo.all.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\scripts\third-party\modernizr\2.6.2\modernizr-2.6.2.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\styles\app.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\styles\bootstrap\bootstrap-theme.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\styles\bootstrap\bootstrap-theme.min.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\styles\bootstrap\bootstrap.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\styles\bootstrap\bootstrap.min.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\styles\font-awesome\font-awesome.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\styles\font-awesome\font-awesome.min.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\styles\fonts\fontawesome-webfont.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\styles\fonts\glyphicons-halflings-regular.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\styles\kendo\kendo.common.min.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\styles\kendo\kendo.metro.min.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\styles\kendo\kendo.metroblack.min.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\styles\kendo\MetroBlack\editor.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\styles\kendo\MetroBlack\imagebrowser.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\styles\kendo\MetroBlack\indeterminate.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\styles\kendo\MetroBlack\loading-image.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\styles\kendo\MetroBlack\loading.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\styles\kendo\MetroBlack\loading_2x.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\styles\kendo\MetroBlack\markers.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\styles\kendo\MetroBlack\markers_2x.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\styles\kendo\MetroBlack\slider-h.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\styles\kendo\MetroBlack\slider-v.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\styles\kendo\MetroBlack\sprite.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\styles\kendo\MetroBlack\sprite_2x.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\styles\kendo\Metro\editor.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\styles\kendo\Metro\imagebrowser.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\styles\kendo\Metro\indeterminate.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\styles\kendo\Metro\loading-image.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\styles\kendo\Metro\loading.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\styles\kendo\Metro\loading_2x.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\styles\kendo\Metro\markers.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\styles\kendo\Metro\markers_2x.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\styles\kendo\Metro\slider-h.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\styles\kendo\Metro\slider-v.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\styles\kendo\Metro\sprite.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\styles\kendo\Metro\sprite_2x.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\styles\main.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\styles\normalize.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\views\about.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\views\charts\failurePareto.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\views\charts\weeklyFailures.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\views\controls\resultFilter.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\views\dashboard.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\views\home.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\views\results.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ResultsExplorer\views\visits.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ResultsExplorer\scripts\third-party\angular\1.2.20\angular-animate.min.js.map">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ResultsExplorer\scripts\third-party\angular\1.2.20\angular-cookies.min.js.map">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ResultsExplorer\scripts\third-party\angular\1.2.20\angular-loader.min.js.map">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ResultsExplorer\scripts\third-party\angular\1.2.20\angular-resource.min.js.map">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ResultsExplorer\scripts\third-party\angular\1.2.20\angular-route.min.js.map">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ResultsExplorer\scripts\third-party\angular\1.2.20\angular-sanitize.min.js.map">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ResultsExplorer\scripts\third-party\angular\1.2.20\angular-touch.min.js.map">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ResultsExplorer\scripts\third-party\angular\1.2.20\angular.min.js.map">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ResultsExplorer\scripts\third-party\angular\1.2.20\errors.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ResultsExplorer\scripts\third-party\angular\1.2.20\version.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ResultsExplorer\scripts\third-party\jquery\1.11.1\jquery-1.11.1.min.map">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ResultsExplorer\scripts\third-party\kendo\2014.2.716\kendo.all.min.js.map">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ResultsExplorer\styles\bootstrap\bootstrap-theme.css.map">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ResultsExplorer\styles\bootstrap\bootstrap.css.map">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ResultsExplorer\styles\fonts\fontawesome-webfont.eot">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ResultsExplorer\styles\fonts\fontawesome-webfont.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ResultsExplorer\styles\fonts\fontawesome-webfont.woff">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ResultsExplorer\styles\fonts\FontAwesome.otf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ResultsExplorer\styles\fonts\glyphicons-halflings-regular.eot">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ResultsExplorer\styles\fonts\glyphicons-halflings-regular.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ResultsExplorer\styles\fonts\glyphicons-halflings-regular.woff">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ResultsExplorer\styles\fonts\SourceSansPro-Bold.woff">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ResultsExplorer\styles\fonts\SourceSansPro-BoldIt.woff">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ResultsExplorer\styles\fonts\SourceSansPro-Light.woff">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ResultsExplorer\styles\fonts\SourceSansPro-LightIt.woff">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,145 @@
+/* app css stylesheet */
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url(fonts/SourceSansPro-Light.woff) format('woff');
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Source Sans Pro Bold'), local('SourceSansPro-Bold'), url(fonts/SourceSansPro-Bold.woff) format('woff');
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: italic;
+    font-weight: 300;
+    src: local('Source Sans Pro Light Italic'), local('SourceSansPro-LightIt'), url(fonts/SourceSansPro-LightIt.woff) format('woff');
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: italic;
+    font-weight: 700;
+    src: local('Source Sans Pro Bold Italic'), local('SourceSansPro-BoldIt'), url(fonts/SourceSansPro-BoldIt.woff) format('woff');
+}
+
+
+body {
+    padding-top: 70px;
+    margin-bottom: 202px;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 202px;
+    background-color: #f5f5f5;
+}
+
+.library-description > ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.library-description.panel-body {
+    word-wrap: break-word;
+}
+
+.drop-down-group {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+}
+
+    .drop-down-group > label {
+        width: 100%;
+        padding-top: 10px;
+    }
+
+    .drop-down-group > .k-widget {
+        width: 100%;
+    }
+
+.fade-animate.ng-enter, .view-animate.ng-leave {
+    -webkit-transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.5s;
+    transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.5s;
+    display: block;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.fade-animate.ng-enter,
+.fade-animate.ng-leave.ng-leave-active {
+    opacity: 0;
+}
+
+    .fade-animate.ng-leave,
+    .fade-animate.ng-enter.ng-enter-active {
+        opacity: 1;
+    }
+
+.k-grid td {
+    padding-top: 0;
+    padding-bottom: 0;
+    line-height: normal;
+}
+
+.nav, .pagination, .carousel, .panel-title a {
+    cursor: pointer;
+}
+
+.news-carousel {
+    background: #080F2C;
+    height: 450px;
+}
+
+    .news-carousel .carousel-caption {
+        position: initial;
+        /*top: auto;*/
+        /*bottom: 20px;*/
+    }
+
+    .news-carousel img {
+        padding-top: 50px;
+    }
+
+.logo-link {
+    padding: 0 !important;
+}
+
+.top-footer {
+    background-color: #5D8F16;
+    text-align: center;
+}
+
+    .top-footer > img {
+        /*padding-left: 150px;*/
+    }
+
+    .top-footer > span {
+        font-family: Source Sans Pro;
+        font-size: 40px;
+        color: #fff;
+        background-color: transparent;
+        position: absolute;
+        width: 400px;
+    }
+
+.bottom-footer-logo {
+    padding: 10px 5px 10px 0;
+}

@@ -1,0 +1,1753 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Database.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="DatabaseStoreContainer">
+    <EntitySet Name="Companies" EntityType="Database.Store.Companies" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Products" EntityType="Database.Store.Products" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Plants" EntityType="Database.Store.Plants" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Zones" EntityType="Database.Store.Zones" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Cells" EntityType="Database.Store.Cells" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProductTypes" EntityType="Database.Store.ProductTypes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Visits" EntityType="Database.Store.Visits" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SequenceExecutions" EntityType="Database.Store.SequenceExecutions" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Sequences" EntityType="Database.Store.Sequences" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Results" EntityType="Database.Store.Results" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Locations" EntityType="Database.Store.Locations" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Testers" EntityType="Database.Store.Testers" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Processes" EntityType="Database.Store.Processes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ResultDescriptions" EntityType="Database.Store.ResultDescriptions" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Users" EntityType="Database.Store.Users" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserClaims" EntityType="Database.Store.UserClaims" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserLogins" EntityType="Database.Store.UserLogins" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserRoles" EntityType="Database.Store.UserRoles" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CompanyProduct" EntityType="Database.Store.CompanyProduct" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CompanyPlant" EntityType="Database.Store.CompanyPlant" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PlantTester" EntityType="Database.Store.PlantTester" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TesterProcess" EntityType="Database.Store.TesterProcess" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProcessZone" EntityType="Database.Store.ProcessZone" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ZoneCell" EntityType="Database.Store.ZoneCell" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CellLocation" EntityType="Database.Store.CellLocation" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserUserRole" EntityType="Database.Store.UserUserRole" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="VisitSequenceExecution" Association="Database.Store.VisitSequenceExecution">
+      <End Role="Visit" EntitySet="Visits" />
+      <End Role="SequenceExecution" EntitySet="SequenceExecutions" />
+    </AssociationSet>
+    <AssociationSet Name="SequenceSequenceExecution" Association="Database.Store.SequenceSequenceExecution">
+      <End Role="Sequence" EntitySet="Sequences" />
+      <End Role="SequenceExecution" EntitySet="SequenceExecutions" />
+    </AssociationSet>
+    <AssociationSet Name="SequenceExecutionResult" Association="Database.Store.SequenceExecutionResult">
+      <End Role="SequenceExecution" EntitySet="SequenceExecutions" />
+      <End Role="Result" EntitySet="Results" />
+    </AssociationSet>
+    <AssociationSet Name="ProductVisit" Association="Database.Store.ProductVisit">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="Visit" EntitySet="Visits" />
+    </AssociationSet>
+    <AssociationSet Name="ProductTypeProduct" Association="Database.Store.ProductTypeProduct">
+      <End Role="ProductType" EntitySet="ProductTypes" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="VisitTester" Association="Database.Store.VisitTester">
+      <End Role="Visit" EntitySet="Visits" />
+      <End Role="Tester" EntitySet="Testers" />
+    </AssociationSet>
+    <AssociationSet Name="ZoneVisit" Association="Database.Store.ZoneVisit">
+      <End Role="Zone" EntitySet="Zones" />
+      <End Role="Visit" EntitySet="Visits" />
+    </AssociationSet>
+    <AssociationSet Name="CellVisit" Association="Database.Store.CellVisit">
+      <End Role="Cell" EntitySet="Cells" />
+      <End Role="Visit" EntitySet="Visits" />
+    </AssociationSet>
+    <AssociationSet Name="LocationVisit" Association="Database.Store.LocationVisit">
+      <End Role="Location" EntitySet="Locations" />
+      <End Role="Visit" EntitySet="Visits" />
+    </AssociationSet>
+    <AssociationSet Name="ProcessVisit" Association="Database.Store.ProcessVisit">
+      <End Role="Process" EntitySet="Processes" />
+      <End Role="Visit" EntitySet="Visits" />
+    </AssociationSet>
+    <AssociationSet Name="PlantVisit" Association="Database.Store.PlantVisit">
+      <End Role="Plant" EntitySet="Plants" />
+      <End Role="Visit" EntitySet="Visits" />
+    </AssociationSet>
+    <AssociationSet Name="CompanyVisit" Association="Database.Store.CompanyVisit">
+      <End Role="Company" EntitySet="Companies" />
+      <End Role="Visit" EntitySet="Visits" />
+    </AssociationSet>
+    <AssociationSet Name="ResultDescriptionResult" Association="Database.Store.ResultDescriptionResult">
+      <End Role="ResultDescription" EntitySet="ResultDescriptions" />
+      <End Role="Result" EntitySet="Results" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CompanyProduct_Company" Association="Database.Store.FK_CompanyProduct_Company">
+      <End Role="Company" EntitySet="Companies" />
+      <End Role="CompanyProduct" EntitySet="CompanyProduct" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CompanyProduct_Product" Association="Database.Store.FK_CompanyProduct_Product">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="CompanyProduct" EntitySet="CompanyProduct" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CompanyPlant_Company" Association="Database.Store.FK_CompanyPlant_Company">
+      <End Role="Company" EntitySet="Companies" />
+      <End Role="CompanyPlant" EntitySet="CompanyPlant" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CompanyPlant_Plant" Association="Database.Store.FK_CompanyPlant_Plant">
+      <End Role="Plant" EntitySet="Plants" />
+      <End Role="CompanyPlant" EntitySet="CompanyPlant" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PlantTester_Plant" Association="Database.Store.FK_PlantTester_Plant">
+      <End Role="Plant" EntitySet="Plants" />
+      <End Role="PlantTester" EntitySet="PlantTester" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PlantTester_Tester" Association="Database.Store.FK_PlantTester_Tester">
+      <End Role="Tester" EntitySet="Testers" />
+      <End Role="PlantTester" EntitySet="PlantTester" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TesterProcess_Tester" Association="Database.Store.FK_TesterProcess_Tester">
+      <End Role="Tester" EntitySet="Testers" />
+      <End Role="TesterProcess" EntitySet="TesterProcess" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TesterProcess_Process" Association="Database.Store.FK_TesterProcess_Process">
+      <End Role="Process" EntitySet="Processes" />
+      <End Role="TesterProcess" EntitySet="TesterProcess" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProcessZone_Process" Association="Database.Store.FK_ProcessZone_Process">
+      <End Role="Process" EntitySet="Processes" />
+      <End Role="ProcessZone" EntitySet="ProcessZone" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProcessZone_Zone" Association="Database.Store.FK_ProcessZone_Zone">
+      <End Role="Zone" EntitySet="Zones" />
+      <End Role="ProcessZone" EntitySet="ProcessZone" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ZoneCell_Zone" Association="Database.Store.FK_ZoneCell_Zone">
+      <End Role="Zone" EntitySet="Zones" />
+      <End Role="ZoneCell" EntitySet="ZoneCell" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ZoneCell_Cell" Association="Database.Store.FK_ZoneCell_Cell">
+      <End Role="Cell" EntitySet="Cells" />
+      <End Role="ZoneCell" EntitySet="ZoneCell" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CellLocation_Cell" Association="Database.Store.FK_CellLocation_Cell">
+      <End Role="Cell" EntitySet="Cells" />
+      <End Role="CellLocation" EntitySet="CellLocation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CellLocation_Location" Association="Database.Store.FK_CellLocation_Location">
+      <End Role="Location" EntitySet="Locations" />
+      <End Role="CellLocation" EntitySet="CellLocation" />
+    </AssociationSet>
+    <AssociationSet Name="ResultResult" Association="Database.Store.ResultResult">
+      <End Role="Result" EntitySet="Results" />
+      <End Role="Result1" EntitySet="Results" />
+    </AssociationSet>
+    <AssociationSet Name="ProductResult" Association="Database.Store.ProductResult">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="Result" EntitySet="Results" />
+    </AssociationSet>
+    <AssociationSet Name="SequenceResult" Association="Database.Store.SequenceResult">
+      <End Role="Sequence" EntitySet="Sequences" />
+      <End Role="Result" EntitySet="Results" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserClaim_User" Association="Database.Store.FK_UserClaim_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="UserClaim" EntitySet="UserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserLogin_User" Association="Database.Store.FK_UserLogin_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="UserLogin" EntitySet="UserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserUserRole_User" Association="Database.Store.FK_UserUserRole_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="UserUserRole" EntitySet="UserUserRole" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserUserRole_UserRole" Association="Database.Store.FK_UserUserRole_UserRole">
+      <End Role="UserRole" EntitySet="UserRoles" />
+      <End Role="UserUserRole" EntitySet="UserUserRole" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Companies">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Products">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductUniqueId" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ProductTypeId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Plants">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Zones">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Cells">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProductTypes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Visits">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="StartTime" Type="datetime" Nullable="false" />
+    <Property Name="EndTime" Type="datetime" Nullable="false" />
+    <Property Name="Duration" Type="int" Nullable="false" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
+    <Property Name="TesterId" Type="int" Nullable="false" />
+    <Property Name="ZoneId" Type="int" Nullable="false" />
+    <Property Name="CellId" Type="int" Nullable="false" />
+    <Property Name="LocationId" Type="int" Nullable="false" />
+    <Property Name="ProcessId" Type="int" Nullable="false" />
+    <Property Name="PlantId" Type="int" Nullable="false" />
+    <Property Name="CompanyId" Type="int" Nullable="false" />
+    <Property Name="VisitXml" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SequenceExecutions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="VisitId" Type="int" Nullable="false" />
+    <Property Name="SequenceId" Type="int" Nullable="false" />
+    <Property Name="StartTime" Type="datetime" Nullable="false" />
+    <Property Name="Duration" Type="int" Nullable="false" />
+    <Property Name="Status" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Sequences">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Results">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SequenceExecutionId" Type="int" Nullable="false" />
+    <Property Name="RelativeTime" Type="float" Nullable="false" />
+    <Property Name="ResultDescriptionId" Type="int" Nullable="false" />
+    <Property Name="Type" Type="int" Nullable="false" />
+    <Property Name="Status" Type="int" Nullable="true" />
+    <Property Name="Value" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="LowerLimit" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="UpperLimit" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Units" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="IsHidden" Type="bit" Nullable="true" />
+    <Property Name="IsFixed" Type="bit" Nullable="true" />
+    <Property Name="ParentResultId" Type="int" Nullable="true" />
+    <Property Name="IsHistoric" Type="bit" Nullable="false" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
+    <Property Name="SequenceId" Type="int" Nullable="false" />
+    <Property Name="DataType" Type="int" Nullable="true" />
+    <Property Name="ResultSource" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Locations">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Testers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="TesterDescription" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Processes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ResultDescriptions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+    <Property Name="PasswordHash" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="SecurityStamp" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="PhoneNumber" Type="nvarchar" Nullable="true" MaxLength="25" />
+    <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="datetime" Nullable="true" />
+    <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserClaims">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClaimType" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="ClaimValue" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="UserLogins">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+    </Key>
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="LoginProvider" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="ProviderKey" Type="nvarchar" Nullable="false" MaxLength="128" />
+  </EntityType>
+  <EntityType Name="UserRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="CompanyProduct">
+    <Key>
+      <PropertyRef Name="Companies_Id" />
+      <PropertyRef Name="Products_Id" />
+    </Key>
+    <Property Name="Companies_Id" Type="int" Nullable="false" />
+    <Property Name="Products_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CompanyPlant">
+    <Key>
+      <PropertyRef Name="Companies_Id" />
+      <PropertyRef Name="Plants_Id" />
+    </Key>
+    <Property Name="Companies_Id" Type="int" Nullable="false" />
+    <Property Name="Plants_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PlantTester">
+    <Key>
+      <PropertyRef Name="Plants_Id" />
+      <PropertyRef Name="Testers_Id" />
+    </Key>
+    <Property Name="Plants_Id" Type="int" Nullable="false" />
+    <Property Name="Testers_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TesterProcess">
+    <Key>
+      <PropertyRef Name="Testers_Id" />
+      <PropertyRef Name="Processes_Id" />
+    </Key>
+    <Property Name="Testers_Id" Type="int" Nullable="false" />
+    <Property Name="Processes_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProcessZone">
+    <Key>
+      <PropertyRef Name="Processes_Id" />
+      <PropertyRef Name="Zones_Id" />
+    </Key>
+    <Property Name="Processes_Id" Type="int" Nullable="false" />
+    <Property Name="Zones_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ZoneCell">
+    <Key>
+      <PropertyRef Name="Zones_Id" />
+      <PropertyRef Name="Cells_Id" />
+    </Key>
+    <Property Name="Zones_Id" Type="int" Nullable="false" />
+    <Property Name="Cells_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CellLocation">
+    <Key>
+      <PropertyRef Name="Cells_Id" />
+      <PropertyRef Name="Locations_Id" />
+    </Key>
+    <Property Name="Cells_Id" Type="int" Nullable="false" />
+    <Property Name="Locations_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserUserRole">
+    <Key>
+      <PropertyRef Name="Users_Id" />
+      <PropertyRef Name="Roles_Id" />
+    </Key>
+    <Property Name="Users_Id" Type="int" Nullable="false" />
+    <Property Name="Roles_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="VisitSequenceExecution">
+    <End Role="Visit" Type="Database.Store.Visits" Multiplicity="1" />
+    <End Role="SequenceExecution" Type="Database.Store.SequenceExecutions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Visit">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SequenceExecution">
+        <PropertyRef Name="VisitId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SequenceSequenceExecution">
+    <End Role="Sequence" Type="Database.Store.Sequences" Multiplicity="1" />
+    <End Role="SequenceExecution" Type="Database.Store.SequenceExecutions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sequence">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SequenceExecution">
+        <PropertyRef Name="SequenceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SequenceExecutionResult">
+    <End Role="SequenceExecution" Type="Database.Store.SequenceExecutions" Multiplicity="1" />
+    <End Role="Result" Type="Database.Store.Results" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SequenceExecution">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Result">
+        <PropertyRef Name="SequenceExecutionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProductVisit">
+    <End Role="Product" Type="Database.Store.Products" Multiplicity="1" />
+    <End Role="Visit" Type="Database.Store.Visits" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Visit">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProductTypeProduct">
+    <End Role="ProductType" Type="Database.Store.ProductTypes" Multiplicity="1" />
+    <End Role="Product" Type="Database.Store.Products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="ProductTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="VisitTester">
+    <End Role="Visit" Type="Database.Store.Visits" Multiplicity="*" />
+    <End Role="Tester" Type="Database.Store.Testers" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Tester">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Visit">
+        <PropertyRef Name="TesterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ZoneVisit">
+    <End Role="Zone" Type="Database.Store.Zones" Multiplicity="1" />
+    <End Role="Visit" Type="Database.Store.Visits" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Zone">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Visit">
+        <PropertyRef Name="ZoneId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CellVisit">
+    <End Role="Cell" Type="Database.Store.Cells" Multiplicity="1" />
+    <End Role="Visit" Type="Database.Store.Visits" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cell">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Visit">
+        <PropertyRef Name="CellId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="LocationVisit">
+    <End Role="Location" Type="Database.Store.Locations" Multiplicity="1" />
+    <End Role="Visit" Type="Database.Store.Visits" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Location">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Visit">
+        <PropertyRef Name="LocationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProcessVisit">
+    <End Role="Process" Type="Database.Store.Processes" Multiplicity="1" />
+    <End Role="Visit" Type="Database.Store.Visits" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Process">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Visit">
+        <PropertyRef Name="ProcessId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PlantVisit">
+    <End Role="Plant" Type="Database.Store.Plants" Multiplicity="1" />
+    <End Role="Visit" Type="Database.Store.Visits" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Plant">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Visit">
+        <PropertyRef Name="PlantId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CompanyVisit">
+    <End Role="Company" Type="Database.Store.Companies" Multiplicity="1" />
+    <End Role="Visit" Type="Database.Store.Visits" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Visit">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ResultDescriptionResult">
+    <End Role="ResultDescription" Type="Database.Store.ResultDescriptions" Multiplicity="1" />
+    <End Role="Result" Type="Database.Store.Results" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ResultDescription">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Result">
+        <PropertyRef Name="ResultDescriptionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ResultResult">
+    <End Role="Result" Type="Database.Store.Results" Multiplicity="0..1" />
+    <End Role="Result1" Type="Database.Store.Results" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Result">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Result1">
+        <PropertyRef Name="ParentResultId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProductResult">
+    <End Role="Product" Type="Database.Store.Products" Multiplicity="1" />
+    <End Role="Result" Type="Database.Store.Results" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Result">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SequenceResult">
+    <End Role="Sequence" Type="Database.Store.Sequences" Multiplicity="1" />
+    <End Role="Result" Type="Database.Store.Results" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sequence">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Result">
+        <PropertyRef Name="SequenceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserClaim_User">
+    <End Role="User" Type="Database.Store.Users" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="UserClaim" Type="Database.Store.UserClaims" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserClaim">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserLogin_User">
+    <End Role="User" Type="Database.Store.Users" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="UserLogin" Type="Database.Store.UserLogins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserLogin">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CompanyProduct_Company">
+    <End Role="Company" Type="Database.Store.Companies" Multiplicity="1" />
+    <End Role="CompanyProduct" Type="Database.Store.CompanyProduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CompanyProduct">
+        <PropertyRef Name="Companies_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CompanyProduct_Product">
+    <End Role="CompanyProduct" Type="Database.Store.CompanyProduct" Multiplicity="*" />
+    <End Role="Product" Type="Database.Store.Products" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CompanyProduct">
+        <PropertyRef Name="Products_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CompanyPlant_Company">
+    <End Role="Company" Type="Database.Store.Companies" Multiplicity="1" />
+    <End Role="CompanyPlant" Type="Database.Store.CompanyPlant" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CompanyPlant">
+        <PropertyRef Name="Companies_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CompanyPlant_Plant">
+    <End Role="CompanyPlant" Type="Database.Store.CompanyPlant" Multiplicity="*" />
+    <End Role="Plant" Type="Database.Store.Plants" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Plant">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CompanyPlant">
+        <PropertyRef Name="Plants_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PlantTester_Plant">
+    <End Role="Plant" Type="Database.Store.Plants" Multiplicity="1" />
+    <End Role="PlantTester" Type="Database.Store.PlantTester" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Plant">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PlantTester">
+        <PropertyRef Name="Plants_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PlantTester_Tester">
+    <End Role="PlantTester" Type="Database.Store.PlantTester" Multiplicity="*" />
+    <End Role="Tester" Type="Database.Store.Testers" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Tester">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PlantTester">
+        <PropertyRef Name="Testers_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TesterProcess_Tester">
+    <End Role="Tester" Type="Database.Store.Testers" Multiplicity="1" />
+    <End Role="TesterProcess" Type="Database.Store.TesterProcess" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tester">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TesterProcess">
+        <PropertyRef Name="Testers_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TesterProcess_Process">
+    <End Role="TesterProcess" Type="Database.Store.TesterProcess" Multiplicity="*" />
+    <End Role="Process" Type="Database.Store.Processes" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Process">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TesterProcess">
+        <PropertyRef Name="Processes_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProcessZone_Process">
+    <End Role="Process" Type="Database.Store.Processes" Multiplicity="1" />
+    <End Role="ProcessZone" Type="Database.Store.ProcessZone" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Process">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProcessZone">
+        <PropertyRef Name="Processes_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProcessZone_Zone">
+    <End Role="ProcessZone" Type="Database.Store.ProcessZone" Multiplicity="*" />
+    <End Role="Zone" Type="Database.Store.Zones" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Zone">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProcessZone">
+        <PropertyRef Name="Zones_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ZoneCell_Zone">
+    <End Role="Zone" Type="Database.Store.Zones" Multiplicity="1" />
+    <End Role="ZoneCell" Type="Database.Store.ZoneCell" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Zone">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ZoneCell">
+        <PropertyRef Name="Zones_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ZoneCell_Cell">
+    <End Role="ZoneCell" Type="Database.Store.ZoneCell" Multiplicity="*" />
+    <End Role="Cell" Type="Database.Store.Cells" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Cell">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ZoneCell">
+        <PropertyRef Name="Cells_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CellLocation_Cell">
+    <End Role="Cell" Type="Database.Store.Cells" Multiplicity="1" />
+    <End Role="CellLocation" Type="Database.Store.CellLocation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cell">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CellLocation">
+        <PropertyRef Name="Cells_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CellLocation_Location">
+    <End Role="CellLocation" Type="Database.Store.CellLocation" Multiplicity="*" />
+    <End Role="Location" Type="Database.Store.Locations" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Location">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CellLocation">
+        <PropertyRef Name="Locations_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserUserRole_User">
+    <End Role="User" Type="Database.Store.Users" Multiplicity="1" />
+    <End Role="UserUserRole" Type="Database.Store.UserUserRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserUserRole">
+        <PropertyRef Name="Users_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserUserRole_UserRole">
+    <End Role="UserUserRole" Type="Database.Store.UserUserRole" Multiplicity="*" />
+    <End Role="UserRole" Type="Database.Store.UserRoles" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="UserRole">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserUserRole">
+        <PropertyRef Name="Roles_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Database" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="StratusContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Companies" EntityType="Database.Company" />
+          <EntitySet Name="Products" EntityType="Database.Product" />
+          <EntitySet Name="Plants" EntityType="Database.Plant" />
+          <EntitySet Name="Zones" EntityType="Database.Zone" />
+          <EntitySet Name="Cells" EntityType="Database.Cell" />
+          <EntitySet Name="ProductTypes" EntityType="Database.ProductType" />
+          <EntitySet Name="Visits" EntityType="Database.Visit" />
+          <EntitySet Name="SequenceExecutions" EntityType="Database.SequenceExecution" />
+          <AssociationSet Name="VisitSequenceExecution" Association="Database.VisitSequenceExecution">
+            <End Role="Visit" EntitySet="Visits" />
+            <End Role="SequenceExecution" EntitySet="SequenceExecutions" />
+          </AssociationSet>
+          <EntitySet Name="Sequences" EntityType="Database.Sequence" />
+          <AssociationSet Name="SequenceSequenceExecution" Association="Database.SequenceSequenceExecution">
+            <End Role="Sequence" EntitySet="Sequences" />
+            <End Role="SequenceExecution" EntitySet="SequenceExecutions" />
+          </AssociationSet>
+          <EntitySet Name="Results" EntityType="Database.Result" />
+          <AssociationSet Name="SequenceExecutionResult" Association="Database.SequenceExecutionResult">
+            <End Role="SequenceExecution" EntitySet="SequenceExecutions" />
+            <End Role="Result" EntitySet="Results" />
+          </AssociationSet>
+          <EntitySet Name="Locations" EntityType="Database.Location" />
+          <EntitySet Name="Testers" EntityType="Database.Tester" />
+          <EntitySet Name="Processes" EntityType="Database.Process" />
+          <AssociationSet Name="ProductVisit" Association="Database.ProductVisit">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Visit" EntitySet="Visits" />
+          </AssociationSet>
+          <AssociationSet Name="ProductTypeProduct" Association="Database.ProductTypeProduct">
+            <End Role="ProductType" EntitySet="ProductTypes" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="VisitTester" Association="Database.VisitTester">
+            <End Role="Visit" EntitySet="Visits" />
+            <End Role="Tester" EntitySet="Testers" />
+          </AssociationSet>
+          <AssociationSet Name="ZoneVisit" Association="Database.ZoneVisit">
+            <End Role="Zone" EntitySet="Zones" />
+            <End Role="Visit" EntitySet="Visits" />
+          </AssociationSet>
+          <AssociationSet Name="CellVisit" Association="Database.CellVisit">
+            <End Role="Cell" EntitySet="Cells" />
+            <End Role="Visit" EntitySet="Visits" />
+          </AssociationSet>
+          <AssociationSet Name="LocationVisit" Association="Database.LocationVisit">
+            <End Role="Location" EntitySet="Locations" />
+            <End Role="Visit" EntitySet="Visits" />
+          </AssociationSet>
+          <AssociationSet Name="ProcessVisit" Association="Database.ProcessVisit">
+            <End Role="Process" EntitySet="Processes" />
+            <End Role="Visit" EntitySet="Visits" />
+          </AssociationSet>
+          <AssociationSet Name="PlantVisit" Association="Database.PlantVisit">
+            <End Role="Plant" EntitySet="Plants" />
+            <End Role="Visit" EntitySet="Visits" />
+          </AssociationSet>
+          <AssociationSet Name="CompanyVisit" Association="Database.CompanyVisit">
+            <End Role="Company" EntitySet="Companies" />
+            <End Role="Visit" EntitySet="Visits" />
+          </AssociationSet>
+          <EntitySet Name="ResultDescriptions" EntityType="Database.ResultDescription" />
+          <AssociationSet Name="ResultDescriptionResult" Association="Database.ResultDescriptionResult">
+            <End Role="ResultDescription" EntitySet="ResultDescriptions" />
+            <End Role="Result" EntitySet="Results" />
+          </AssociationSet>
+          <AssociationSet Name="CompanyProduct" Association="Database.CompanyProduct">
+            <End Role="Company" EntitySet="Companies" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="CompanyPlant" Association="Database.CompanyPlant">
+            <End Role="Company" EntitySet="Companies" />
+            <End Role="Plant" EntitySet="Plants" />
+          </AssociationSet>
+          <AssociationSet Name="PlantTester" Association="Database.PlantTester">
+            <End Role="Plant" EntitySet="Plants" />
+            <End Role="Tester" EntitySet="Testers" />
+          </AssociationSet>
+          <AssociationSet Name="TesterProcess" Association="Database.TesterProcess">
+            <End Role="Tester" EntitySet="Testers" />
+            <End Role="Process" EntitySet="Processes" />
+          </AssociationSet>
+          <AssociationSet Name="ProcessZone" Association="Database.ProcessZone">
+            <End Role="Process" EntitySet="Processes" />
+            <End Role="Zone" EntitySet="Zones" />
+          </AssociationSet>
+          <AssociationSet Name="ZoneCell" Association="Database.ZoneCell">
+            <End Role="Zone" EntitySet="Zones" />
+            <End Role="Cell" EntitySet="Cells" />
+          </AssociationSet>
+          <AssociationSet Name="CellLocation" Association="Database.CellLocation">
+            <End Role="Cell" EntitySet="Cells" />
+            <End Role="Location" EntitySet="Locations" />
+          </AssociationSet>
+          <AssociationSet Name="ResultResult" Association="Database.ResultResult">
+            <End Role="Result" EntitySet="Results" />
+            <End Role="Result1" EntitySet="Results" />
+          </AssociationSet>
+          <AssociationSet Name="ProductResult" Association="Database.ProductResult">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Result" EntitySet="Results" />
+          </AssociationSet>
+          <AssociationSet Name="SequenceResult" Association="Database.SequenceResult">
+            <End Role="Sequence" EntitySet="Sequences" />
+            <End Role="Result" EntitySet="Results" />
+          </AssociationSet>
+          <EntitySet Name="Users" EntityType="Database.User" />
+          <EntitySet Name="UserClaims" EntityType="Database.UserClaim" />
+          <EntitySet Name="UserLogins" EntityType="Database.UserLogin" />
+          <EntitySet Name="UserRoles" EntityType="Database.UserRole" />
+          <AssociationSet Name="FK_UserClaim_User" Association="Database.FK_UserClaim_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserClaim" EntitySet="UserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserLogin_User" Association="Database.FK_UserLogin_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserLogin" EntitySet="UserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="UserUserRole" Association="Database.UserUserRole">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserRole" EntitySet="UserRoles" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Visits" Relationship="Database.CompanyVisit" FromRole="Company" ToRole="Visit" />
+          <NavigationProperty Name="Products" Relationship="Database.CompanyProduct" FromRole="Company" ToRole="Product" />
+          <NavigationProperty Name="Plants" Relationship="Database.CompanyPlant" FromRole="Company" ToRole="Plant" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductUniqueId" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Visits" Relationship="Database.ProductVisit" FromRole="Product" ToRole="Visit" />
+          <NavigationProperty Name="ProductType" Relationship="Database.ProductTypeProduct" FromRole="Product" ToRole="ProductType" />
+          <Property Name="ProductTypeId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Companies" Relationship="Database.CompanyProduct" FromRole="Product" ToRole="Company" />
+          <NavigationProperty Name="Results" Relationship="Database.ProductResult" FromRole="Product" ToRole="Result" />
+        </EntityType>
+        <EntityType Name="Plant">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Visits" Relationship="Database.PlantVisit" FromRole="Plant" ToRole="Visit" />
+          <NavigationProperty Name="Companies" Relationship="Database.CompanyPlant" FromRole="Plant" ToRole="Company" />
+          <NavigationProperty Name="Testers" Relationship="Database.PlantTester" FromRole="Plant" ToRole="Tester" />
+        </EntityType>
+        <EntityType Name="Zone">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Visits" Relationship="Database.ZoneVisit" FromRole="Zone" ToRole="Visit" />
+          <NavigationProperty Name="Processes" Relationship="Database.ProcessZone" FromRole="Zone" ToRole="Process" />
+          <NavigationProperty Name="Cells" Relationship="Database.ZoneCell" FromRole="Zone" ToRole="Cell" />
+        </EntityType>
+        <EntityType Name="Cell">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Visits" Relationship="Database.CellVisit" FromRole="Cell" ToRole="Visit" />
+          <NavigationProperty Name="Zones" Relationship="Database.ZoneCell" FromRole="Cell" ToRole="Zone" />
+          <NavigationProperty Name="Locations" Relationship="Database.CellLocation" FromRole="Cell" ToRole="Location" />
+        </EntityType>
+        <EntityType Name="ProductType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Products" Relationship="Database.ProductTypeProduct" FromRole="ProductType" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Visit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="SequenceExecutions" Relationship="Database.VisitSequenceExecution" FromRole="Visit" ToRole="SequenceExecution" />
+          <Property Name="Status" Type="Database.VisitStatus" Nullable="false" />
+          <Property Name="StartTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Duration" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="Database.ProductVisit" FromRole="Visit" ToRole="Product" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Tester" Relationship="Database.VisitTester" FromRole="Visit" ToRole="Tester" />
+          <Property Name="TesterId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Zone" Relationship="Database.ZoneVisit" FromRole="Visit" ToRole="Zone" />
+          <Property Name="ZoneId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cell" Relationship="Database.CellVisit" FromRole="Visit" ToRole="Cell" />
+          <Property Name="CellId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Location" Relationship="Database.LocationVisit" FromRole="Visit" ToRole="Location" />
+          <Property Name="LocationId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Process" Relationship="Database.ProcessVisit" FromRole="Visit" ToRole="Process" />
+          <Property Name="ProcessId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Plant" Relationship="Database.PlantVisit" FromRole="Visit" ToRole="Plant" />
+          <Property Name="PlantId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Company" Relationship="Database.CompanyVisit" FromRole="Visit" ToRole="Company" />
+          <Property Name="CompanyId" Type="Int32" Nullable="false" />
+          <Property Name="VisitXml" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="SequenceExecution">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Visit" Relationship="Database.VisitSequenceExecution" FromRole="SequenceExecution" ToRole="Visit" />
+          <Property Name="VisitId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Sequence" Relationship="Database.SequenceSequenceExecution" FromRole="SequenceExecution" ToRole="Sequence" />
+          <Property Name="SequenceId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Results" Relationship="Database.SequenceExecutionResult" FromRole="SequenceExecution" ToRole="Result" />
+          <Property Name="StartTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Duration" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Database.SequenceStatus" Nullable="false" />
+        </EntityType>
+        <Association Name="VisitSequenceExecution">
+          <End Type="Database.Visit" Role="Visit" Multiplicity="1" />
+          <End Type="Database.SequenceExecution" Role="SequenceExecution" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Visit">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SequenceExecution">
+              <PropertyRef Name="VisitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Sequence">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="SequenceExecutions" Relationship="Database.SequenceSequenceExecution" FromRole="Sequence" ToRole="SequenceExecution" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Results" Relationship="Database.SequenceResult" FromRole="Sequence" ToRole="Result" />
+        </EntityType>
+        <Association Name="SequenceSequenceExecution">
+          <End Type="Database.Sequence" Role="Sequence" Multiplicity="1" />
+          <End Type="Database.SequenceExecution" Role="SequenceExecution" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sequence">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SequenceExecution">
+              <PropertyRef Name="SequenceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Result" Abstract="false">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="SequenceExecution" Relationship="Database.SequenceExecutionResult" FromRole="Result" ToRole="SequenceExecution" />
+          <Property Name="SequenceExecutionId" Type="Int32" Nullable="false" />
+          <Property Name="RelativeTime" Type="Double" Nullable="false" />
+          <NavigationProperty Name="ResultDescription" Relationship="Database.ResultDescriptionResult" FromRole="Result" ToRole="ResultDescription" />
+          <Property Name="ResultDescriptionId" Type="Int32" Nullable="false" />
+          <Property Name="Type" Type="Database.ResultType" Nullable="false" />
+          <Property Name="Status" Type="Database.ResultStatus" Nullable="true" />
+          <Property Name="Value" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="LowerLimit" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="UpperLimit" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Units" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="IsHidden" Type="Boolean" Nullable="true" />
+          <Property Name="IsFixed" Type="Boolean" Nullable="true" />
+          <NavigationProperty Name="ChildResults" Relationship="Database.ResultResult" FromRole="Result" ToRole="Result1" />
+          <NavigationProperty Name="ParentResult" Relationship="Database.ResultResult" FromRole="Result1" ToRole="Result" />
+          <Property Name="ParentResultId" Type="Int32" Nullable="true" />
+          <Property Name="IsHistoric" Type="Boolean" Nullable="false" cg:SetterAccess="Private" />
+          <NavigationProperty Name="Product" Relationship="Database.ProductResult" FromRole="Result" ToRole="Product" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Sequence" Relationship="Database.SequenceResult" FromRole="Result" ToRole="Sequence" />
+          <Property Name="SequenceId" Type="Int32" Nullable="false" />
+          <Property Name="DataType" Type="Database.DataFileType" Nullable="true" />
+          <Property Name="ResultSource" Type="Database.ResultSource" Nullable="false" />
+          </EntityType>
+        <Association Name="SequenceExecutionResult">
+          <End Type="Database.SequenceExecution" Role="SequenceExecution" Multiplicity="1" />
+          <End Type="Database.Result" Role="Result" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SequenceExecution">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Result">
+              <PropertyRef Name="SequenceExecutionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Visits" Relationship="Database.LocationVisit" FromRole="Location" ToRole="Visit" />
+          <NavigationProperty Name="Cells" Relationship="Database.CellLocation" FromRole="Location" ToRole="Cell" />
+        </EntityType>
+        <EntityType Name="Tester">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="TesterDescription" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Visits" Relationship="Database.VisitTester" FromRole="Tester" ToRole="Visit" />
+          <NavigationProperty Name="Plants" Relationship="Database.PlantTester" FromRole="Tester" ToRole="Plant" />
+          <NavigationProperty Name="Processes" Relationship="Database.TesterProcess" FromRole="Tester" ToRole="Process" />
+        </EntityType>
+        <EntityType Name="Process">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Visits" Relationship="Database.ProcessVisit" FromRole="Process" ToRole="Visit" />
+          <NavigationProperty Name="Testers" Relationship="Database.TesterProcess" FromRole="Process" ToRole="Tester" />
+          <NavigationProperty Name="Zones" Relationship="Database.ProcessZone" FromRole="Process" ToRole="Zone" />
+        </EntityType>
+        <EnumType Name="VisitStatus" IsFlags="true">
+          <Member Name="None" />
+          <Member Name="Pass" />
+          <Member Name="Fail" />
+          <Member Name="Aborted" />
+        </EnumType>
+        <EnumType Name="SequenceStatus" IsFlags="true">
+          <Member Name="None" />
+          <Member Name="Pass" />
+          <Member Name="Fail" />
+          <Member Name="Aborted" />
+          <Member Name="Released" />
+        </EnumType>
+        <EnumType Name="ResultStatus">
+          <Member Name="None" />
+          <Member Name="Pass" />
+          <Member Name="Fail" />
+        </EnumType>
+        <Association Name="ProductVisit">
+          <End Type="Database.Product" Role="Product" Multiplicity="1" />
+          <End Type="Database.Visit" Role="Visit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Visit">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ProductTypeProduct">
+          <End Type="Database.ProductType" Role="ProductType" Multiplicity="1" />
+          <End Type="Database.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="ProductTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="VisitTester">
+          <End Type="Database.Visit" Role="Visit" Multiplicity="*" />
+          <End Type="Database.Tester" Role="Tester" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Tester">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Visit">
+              <PropertyRef Name="TesterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ZoneVisit">
+          <End Type="Database.Zone" Role="Zone" Multiplicity="1" />
+          <End Type="Database.Visit" Role="Visit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zone">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Visit">
+              <PropertyRef Name="ZoneId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CellVisit">
+          <End Type="Database.Cell" Role="Cell" Multiplicity="1" />
+          <End Type="Database.Visit" Role="Visit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cell">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Visit">
+              <PropertyRef Name="CellId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="LocationVisit">
+          <End Type="Database.Location" Role="Location" Multiplicity="1" />
+          <End Type="Database.Visit" Role="Visit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Visit">
+              <PropertyRef Name="LocationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ProcessVisit">
+          <End Type="Database.Process" Role="Process" Multiplicity="1" />
+          <End Type="Database.Visit" Role="Visit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Process">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Visit">
+              <PropertyRef Name="ProcessId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PlantVisit">
+          <End Type="Database.Plant" Role="Plant" Multiplicity="1" />
+          <End Type="Database.Visit" Role="Visit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plant">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Visit">
+              <PropertyRef Name="PlantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CompanyVisit">
+          <End Type="Database.Company" Role="Company" Multiplicity="1" />
+          <End Type="Database.Visit" Role="Visit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Visit">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ResultDescription">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Results" Relationship="Database.ResultDescriptionResult" FromRole="ResultDescription" ToRole="Result" />
+        </EntityType>
+        <Association Name="ResultDescriptionResult">
+          <End Type="Database.ResultDescription" Role="ResultDescription" Multiplicity="1" />
+          <End Type="Database.Result" Role="Result" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ResultDescription">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Result">
+              <PropertyRef Name="ResultDescriptionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CompanyProduct">
+          <End Type="Database.Company" Role="Company" Multiplicity="*" />
+          <End Type="Database.Product" Role="Product" Multiplicity="*" />
+        </Association>
+        <Association Name="CompanyPlant">
+          <End Type="Database.Company" Role="Company" Multiplicity="*" />
+          <End Type="Database.Plant" Role="Plant" Multiplicity="*" />
+        </Association>
+        <Association Name="PlantTester">
+          <End Type="Database.Plant" Role="Plant" Multiplicity="*" />
+          <End Type="Database.Tester" Role="Tester" Multiplicity="*" />
+        </Association>
+        <Association Name="TesterProcess">
+          <End Type="Database.Tester" Role="Tester" Multiplicity="*" />
+          <End Type="Database.Process" Role="Process" Multiplicity="*" />
+        </Association>
+        <Association Name="ProcessZone">
+          <End Type="Database.Process" Role="Process" Multiplicity="*" />
+          <End Type="Database.Zone" Role="Zone" Multiplicity="*" />
+        </Association>
+        <Association Name="ZoneCell">
+          <End Type="Database.Zone" Role="Zone" Multiplicity="*" />
+          <End Type="Database.Cell" Role="Cell" Multiplicity="*" />
+        </Association>
+        <Association Name="CellLocation">
+          <End Type="Database.Cell" Role="Cell" Multiplicity="*" />
+          <End Type="Database.Location" Role="Location" Multiplicity="*" />
+        </Association>
+        <EnumType Name="ResultType" >
+          <Member Name="Grouped" Value="5" />
+          <Member Name="Parent" Value="8" />
+          <Member Name="Boolean" Value="2" />
+          <Member Name="Operator" Value="7" />
+          <Member Name="Numeric" Value="6" />
+          <Member Name="Bounded" Value="3" />
+          <Member Name="Array" Value="1" />
+          <Member Name="String" Value="9" />
+          <Member Name="DataFile" Value="4" />
+        </EnumType>
+        <Association Name="ResultResult">
+          <End Type="Database.Result" Role="Result" Multiplicity="0..1" />
+          <End Type="Database.Result" Role="Result1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Result">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Result1">
+              <PropertyRef Name="ParentResultId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ProductResult">
+          <End Type="Database.Product" Role="Product" Multiplicity="1" />
+          <End Type="Database.Result" Role="Result" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Result">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SequenceResult">
+          <End Type="Database.Sequence" Role="Sequence" Multiplicity="1" />
+          <End Type="Database.Result" Role="Result" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sequence">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Result">
+              <PropertyRef Name="SequenceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EnumType Name="DataFileType">
+          <Member Name="Hex" />
+          <Member Name="Text" />
+          <Member Name="UU31" />
+        </EnumType>
+        <EnumType Name="ResultSource">
+          <Member Name="Information" />
+          <Member Name="Product" />
+          <Member Name="Rig" />
+        </EnumType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Claims" Relationship="Database.FK_UserClaim_User" FromRole="User" ToRole="UserClaim" />
+          <NavigationProperty Name="Logins" Relationship="Database.FK_UserLogin_User" FromRole="User" ToRole="UserLogin" />
+          <NavigationProperty Name="Roles" Relationship="Database.UserUserRole" FromRole="User" ToRole="UserRole" />
+        </EntityType>
+        <EntityType Name="UserClaim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="User" Relationship="Database.FK_UserClaim_User" FromRole="UserClaim" ToRole="User" />
+        </EntityType>
+        <EntityType Name="UserLogin">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="User" Relationship="Database.FK_UserLogin_User" FromRole="UserLogin" ToRole="User" />
+        </EntityType>
+        <EntityType Name="UserRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Users" Relationship="Database.UserUserRole" FromRole="UserRole" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_UserClaim_User">
+          <End Type="Database.User" Role="User" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Database.UserClaim" Role="UserClaim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserClaim">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserLogin_User">
+          <End Type="Database.User" Role="User" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Database.UserLogin" Role="UserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserLogin">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UserUserRole">
+          <End Type="Database.User" Role="User" Multiplicity="*" />
+          <End Type="Database.UserRole" Role="UserRole" Multiplicity="*" />
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DatabaseStoreContainer" CdmEntityContainer="StratusContext">
+    <EntitySetMapping Name="Companies">
+      <EntityTypeMapping TypeName="IsTypeOf(Database.Company)">
+        <MappingFragment StoreEntitySet="Companies">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="IsTypeOf(Database.Product)">
+        <MappingFragment StoreEntitySet="Products">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ProductUniqueId" ColumnName="ProductUniqueId" />
+          <ScalarProperty Name="ProductTypeId" ColumnName="ProductTypeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Plants">
+      <EntityTypeMapping TypeName="IsTypeOf(Database.Plant)">
+        <MappingFragment StoreEntitySet="Plants">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Zones">
+      <EntityTypeMapping TypeName="IsTypeOf(Database.Zone)">
+        <MappingFragment StoreEntitySet="Zones">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cells">
+      <EntityTypeMapping TypeName="IsTypeOf(Database.Cell)">
+        <MappingFragment StoreEntitySet="Cells">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductTypes">
+      <EntityTypeMapping TypeName="IsTypeOf(Database.ProductType)">
+        <MappingFragment StoreEntitySet="ProductTypes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Visits">
+      <EntityTypeMapping TypeName="IsTypeOf(Database.Visit)">
+        <MappingFragment StoreEntitySet="Visits">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="Duration" ColumnName="Duration" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="TesterId" ColumnName="TesterId" />
+          <ScalarProperty Name="ZoneId" ColumnName="ZoneId" />
+          <ScalarProperty Name="CellId" ColumnName="CellId" />
+          <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+          <ScalarProperty Name="ProcessId" ColumnName="ProcessId" />
+          <ScalarProperty Name="PlantId" ColumnName="PlantId" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="VisitXml" ColumnName="VisitXml" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SequenceExecutions">
+      <EntityTypeMapping TypeName="IsTypeOf(Database.SequenceExecution)">
+        <MappingFragment StoreEntitySet="SequenceExecutions">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="VisitId" ColumnName="VisitId" />
+          <ScalarProperty Name="SequenceId" ColumnName="SequenceId" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="Duration" ColumnName="Duration" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sequences">
+      <EntityTypeMapping TypeName="IsTypeOf(Database.Sequence)">
+        <MappingFragment StoreEntitySet="Sequences">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Results">
+      <EntityTypeMapping TypeName="IsTypeOf(Database.Result)">
+        <MappingFragment StoreEntitySet="Results">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="SequenceExecutionId" ColumnName="SequenceExecutionId" />
+          <ScalarProperty Name="RelativeTime" ColumnName="RelativeTime" />
+          <ScalarProperty Name="ResultDescriptionId" ColumnName="ResultDescriptionId" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="LowerLimit" ColumnName="LowerLimit" />
+          <ScalarProperty Name="UpperLimit" ColumnName="UpperLimit" />
+          <ScalarProperty Name="Units" ColumnName="Units" />
+          <ScalarProperty Name="IsHidden" ColumnName="IsHidden" />
+          <ScalarProperty Name="IsFixed" ColumnName="IsFixed" />
+          <ScalarProperty Name="ParentResultId" ColumnName="ParentResultId" />
+          <ScalarProperty Name="IsHistoric" ColumnName="IsHistoric" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="SequenceId" ColumnName="SequenceId" />
+          <ScalarProperty Name="DataType" ColumnName="DataType" />
+          <ScalarProperty Name="ResultSource" ColumnName="ResultSource" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Locations">
+      <EntityTypeMapping TypeName="IsTypeOf(Database.Location)">
+        <MappingFragment StoreEntitySet="Locations">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Testers">
+      <EntityTypeMapping TypeName="IsTypeOf(Database.Tester)">
+        <MappingFragment StoreEntitySet="Testers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="TesterDescription" ColumnName="TesterDescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Processes">
+      <EntityTypeMapping TypeName="IsTypeOf(Database.Process)">
+        <MappingFragment StoreEntitySet="Processes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ResultDescriptions">
+      <EntityTypeMapping TypeName="IsTypeOf(Database.ResultDescription)">
+        <MappingFragment StoreEntitySet="ResultDescriptions">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="IsTypeOf(Database.User)">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+          <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+          <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserClaims">
+      <EntityTypeMapping TypeName="IsTypeOf(Database.UserClaim)">
+        <MappingFragment StoreEntitySet="UserClaims">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+          <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserLogins">
+      <EntityTypeMapping TypeName="IsTypeOf(Database.UserLogin)">
+        <MappingFragment StoreEntitySet="UserLogins">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+          <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserRoles">
+      <EntityTypeMapping TypeName="IsTypeOf(Database.UserRole)">
+        <MappingFragment StoreEntitySet="UserRoles">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="CompanyProduct" TypeName="Database.CompanyProduct" StoreEntitySet="CompanyProduct">
+      <EndProperty Name="Company">
+        <ScalarProperty Name="Id" ColumnName="Companies_Id" />
+      </EndProperty>
+      <EndProperty Name="Product">
+        <ScalarProperty Name="Id" ColumnName="Products_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CompanyPlant" TypeName="Database.CompanyPlant" StoreEntitySet="CompanyPlant">
+      <EndProperty Name="Company">
+        <ScalarProperty Name="Id" ColumnName="Companies_Id" />
+      </EndProperty>
+      <EndProperty Name="Plant">
+        <ScalarProperty Name="Id" ColumnName="Plants_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PlantTester" TypeName="Database.PlantTester" StoreEntitySet="PlantTester">
+      <EndProperty Name="Plant">
+        <ScalarProperty Name="Id" ColumnName="Plants_Id" />
+      </EndProperty>
+      <EndProperty Name="Tester">
+        <ScalarProperty Name="Id" ColumnName="Testers_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="TesterProcess" TypeName="Database.TesterProcess" StoreEntitySet="TesterProcess">
+      <EndProperty Name="Tester">
+        <ScalarProperty Name="Id" ColumnName="Testers_Id" />
+      </EndProperty>
+      <EndProperty Name="Process">
+        <ScalarProperty Name="Id" ColumnName="Processes_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ProcessZone" TypeName="Database.ProcessZone" StoreEntitySet="ProcessZone">
+      <EndProperty Name="Process">
+        <ScalarProperty Name="Id" ColumnName="Processes_Id" />
+      </EndProperty>
+      <EndProperty Name="Zone">
+        <ScalarProperty Name="Id" ColumnName="Zones_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ZoneCell" TypeName="Database.ZoneCell" StoreEntitySet="ZoneCell">
+      <EndProperty Name="Zone">
+        <ScalarProperty Name="Id" ColumnName="Zones_Id" />
+      </EndProperty>
+      <EndProperty Name="Cell">
+        <ScalarProperty Name="Id" ColumnName="Cells_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CellLocation" TypeName="Database.CellLocation" StoreEntitySet="CellLocation">
+      <EndProperty Name="Cell">
+        <ScalarProperty Name="Id" ColumnName="Cells_Id" />
+      </EndProperty>
+      <EndProperty Name="Location">
+        <ScalarProperty Name="Id" ColumnName="Locations_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="UserUserRole" TypeName="Database.UserUserRole" StoreEntitySet="UserUserRole">
+      <EndProperty Name="User">
+        <ScalarProperty Name="Id" ColumnName="Users_Id" />
+      </EndProperty>
+      <EndProperty Name="UserRole">
+        <ScalarProperty Name="Id" ColumnName="Roles_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

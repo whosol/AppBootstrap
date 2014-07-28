@@ -1,0 +1,18 @@
+<div class="row-fluid">
+    <div class="jumbotron">
+        <h1>Actemium News</h1>
+
+        <p>Latest product news from Final Assembly Systems Ltd</p>
+    </div>
+
+    <carousel interval="interval" disable-animation="true" class="news-carousel">
+        <slide ng-repeat="slide in slides" active="slide.active">
+            <img ng-src="{{slide.image}}" style="margin:auto;">
+
+            <div class="carousel-caption">
+                <h1>{{slide.title}}</h1>
+                <p>{{slide.text}}</p>
+            </div>
+        </slide>
+    </carousel>
+</div>

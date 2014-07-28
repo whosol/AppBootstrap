@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C4E71B99-8BB3-413F-B6C9-ACF1C63CDD64}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Actemium.Stratus.Mailbox</RootNamespace>
+    <AssemblyName>Actemium.Stratus.MailboxPlugin</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\StagingArea\Debug\Plugins\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\StagingArea\Release\Plugins\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>Always</RunPostBuildEvent>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Appccelerate.Bootstrapper">
+      <HintPath>..\packages\Appccelerate.Bootstrapper.2.1.0\lib\net45\Appccelerate.Bootstrapper.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Appccelerate.EventBroker">
+      <HintPath>..\packages\Appccelerate.EventBroker.3.1.0\lib\net45\Appccelerate.EventBroker.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Appccelerate.Fundamentals">
+      <HintPath>..\packages\Appccelerate.Fundamentals.2.2.0\lib\portable-windows8+net45\Appccelerate.Fundamentals.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Ninject">
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Ninject.Extensions.Logging">
+      <HintPath>..\packages\Ninject.Extensions.Logging.3.2.0.0\lib\net45-full\Ninject.Extensions.Logging.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Http, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.0\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WhoSol.Contracts">
+      <HintPath>..\StagingArea\Debug\WhoSol.Contracts.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="WhoSol.Utilities">
+      <HintPath>..\StagingArea\Debug\WhoSol.Utilities.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Bootstrapper\Bootstrapper.cs" />
+    <Compile Include="Bootstrapper\IShopFloorResultsExtension.cs" />
+    <Compile Include="Bootstrapper\ShopFloorResultsExtensionBase.cs" />
+    <Compile Include="Bootstrapper\ShopFloorResultsStrategy.cs" />
+    <Compile Include="Enums\ConfigKey.cs" />
+    <Compile Include="Enums\ConfigSection.cs" />
+    <Compile Include="Enums\PacketType.cs" />
+    <Compile Include="Enums\RequestType.cs" />
+    <Compile Include="Enums\ResponseCode.cs" />
+    <Compile Include="Events\ConfigChangedEventArgs.cs" />
+    <Compile Include="Events\DataAvailableEventArgs.cs" />
+    <Compile Include="Events\LogEventArgs.cs" />
+    <Compile Include="Events\LogLevel.cs" />
+    <Compile Include="Events\TcpStreamReceivedEventArgs.cs" />
+    <Compile Include="Events\XDocumentAvailableEventArgs.cs" />
+    <Compile Include="IComponentBase.cs" />
+    <Compile Include="MailboxModule.cs" />
+    <Compile Include="MailboxPlugin.cs" />
+    <Compile Include="Manage\ConfigManager.cs" />
+    <Compile Include="Manage\DirectoryManager.cs" />
+    <Compile Include="Manage\IManager.cs" />
+    <Compile Include="Manage\LogManager.cs" />
+    <Compile Include="Manage\ResultTcpPacket.cs" />
+    <Compile Include="Manage\TcpManager.cs" />
+    <Compile Include="Parse\IParser.cs" />
+    <Compile Include="Parse\IParserFactory.cs" />
+    <Compile Include="Parse\ParserFactory.cs" />
+    <Compile Include="Parse\ParseStringToXmlEventArgs.cs" />
+    <Compile Include="Parse\Rds1Header.cs" />
+    <Compile Include="Parse\Rds1Parser.cs" />
+    <Compile Include="Parse\Rds1Result.cs" />
+    <Compile Include="Parse\Rds1Sequence.cs" />
+    <Compile Include="Parse\Rds3Parser.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Receive\DirectoryReceiver.cs" />
+    <Compile Include="Receive\Helper\Checksum.cs" />
+    <Compile Include="Receive\Helper\Tcp.cs" />
+    <Compile Include="Receive\IReceiver.cs" />
+    <Compile Include="Receive\TcpReceiver.cs" />
+    <Compile Include="Respond\IResponder.cs" />
+    <Compile Include="Respond\TcpResponder.cs" />
+    <Compile Include="Write\IWriter.cs" />
+    <Compile Include="Write\Rds3Writer.cs" />
+    <Compile Include="Write\WebApiWriter.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Actemium.Stratus.Contracts\Actemium.Stratus.Contracts.csproj">
+      <Project>{D4A30411-3DFF-4516-B30F-8071E5975599}</Project>
+      <Name>Actemium.Stratus.Contracts</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Actemium.Stratus.MailboxPlugin.pisettings">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
