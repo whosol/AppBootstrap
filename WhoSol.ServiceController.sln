@@ -1,0 +1,87 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhoSol.ServiceController", "WhoSol.ServiceController\WhoSol.ServiceController.csproj", "{48DC2126-B15A-4302-B120-DC22D88756D6}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4D120018-56D3-4127-87B9-289433B8DCE3} = {4D120018-56D3-4127-87B9-289433B8DCE3}
+		{04AE621B-2B85-4695-BE42-46D070C76782} = {04AE621B-2B85-4695-BE42-46D070C76782}
+		{7D161F5B-E039-4155-BC66-D2FF760903A8} = {7D161F5B-E039-4155-BC66-D2FF760903A8}
+		{B5BD75B4-90B4-4BDE-9A6E-76A23A6D8B2D} = {B5BD75B4-90B4-4BDE-9A6E-76A23A6D8B2D}
+		{CE9DD8BE-D281-4AEA-9DA2-0E99CE5EDEF2} = {CE9DD8BE-D281-4AEA-9DA2-0E99CE5EDEF2}
+		{FFA826DE-DC5B-4C21-A72C-88CAEA3D218A} = {FFA826DE-DC5B-4C21-A72C-88CAEA3D218A}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhoSol.Contracts", "WhoSol.Contracts\WhoSol.Contracts.csproj", "{D4A30411-3DFF-4516-B30F-8071E5975599}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{734C0A35-5D51-48CD-8AC2-087D43E847D2}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhoSol.WebServerPlugin", "WhoSol.WebServerPlugin\WhoSol.WebServerPlugin.csproj", "{CE9DD8BE-D281-4AEA-9DA2-0E99CE5EDEF2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhoSol.SignalRPlugin", "WhoSol.SignalRPlugin\WhoSol.SignalRPlugin.csproj", "{4D120018-56D3-4127-87B9-289433B8DCE3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhoSol.OwinSelfHostPlugin", "WhoSol.OwinSelfHostPlugin\WhoSol.OwinSelfHostPlugin.csproj", "{B5BD75B4-90B4-4BDE-9A6E-76A23A6D8B2D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Plugins", "Plugins", "{BD738764-F441-4CF1-A2C7-1D042E764AD9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhoSol.ThirdParty", "WhoSol.ThirdParty\WhoSol.ThirdParty.csproj", "{FFA826DE-DC5B-4C21-A72C-88CAEA3D218A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhoSol.Utilities", "WhoSol.Utilities\WhoSol.Utilities.csproj", "{04AE621B-2B85-4695-BE42-46D070C76782}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhoSol.WebApiPlugin", "WhoSol.WebApiPlugin\WhoSol.WebApiPlugin.csproj", "{7D161F5B-E039-4155-BC66-D2FF760903A8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{48DC2126-B15A-4302-B120-DC22D88756D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48DC2126-B15A-4302-B120-DC22D88756D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48DC2126-B15A-4302-B120-DC22D88756D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48DC2126-B15A-4302-B120-DC22D88756D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4A30411-3DFF-4516-B30F-8071E5975599}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4A30411-3DFF-4516-B30F-8071E5975599}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4A30411-3DFF-4516-B30F-8071E5975599}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4A30411-3DFF-4516-B30F-8071E5975599}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE9DD8BE-D281-4AEA-9DA2-0E99CE5EDEF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE9DD8BE-D281-4AEA-9DA2-0E99CE5EDEF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE9DD8BE-D281-4AEA-9DA2-0E99CE5EDEF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE9DD8BE-D281-4AEA-9DA2-0E99CE5EDEF2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D120018-56D3-4127-87B9-289433B8DCE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D120018-56D3-4127-87B9-289433B8DCE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D120018-56D3-4127-87B9-289433B8DCE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D120018-56D3-4127-87B9-289433B8DCE3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5BD75B4-90B4-4BDE-9A6E-76A23A6D8B2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5BD75B4-90B4-4BDE-9A6E-76A23A6D8B2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5BD75B4-90B4-4BDE-9A6E-76A23A6D8B2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5BD75B4-90B4-4BDE-9A6E-76A23A6D8B2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFA826DE-DC5B-4C21-A72C-88CAEA3D218A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFA826DE-DC5B-4C21-A72C-88CAEA3D218A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFA826DE-DC5B-4C21-A72C-88CAEA3D218A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFA826DE-DC5B-4C21-A72C-88CAEA3D218A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04AE621B-2B85-4695-BE42-46D070C76782}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04AE621B-2B85-4695-BE42-46D070C76782}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04AE621B-2B85-4695-BE42-46D070C76782}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04AE621B-2B85-4695-BE42-46D070C76782}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D161F5B-E039-4155-BC66-D2FF760903A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D161F5B-E039-4155-BC66-D2FF760903A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D161F5B-E039-4155-BC66-D2FF760903A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D161F5B-E039-4155-BC66-D2FF760903A8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CE9DD8BE-D281-4AEA-9DA2-0E99CE5EDEF2} = {BD738764-F441-4CF1-A2C7-1D042E764AD9}
+		{4D120018-56D3-4127-87B9-289433B8DCE3} = {BD738764-F441-4CF1-A2C7-1D042E764AD9}
+		{B5BD75B4-90B4-4BDE-9A6E-76A23A6D8B2D} = {BD738764-F441-4CF1-A2C7-1D042E764AD9}
+		{7D161F5B-E039-4155-BC66-D2FF760903A8} = {BD738764-F441-4CF1-A2C7-1D042E764AD9}
+	EndGlobalSection
+EndGlobal
