@@ -115,11 +115,7 @@ namespace Actemium.Stratus.RepositoryPlugin.Controllers
 
         public HttpResponseMessage Get([FromUri]string productUniqueId, [FromUri]string[] sequences = null, [FromUri]bool visitInfo = false, [FromUri]bool sequenceVisitInfo = false)
         {
-            var sequenceResultsMap = GetSequenceResultMap(sequences, productUniqueId);
-
-            var sequenceExecutions = SequencesForProductId(productUniqueId);
-
-            var xml = CreateRds3Response(sequenceResultsMap, sequenceExecutions, productUniqueId, visitInfo, sequenceVisitInfo);
+            var xml = CreateRds3Response(productUniqueId, sequences, visitInfo, sequenceVisitInfo);
 
             return new HttpResponseMessage { Content = new StringContent(xml.ToString(), Encoding.UTF8, "application/xml") };
         }
@@ -136,36 +132,42 @@ namespace Actemium.Stratus.RepositoryPlugin.Controllers
         }
 
 
-        private IOrderedEnumerable<IGrouping<string, Result>> GetSequenceResultMap(string[] sequences, string productUniqueId)
+        private List<IOrderedEnumerable<IGrouping<string, Result>>> GetSequenceResultMap(string[] sequences, string productUniqueId)
         {
             IQueryable<Result> initialQuery;
 
-            if (sequences.Length > 0)
+            if (sequences.Length == 0)
             {
-                initialQuery = uow.Results
-                                  .FindBy(r => r.Product.ProductUniqueId == productUniqueId &&
-                                               sequences.Any(s => r.Sequence.Name == s) &&
-                                               r.ResultSource == ResultSource.Product);
-            }
-            else
-            {
-                initialQuery = uow.Results
-                                  .FindBy(r => r.Product.ProductUniqueId == productUniqueId &&
-                                               r.ResultSource == ResultSource.Product);
+                sequences = (from sequence in uow.Sequences.FindBy(s => s.SequenceExecutions.Any(se => se.Visit.Product.ProductUniqueId == productUniqueId))
+                             select sequence.Name).ToArray();
             }
 
-            var sequenceResultsMap = initialQuery
-                    .Include(r => r.ResultDescription)
-                    .Include(r => r.SequenceExecution)
-                    .Include(r => r.Sequence)
-                    .Include(r => r.ParentResult.ResultDescription)
-                    .OrderByDescending(r => r.SequenceExecution.StartTime)
-                    .ToLookup(r => r.ResultDescription.Name)
-                    .OrderBy(r => r.Key)
-                    .Select(g => g.FirstOrDefault())
-                    .OrderBy(r => r.Id)
-                    .ToLookup(r => r.Sequence.Name)
-                    .OrderBy(g => g.Key);
+            List<IOrderedEnumerable<IGrouping<string, Result>>> sequenceResultsMap = new List<IOrderedEnumerable<IGrouping<string, Result>>>();
+
+            foreach (var sequence in sequences)
+            {
+                initialQuery = uow.Results
+                              .FindBy(r => r.Product.ProductUniqueId == productUniqueId &&
+                                           r.Sequence.Name == sequence &&
+                                           r.ResultSource == ResultSource.Product);
+
+
+
+
+                sequenceResultsMap.Add(initialQuery
+                        .Include(r => r.ResultDescription)
+                        .Include(r => r.SequenceExecution)
+                        .Include(r => r.Sequence)
+                        .Include(r => r.ParentResult.ResultDescription)
+                        .OrderByDescending(r => r.SequenceExecution.StartTime)
+                        .ToLookup(r => r.ResultDescription.Name)
+                        .OrderBy(r => r.Key)
+                        .Select(g => g.FirstOrDefault())
+                        .OrderBy(r => r.Id)
+                        .ToLookup(r => r.Sequence.Name)
+                        .OrderBy(g => g.Key));
+
+            }
             return sequenceResultsMap;
         }
 
@@ -195,32 +197,43 @@ namespace Actemium.Stratus.RepositoryPlugin.Controllers
             return resultsMap.Values.ToList();
         }
 
-        private XElement CreateRds3Response(IOrderedEnumerable<IGrouping<string, Result>> sequenceResultsMap, List<SequenceExecution> sequenceExecutions, string productUniqueId, bool visitInfo, bool sequenceVisitInfo)
+        private XElement CreateRds3Response(string productUniqueId, string[] sequences, bool visitInfo, bool sequenceVisitInfo)
         {
+            XElement xml = null;
             var sequenceWrappers = new List<SequenceWrapper>();
-            foreach (var sequence in sequenceResultsMap)
+
+            var sequenceResultsMaps = GetSequenceResultMap(sequences, productUniqueId);
+
+            var sequenceExecutions = SequencesForProductId(productUniqueId);
+
+            foreach (var sequenceResultsMap in sequenceResultsMaps)
             {
-                sequenceWrappers.Add(new SequenceWrapper
+                foreach (var sequence in sequenceResultsMap)
                 {
-                    Name = sequence.Key,
-                    Executions = sequenceExecutions.Where(se => se.Sequence != null && se.Sequence.Name == sequence.Key).ToList(),
-                    Results = AddChildren(sequence.ToList())
-                });
-            }
+                    sequenceWrappers.Add(new SequenceWrapper
+                    {
+                        Name = sequence.Key,
+                        Executions = sequenceExecutions.Where(se => se.Sequence != null && se.Sequence.Name == sequence.Key).ToList(),
+                        Results = AddChildren(sequence.ToList())
+                    });
+                }
 
-            var flag = sequenceWrappers.Any(s => s.CurrentStatus == (SequenceStatus.Fail | SequenceStatus.Aborted)) || !sequenceWrappers.Any() ? "F" : "P";
+                var flag = sequenceWrappers.Any(s => s.CurrentStatus == (SequenceStatus.Fail | SequenceStatus.Aborted)) || !sequenceWrappers.Any() ? "F" : "P";
 
-            var xml = new XElement("HISTORY", new XAttribute("rds", "3.0"),
-                new XAttribute("vin", productUniqueId),
-                new XAttribute("flags", flag));
+                xml = new XElement("HISTORY", new XAttribute("rds", "3.0"),
+                    new XAttribute("vin", productUniqueId),
+                    new XAttribute("flags", flag));
 
-            if (visitInfo)
-                xml.Add(CreateRds3HistoricVisits(sequenceWrappers));
+                if (visitInfo)
+                    xml.Add(CreateRds3HistoricVisits(sequenceWrappers));
 
-            foreach (var sequence in sequenceWrappers)
-            {
-                xml.Add(sequence.GetRds3(sequenceVisitInfo));
-            }
+                foreach (var sequence in sequenceWrappers)
+                {
+                    xml.Add(sequence.GetRds3(sequenceVisitInfo));
+                }
+                
+            } 
+            
             return xml;
         }
 
