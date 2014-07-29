@@ -25,7 +25,7 @@ namespace Actemium.Stratus.RepositoryPlugin.Controllers
             };
         }
 
-        public override ProcessesDto Get()
+        public override ProcessesDto GetAll()
         {
             return new ProcessesDto
             {
@@ -36,7 +36,7 @@ namespace Actemium.Stratus.RepositoryPlugin.Controllers
             };
         }
 
-        public override ProcessDto Get(int id)
+        public override ProcessDto GetById(int id)
         {
             var process = uow.Processes.FindById(id);
             return process != null ? CreateDto(process) : null;

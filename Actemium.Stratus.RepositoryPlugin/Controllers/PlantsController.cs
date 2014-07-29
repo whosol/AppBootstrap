@@ -25,7 +25,7 @@ namespace Actemium.Stratus.RepositoryPlugin.Controllers
             };
         }
 
-        public override PlantsDto Get()
+        public override PlantsDto GetAll()
         {
             return new PlantsDto
             {
@@ -36,7 +36,7 @@ namespace Actemium.Stratus.RepositoryPlugin.Controllers
             };
         }
 
-        public override PlantDto Get(int id)
+        public override PlantDto GetById(int id)
         {
             var plant = uow.Plants.FindById(id);
             return plant != null ? CreateDto(plant) : null;

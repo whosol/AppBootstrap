@@ -79,12 +79,12 @@
   <ItemGroup>
     <ProjectReference Include="..\WhoSol.Contracts\WhoSol.Contracts.csproj">
       <Project>{D4A30411-3DFF-4516-B30F-8071E5975599}</Project>
-      <Name>Actemium.Stratus.Contracts</Name>
+      <Name>WhoSol.Contracts</Name>
       <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\WhoSol.Utilities\WhoSol.Utilities.csproj">
       <Project>{04ae621b-2b85-4695-be42-46d070c76782}</Project>
-      <Name>Actemium.Stratus.Utilities</Name>
+      <Name>WhoSol.Utilities</Name>
       <Private>False</Private>
     </ProjectReference>
   </ItemGroup>

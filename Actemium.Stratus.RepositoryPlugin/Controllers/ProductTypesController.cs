@@ -25,7 +25,7 @@ namespace Actemium.Stratus.RepositoryPlugin.Controllers
             };
         }
 
-        public override ProductTypesDto Get()
+        public override ProductTypesDto GetAll()
         {
             return new ProductTypesDto
             {
@@ -44,7 +44,7 @@ namespace Actemium.Stratus.RepositoryPlugin.Controllers
             };
         }
 
-        public override ProductTypeDto Get(int id)
+        public override ProductTypeDto GetById(int id)
         {
             var productType = uow.ProductTypes.FindById(id);
             return productType != null ? CreateDto(productType) : null;

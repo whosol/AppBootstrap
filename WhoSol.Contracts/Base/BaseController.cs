@@ -16,8 +16,8 @@ namespace WhoSol.Contracts.Base
 
         public abstract T2 CreateDto(T1 dataObject);
 
-        public abstract T3 Get();
+        public abstract T3 GetAll();
 
-        public abstract T2 Get(int id);
+        public abstract T2 GetById(int id);
     }
 }
