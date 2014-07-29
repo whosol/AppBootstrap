@@ -6,7 +6,7 @@ angular
         
         var $scope = this;
 
-        var cells = $resource('/api/cells/:id/', { id: '@id' }, {
+        var cells = $resource('/api/cells/:id', { id: '@id' }, {
             query: {
                 method: 'GET',
                 isArray: false

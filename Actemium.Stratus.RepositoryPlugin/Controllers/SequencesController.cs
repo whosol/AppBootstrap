@@ -25,7 +25,7 @@ namespace Actemium.Stratus.RepositoryPlugin.Controllers
             };
         }
 
-        public override SequencesDto GetAll()
+        public override SequencesDto Get()
         {
             return new SequencesDto
             {
@@ -36,7 +36,7 @@ namespace Actemium.Stratus.RepositoryPlugin.Controllers
             };
         }
 
-        public override SequenceDto GetById(int id)
+        public override SequenceDto Get(int id)
         {
             var sequence = uow.Sequences.FindById(id);
             return sequence != null ? CreateDto(sequence) : null;

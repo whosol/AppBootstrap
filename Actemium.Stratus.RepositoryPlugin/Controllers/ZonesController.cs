@@ -24,7 +24,7 @@ namespace Actemium.Stratus.RepositoryPlugin.Controllers
             };
         }
 
-        public override ZonesDto GetAll()
+        public override ZonesDto Get()
         {
             return new ZonesDto
             {
@@ -35,7 +35,7 @@ namespace Actemium.Stratus.RepositoryPlugin.Controllers
             };
         }
 
-        public override ZoneDto GetById(int id)
+        public override ZoneDto Get(int id)
         {
             var zone = uow.Zones.FindById(id);
             return zone != null ? CreateDto(zone) : null;

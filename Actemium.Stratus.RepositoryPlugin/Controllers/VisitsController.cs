@@ -31,17 +31,17 @@ namespace Actemium.Stratus.RepositoryPlugin.Controllers
             return CreateVisitDto(dataObject);
         }
 
-        public override VisitsDto GetAll()
+        public override VisitsDto Get()
         {
-            return GetByPageAndSize(0, 100);
+            return Get(0, 100);
         }
 
-        public override VisitDto GetById(int id)
+        public override VisitDto Get(int id)
         {
             return Get(id, false);
         }
 
-        public VisitsDto GetByPageAndSize(int page, int pageSize, bool getXml = false)
+        public VisitsDto Get(int page, int pageSize, bool getXml = false)
         {
             var query = uow.Visits.FindAll()
                 .Include(v => v.Product)

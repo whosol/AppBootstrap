@@ -27,7 +27,7 @@ namespace Actemium.Stratus.RepositoryPlugin.Controllers
             };
         }
 
-        public override LocationsDto GetAll()
+        public override LocationsDto Get()
         {
             return new LocationsDto
             {
@@ -38,7 +38,7 @@ namespace Actemium.Stratus.RepositoryPlugin.Controllers
             };
         }
 
-        public override LocationDto GetById(int id)
+        public override LocationDto Get(int id)
         {
             var location = uow.Locations.FindById(id);
             return location != null ? CreateDto(location) : null;

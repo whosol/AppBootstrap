@@ -24,14 +24,12 @@ namespace Actemium.Stratus.RepositoryPlugin.Controllers
 
         }
 
-        public override ResultsDto GetAll()
+        public override ResultsDto Get()
         {
-            return GetByPageAndSize(0, 100);
+            return Get(0, 100);
         }
 
-        public ResultsDto GetByPageAndSize(int page, int pageSize, int? productTypes = null, int? products = null, 
-            int? sequences = null, int? plants = null, int? processes = null, int? locations = null, 
-            int? zones = null, int? cells = null)
+        public ResultsDto Get(int page, int pageSize, int? productTypes = null, int? products = null, int? sequences = null, int? plants = null, int? processes = null, int? locations = null, int? zones = null, int? cells = null)
         {
             try
             {
@@ -109,7 +107,7 @@ namespace Actemium.Stratus.RepositoryPlugin.Controllers
             }
         }
 
-        public override ResultDto GetById(int id)
+        public override ResultDto Get(int id)
         {
             var result = uow.Results.FindBy(r => r.Id == id).Include(r => r.ChildResults).SingleOrDefault();
             return result != null ? CreateDto(result) : null;

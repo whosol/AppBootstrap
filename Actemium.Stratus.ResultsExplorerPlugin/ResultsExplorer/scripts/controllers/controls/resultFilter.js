@@ -4,7 +4,6 @@ angular
     .module('resultsExplorer')
     .controller('ResultFilterController', ['$scope', 'StratusData', 'FilterData', function ($scope, StratusData, FilterData) {
 
-
         $scope.visible = false;
 
         $scope.fromDate = new Date();
@@ -15,17 +14,10 @@ angular
 
         $scope.options = {};
 
-
-
-
         $scope.datetimeOptions = {
-            format: 'dd/MM/yyyy hh:mm',
-
-            value: kendo.date.today(),
-
             change: function (e) {
                 if ($scope.fromDate < $scope.toDate) {
-                    $scope.options[this.element.prop('id')] = this.element.val();
+                    $scope.options[this.element.prop('id')] = this.element.val();               
                 }
                 else {
 
@@ -34,14 +26,10 @@ angular
         }
 
         $scope.comboboxOptions = {
-            open: function (e) {
-                var ds = e.sender.dataSource;
-                ds.read();
-            },
             change: function (e) {
                 var item = this.dataItem(this.select());
                 if (item && item.Id > 0) {
-                    $scope.options[this.element.prop('id')] = item.Id
+                    $scope.options[this.element.prop('id')] =  item.Id
                 }
                 else if (item && item.Id < 0) {
                     $scope.options = {};
@@ -58,7 +46,6 @@ angular
 
 
         $scope.productTypes = {
-            serverFiltering: true,
             transport: {
                 read: function (options) {
                     getData(StratusData.getProductTypes, options);
@@ -70,7 +57,6 @@ angular
         };
 
         $scope.products = {
-            serverFiltering: true,
             transport: {
                 read: function (options) {
                     getData(StratusData.getProducts, options);
@@ -82,7 +68,6 @@ angular
         };
 
         $scope.sequences = {
-            serverFiltering: true,
             transport: {
                 read: function (options) {
                     getData(StratusData.getSequences, options);
@@ -94,7 +79,6 @@ angular
         };
 
         $scope.plants = {
-            serverFiltering: true,
             transport: {
                 read: function (options) {
                     getData(StratusData.getPlants, options);
@@ -106,7 +90,6 @@ angular
         };
 
         $scope.processes = {
-            serverFiltering: true,
             transport: {
                 read: function (options) {
                     getData(StratusData.getProcesses, options);
@@ -118,7 +101,6 @@ angular
         };
 
         $scope.locations = {
-            serverFiltering: true,
             transport: {
                 read: function (options) {
                     getData(StratusData.getLocations, options);
@@ -130,7 +112,6 @@ angular
         };
 
         $scope.zones = {
-            serverFiltering: true,
             transport: {
                 read: function (options) {
                     getData(StratusData.getZones, options);
@@ -142,7 +123,6 @@ angular
         };
 
         $scope.cells = {
-            serverFiltering: true,
             transport: {
                 read: function (options) {
                     getData(StratusData.getCells, options);
@@ -158,7 +138,7 @@ angular
         });
 
         var getData = function (functionCall, options) {
-            functionCall(FilterData.filters,
+            functionCall(options.data,
                         function (response) {
                             $scope.foundServer = true;
                             options.success(response);
