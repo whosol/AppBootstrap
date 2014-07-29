@@ -156,3 +156,5 @@ $RECYCLE.BIN/
 .DS_Store
 /Actemium.Stratus.WebServerPlugin/Web/.idea
 /packages
+
+*.jmconfig
