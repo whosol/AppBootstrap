@@ -2,7 +2,7 @@
 
 namespace WhoSol.Contracts.Base
 {
-    [DataContract]
+    [DataContract(Namespace="")]
     public abstract class BaseCollectionDto
     {
         protected string controllerName;
@@ -18,7 +18,7 @@ namespace WhoSol.Contracts.Base
         {
             get
             {
-                return Page + 1 * PageSize < Total ? string.Format("/api/{0}?page={1}&pageSize={2}", controllerName, Page + 1, PageSize) : null;
+                return Page * PageSize < Total ? string.Format("/api/{0}?page={1}&pageSize={2}", controllerName, Page + 1, PageSize) : null;
             }
             set { }
         }
@@ -27,10 +27,15 @@ namespace WhoSol.Contracts.Base
         {
             get
             {
-                return Page > 0 ? string.Format("/api/{0}?page={1}&pageSize={2}", controllerName, Page - 1, PageSize) : null;
+                return Page > 1 ? string.Format("/api/{0}?page={1}&pageSize={2}", controllerName, Page - 1, PageSize) : null;
             }
             set { }
         }
 
+        public BaseCollectionDto()
+        {
+            PageSize = 100;
+            Page = 1;
+        }
     }
 }

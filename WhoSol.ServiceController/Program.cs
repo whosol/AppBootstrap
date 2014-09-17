@@ -47,7 +47,7 @@ namespace WhoSol.ServiceController
 
             GetLogger();
 
-            logger.Debug("Ninject Kernel created");
+            logger.Info("Ninject Kernel created");
         }
 
         private static void StartService()
@@ -56,17 +56,24 @@ namespace WhoSol.ServiceController
             {
                 x.Service<IController>(s =>
                 {
-                    try
+                    s.ConstructUsing(name => kernel.Get<IController>());
+                    s.WhenStarted(controller =>
                     {
-                        s.ConstructUsing(name => kernel.Get<IController>());
-                        s.WhenStarted(controller => controller.Start());
-                        s.WhenStopped(controller => controller.Stop());
-                    }
-                    catch (StratusException ex)
-                    {
-                        logger.FatalException(ex.Message, ex);
-                        return;
-                    }
+
+
+                        try
+                        {
+                            controller.Start();
+                        }
+                        catch (StratusException ex)
+                        {
+                            logger.FatalException(ex.Message, ex);
+                            return;
+                        }
+
+                    });
+                    s.WhenStopped(controller => controller.Stop());
+
                 });
                 x.RunAsLocalSystem();
                 x.StartAutomatically();

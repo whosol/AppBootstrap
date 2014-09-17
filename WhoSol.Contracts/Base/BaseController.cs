@@ -3,7 +3,7 @@ using System.Web.Http;
 
 namespace WhoSol.Contracts.Base
 {
-    public abstract class BaseController<T1, T2, T3> : ApiController
+    public abstract class BaseController<TData, TDto, TDtoWrapper> : ApiController
     {
         protected readonly IUnitOfWork uow;
         protected readonly ILogger logger;
@@ -14,10 +14,10 @@ namespace WhoSol.Contracts.Base
             this.logger = logger;
         }
 
-        public abstract T2 CreateDto(T1 dataObject);
+        public abstract TDto CreateDto(TData dataObject);
 
-        public abstract T3 Get();
+        public abstract TDtoWrapper GetAll();
 
-        public abstract T2 Get(int id);
+        public abstract TDto GetById(int id);
     }
 }

@@ -5,6 +5,7 @@ using Owin;
 using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
 using System.Web.Http;
+using Ninject.Extensions.Logging;
 
 namespace WhoSol.WebApiPlugin
 {
@@ -12,11 +13,13 @@ namespace WhoSol.WebApiPlugin
     {
         private readonly IKernel kernel;
         private readonly IConfiguration configuration;
+        private readonly ILogger logger;
 
-        public WebApiStartup(IKernel kernel, IConfiguration configuration)
+        public WebApiStartup(IKernel kernel, IConfiguration configuration, ILogger logger)
         {
             this.kernel = kernel;
             this.configuration = configuration;
+            this.logger = logger;
         }
 
         public void Configuration(IAppBuilder app)
@@ -38,9 +41,9 @@ namespace WhoSol.WebApiPlugin
             webApiConfiguration.Formatters.XmlFormatter.MediaTypeMappings.Add(
                 new QueryStringMapping("type", "xml", new MediaTypeHeaderValue("application/xml")));
 
-            app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
-
             app.UseWebApi(webApiConfiguration);
+
+            logger.Info("WebAPI Plugin started");
         }
     }
 }

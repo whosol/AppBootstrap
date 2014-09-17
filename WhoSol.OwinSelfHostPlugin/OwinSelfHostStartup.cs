@@ -1,6 +1,8 @@
 ﻿using WhoSol.Contracts;
 using Ninject.Extensions.Logging;
 using Owin;
+using Microsoft.Owin.Cors;
+using System;
 
 namespace WhoSol.OwinSelfHostPlugin
 {
@@ -17,9 +19,22 @@ namespace WhoSol.OwinSelfHostPlugin
 
         public void Configuration(IAppBuilder app)
         {
-            foreach (var startup in serverStartups)
+            app.UseCors(CorsOptions.AllowAll);
+
+            logger.Info("OWIN Self Host Plugin Started");
+
+            try
             {
-                startup.Configuration(app);
+                foreach (var startup in serverStartups)
+                {
+                    startup.Configuration(app);
+                }
+
+                logger.Info("Installed OWIN Plugins");
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Plugin failed to load. Exception: ({0})", ex.Message));
             }
         }
     }

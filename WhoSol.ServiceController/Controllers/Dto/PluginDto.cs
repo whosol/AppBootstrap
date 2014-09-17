@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 
 namespace WhoSol.ServiceController.Controllers.Dto
 {
-    [DataContract]
+    [DataContract(Namespace="")]
     public class PluginDto
     {
         [DataMember(Order=1)]

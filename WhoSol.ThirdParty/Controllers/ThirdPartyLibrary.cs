@@ -2,7 +2,7 @@
 
 namespace WhoSol.ThirdParty.Controllers
 {
-    [DataContract]
+    [DataContract(Namespace="")]
    public class ThirdPartyLibrary
     {
         [DataMember]
