@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="ConfigFile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SplitExtensions.cs" />
     <Compile Include="UniqueQueue.cs" />
   </ItemGroup>
   <ItemGroup>
