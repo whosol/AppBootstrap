@@ -68,7 +68,6 @@
     <Compile Include="IConfiguration.cs" />
     <Compile Include="IController.cs" />
     <Compile Include="IDescribable.cs" />
-    <Compile Include="IImporter.cs" />
     <Compile Include="IPlugin.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="IStartup.cs" />
