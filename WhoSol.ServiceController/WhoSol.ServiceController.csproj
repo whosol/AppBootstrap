@@ -78,7 +78,6 @@
     <Compile Include="Controllers\Dto\PluginDto.cs" />
     <Compile Include="Controllers\Dto\PluginsDto.cs" />
     <Compile Include="Controllers\PluginsController.cs" />
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
