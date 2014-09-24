@@ -59,32 +59,5 @@ namespace WhoSol.ServiceController.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Actemium Service Controller is used to host the Actemium services. See documentation for more information.
-        /// </summary>
-        internal static string ServiceDescription {
-            get {
-                return ResourceManager.GetString("ServiceDescription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Actemium Service Controller.
-        /// </summary>
-        internal static string ServiceDisplayName {
-            get {
-                return ResourceManager.GetString("ServiceDisplayName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to FASSC.
-        /// </summary>
-        internal static string ServiceName {
-            get {
-                return ResourceManager.GetString("ServiceName", resourceCulture);
-            }
-        }
     }
 }

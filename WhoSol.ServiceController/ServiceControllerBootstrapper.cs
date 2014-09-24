@@ -1,35 +1,50 @@
-﻿using System.IO;
-using WhoSol.Contracts;
-using WhoSol.ServiceController.Properties;
+﻿using log4net.Config;
 using Ninject;
-using Topshelf;
-using System.Reflection;
-using System;
-using WhoSol.Contracts.Exceptions;
-using Ninject.Extensions.Logging.Log4net;
 using Ninject.Extensions.Logging;
-using log4net.Config;
+using Ninject.Extensions.Logging.Log4net;
+using System;
+using System.IO;
+using System.Reflection;
+using Topshelf;
+using WhoSol.Contracts;
+using WhoSol.Contracts.Exceptions;
 
 namespace WhoSol.ServiceController
 {
-    class Program
+    public class ServiceControllerBootstrapper : IBootstrapper
     {
         private static ILogger logger;
         private static IKernel kernel;
         private static IConfiguration configuration;
+        private readonly string serviceName;
+        private readonly string serviceDisplayName;
+        private readonly string serviceDescription;
 
-        private static void Main(string[] args)
+        public ServiceControllerBootstrapper(string serviceName, string serviceDisplayName, string serviceDescription)
+        {
+            this.serviceName = serviceName;
+            this.serviceDisplayName = serviceDisplayName;
+            this.serviceDescription = serviceDescription;
+        }
+
+        public void Start()
         {
             CreateKernel();
 
             InitialiseConfiguration();
 
-            LoadAssemblies("ThirdPartyDirectory", "WhoSol.ThirdParty.dll");
+            LoadAssemblies("ThirdPartyDirectory", "*ThirdParty.dll");
 
             LoadAssemblies("PluginDirectory", "*Plugin.dll");
 
             StartService();
         }
+
+        public void Stop()
+        {
+
+        }
+
         private static void InitialiseConfiguration()
         {
             configuration = kernel.Get<IConfiguration>();
@@ -50,7 +65,7 @@ namespace WhoSol.ServiceController
             logger.Info("Ninject Kernel created");
         }
 
-        private static void StartService()
+        private void StartService()
         {
             HostFactory.Run(x =>
             {
@@ -59,8 +74,6 @@ namespace WhoSol.ServiceController
                     s.ConstructUsing(name => kernel.Get<IController>());
                     s.WhenStarted(controller =>
                     {
-
-
                         try
                         {
                             controller.Start();
@@ -78,9 +91,9 @@ namespace WhoSol.ServiceController
                 x.RunAsLocalSystem();
                 x.StartAutomatically();
 
-                x.SetDescription(Resources.ServiceDescription);
-                x.SetDisplayName(Resources.ServiceDisplayName);
-                x.SetServiceName(Resources.ServiceName);
+                x.SetDescription(serviceDescription);
+                x.SetDisplayName(serviceDisplayName);
+                x.SetServiceName(serviceName);
 
             });
         }
