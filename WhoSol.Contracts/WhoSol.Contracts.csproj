@@ -68,6 +68,7 @@
     <Compile Include="IConfiguration.cs" />
     <Compile Include="IController.cs" />
     <Compile Include="IDescribable.cs" />
+    <Compile Include="IDirectoryScanner.cs" />
     <Compile Include="IParser.cs" />
     <Compile Include="IPlugin.cs" />
     <Compile Include="IRepository.cs" />

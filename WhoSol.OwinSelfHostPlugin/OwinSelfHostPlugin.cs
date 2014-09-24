@@ -5,6 +5,7 @@ using WhoSol.Utilities;
 using Microsoft.Owin.Hosting;
 using Ninject.Extensions.Logging;
 using System;
+using System.Collections.Generic;
 
 namespace WhoSol.OwinSelfHostPlugin
 {
@@ -12,6 +13,15 @@ namespace WhoSol.OwinSelfHostPlugin
     {
         private IDisposable owinServer;
         private readonly OwinSelfHostStartup startup;
+        private readonly Dictionary<ConfigSection, Dictionary<ConfigKey, object>> moduleConfig;
+
+        public OwinSelfHostPlugin(ILogger logger, IConfiguration configuration, OwinSelfHostStartup startup)
+            : base(logger, configuration)
+        {
+            this.startup = startup;
+            this.moduleConfig = ConfigFile<ConfigSection, ConfigKey>.Parse(this, configuration.Get<string>("PluginDirectory"));
+            configuration.Set("OwinSelfHost", this.moduleConfig);
+        }
 
         public override string Description
         {
@@ -22,7 +32,8 @@ namespace WhoSol.OwinSelfHostPlugin
         {
             owinServer = WebApp.Start(
                 string.Format("http://*:{0}", 
-                configuration.GetModuleConfig<ConfigSection,ConfigKey>("OwinSelfHost")[ConfigSection.WebServer][ConfigKey.Port]), this.startup.Configuration);
+                moduleConfig[ConfigSection.WebServer][ConfigKey.Port]), 
+                this.startup.Configuration);
         }
 
         public override void Stop()
@@ -30,11 +41,6 @@ namespace WhoSol.OwinSelfHostPlugin
             owinServer.Dispose();
         }
 
-        public OwinSelfHostPlugin(ILogger logger, IConfiguration configuration, OwinSelfHostStartup startup)
-            : base(logger, configuration)
-        {
-            this.startup = startup;
-            configuration.Set("OwinSelfHost", ConfigFile<ConfigSection, ConfigKey>.Parse(this, configuration.Get<string>("PluginDirectory"), "PluginSettings"));
-        }
+      
     }
 }

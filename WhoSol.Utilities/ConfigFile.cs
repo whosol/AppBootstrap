@@ -14,9 +14,13 @@ namespace WhoSol.Utilities
 
         #region Public Static Methods
 
-        public static Dictionary<TS, Dictionary<TK, object>> Parse(object sender, string directory, string rootElement)
+        public static Dictionary<TS, Dictionary<TK, object>> Parse(object sender, string directory, string rootElement = "PluginSettings", string extension = "pisettings")
         {
-            var fileName = directory + sender.GetType().Assembly.GetName().Name + ".pisettings";
+            if (!extension.StartsWith("."))
+            {
+                extension = "." + extension;
+            }
+            var fileName = directory + sender.GetType().Assembly.GetName().Name + extension;
 
             if (File.Exists(fileName))
             {
