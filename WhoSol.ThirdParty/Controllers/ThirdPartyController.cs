@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Web.Http;
+using WhoSol.Contracts.Constants;
 
 namespace WhoSol.ThirdParty.Controllers
 {
@@ -19,8 +20,8 @@ namespace WhoSol.ThirdParty.Controllers
         {
             var ret = new ThirdPartyLibraries
             {
-                Libraries = Directory.EnumerateFiles(config.Get<string>("ThirdPartyDirectory"), "*.dll")
-                .Where(file => !string.IsNullOrEmpty(file) && !file.Contains("WhoSol.ThirdParty.dll"))
+                Libraries = Directory.EnumerateFiles(config.Get<string>(Config.ThirdPartyDirectory), "*.dll")
+                .Where(file => !string.IsNullOrEmpty(file) && !file.Contains("ThirdParty.dll"))
                 .Select(file =>
                 {
                     var assembly = Assembly.LoadFrom(file);

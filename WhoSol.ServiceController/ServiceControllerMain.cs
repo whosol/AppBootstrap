@@ -27,7 +27,10 @@ namespace WhoSol.ServiceController
             {
                 try
                 {
-                    plugin.Start();
+                    if (plugin.Autostart)
+                    {
+                        plugin.Start();
+                    }
                 }
                 catch (StratusException ex)
                 {

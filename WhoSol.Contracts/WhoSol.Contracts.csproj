@@ -37,7 +37,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Ninject.Extensions.Logging">
-      <HintPath>..\packages\Ninject.Extensions.Logging.3.2.0.0\lib\net45-full\Ninject.Extensions.Logging.dll</HintPath>
+      <HintPath>..\..\packages\Ninject.Extensions.Logging.3.2.1.0\lib\net45-full\Ninject.Extensions.Logging.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Owin">
@@ -61,6 +61,7 @@
   <ItemGroup>
     <Compile Include="Base\BaseController.cs" />
     <Compile Include="Base\BaseCollectionDto.cs" />
+    <Compile Include="Constants\Config.cs" />
     <Compile Include="Enums\PersistStatus.cs" />
     <Compile Include="Enums\ErrorLevel.cs" />
     <Compile Include="Exceptions\StratusException.cs" />

@@ -6,6 +6,7 @@ using Microsoft.Owin.Hosting;
 using Ninject.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using WhoSol.Contracts.Constants;
 
 namespace WhoSol.OwinSelfHostPlugin
 {
@@ -19,7 +20,7 @@ namespace WhoSol.OwinSelfHostPlugin
             : base(logger, configuration)
         {
             this.startup = startup;
-            this.moduleConfig = ConfigFile<ConfigSection, ConfigKey>.Parse(this, configuration.Get<string>("PluginDirectory"));
+            this.moduleConfig = ConfigFile<ConfigSection, ConfigKey>.Parse(this, configuration.Get<string>(Config.PluginDirectory));
             configuration.Set("OwinSelfHost", this.moduleConfig);
         }
 
@@ -28,7 +29,7 @@ namespace WhoSol.OwinSelfHostPlugin
             get { return "OWIN Self Host Plugin"; }
         }
 
-        public override void Start()
+        public override void Start(params object[] args)
         {
             owinServer = WebApp.Start(
                 string.Format("http://*:{0}", 

@@ -16,7 +16,7 @@ namespace WhoSol.ServiceController.Controllers
 
         public PluginsDto Get()
         {
-            return new PluginsDto
+            var val = new PluginsDto
             {
                 Plugins = (from plugin in plugins
                            select new PluginDto
@@ -28,6 +28,7 @@ namespace WhoSol.ServiceController.Controllers
                                Location = plugin.Location
                            }).ToArray()
             };
+            return val;
         }
     }
 }

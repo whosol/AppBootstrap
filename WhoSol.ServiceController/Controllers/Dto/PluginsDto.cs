@@ -1,8 +1,12 @@
 ﻿
+using System.Collections.Generic;
+using System.Runtime.Serialization;
 namespace WhoSol.ServiceController.Controllers.Dto
 {
-   public class PluginsDto
+    [DataContract(Namespace = "")]
+    public class PluginsDto
     {
-        public PluginDto[] Plugins { get; set; }
+        [DataMember(IsRequired = false, EmitDefaultValue = false)]
+        public IEnumerable<PluginDto> Plugins { get; set; }
     }
 }

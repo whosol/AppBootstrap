@@ -7,6 +7,7 @@ using System.IO;
 using System.Reflection;
 using Topshelf;
 using WhoSol.Contracts;
+using WhoSol.Contracts.Constants;
 using WhoSol.Contracts.Exceptions;
 
 namespace WhoSol.ServiceController
@@ -31,12 +32,6 @@ namespace WhoSol.ServiceController
         {
             CreateKernel();
 
-            InitialiseConfiguration();
-
-            LoadAssemblies("ThirdPartyDirectory", "*ThirdParty.dll");
-
-            LoadAssemblies("PluginDirectory", "*Plugin.dll");
-
             StartService();
         }
 
@@ -49,21 +44,28 @@ namespace WhoSol.ServiceController
         {
             configuration = kernel.Get<IConfiguration>();
 
-            configuration.Set("RootDirectory", AssemblyDirectory);
-            configuration.Set("PluginDirectory", AssemblyDirectory + "Plugins\\");
-            configuration.Set("ThirdPartyDirectory", AssemblyDirectory + "ThirdParty\\");
+            configuration.Set(Config.RootDirectory, AssemblyDirectory);
+            configuration.Set(Config.PluginDirectory, AssemblyDirectory + "Plugins\\");
+            configuration.Set(Config.ThirdPartyDirectory, AssemblyDirectory + "ThirdParty\\");
+            configuration.Set(Config.LogDirectory, AssemblyDirectory + "Logs\\");
         }
 
         private static void CreateKernel()
         {
-            BasicConfigurator.Configure();
-            // XmlConfigurator.Configure();
+
             kernel = new StandardKernel(new ServiceControllerModule(), new Log4NetModule());
 
-            GetLogger();
+            InitialiseConfiguration();
+
+            CreateLogger();
+
+            LoadAssemblies(Config.ThirdPartyDirectory, "*ThirdParty.dll");
+
+            LoadAssemblies(Config.PluginDirectory, "*Plugin.dll");
 
             logger.Info("Ninject Kernel created");
         }
+
 
         private void StartService()
         {
@@ -107,17 +109,22 @@ namespace WhoSol.ServiceController
             }
             else
             {
-                assemblySearchFilter = string.Format("{0}{1}", configuration.Get<string>("RootDirectory"), filter);
+                assemblySearchFilter = string.Format("{0}{1}", configuration.Get<string>(Config.RootDirectory), filter);
             }
 
             kernel.Load(assemblySearchFilter);
             logger.Debug(string.Format("Loaded assemblies from {0}", assemblySearchFilter));
         }
 
-        private static void GetLogger()
+        private static void CreateLogger()
         {
             var loggerFactory = kernel.Get<ILoggerFactory>();
             logger = loggerFactory.GetCurrentClassLogger();
+            if (!Directory.Exists(configuration.Get<string>(Config.LogDirectory)))
+            {
+                Directory.CreateDirectory(configuration.Get<string>(Config.LogDirectory));
+            }
+            BasicConfigurator.Configure();
         }
 
         private static string AssemblyDirectory

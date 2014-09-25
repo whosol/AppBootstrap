@@ -5,6 +5,7 @@ using Microsoft.Owin.StaticFiles;
 using Owin;
 using System.IO;
 using Ninject.Extensions.Logging;
+using WhoSol.Contracts.Constants;
 
 namespace WhoSol.WebServerPlugin
 {
@@ -21,7 +22,7 @@ namespace WhoSol.WebServerPlugin
 
         public void Configuration(IAppBuilder app)
         {
-            var staticFilesDir = Path.Combine(configuration.Get<string>("PluginDirectory"), "Web");
+            var staticFilesDir = Path.Combine(configuration.Get<string>(Config.PluginDirectory), "Web");
 
             if (Directory.Exists(staticFilesDir))
             {

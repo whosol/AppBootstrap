@@ -13,9 +13,10 @@ namespace WhoSol.Contracts.Base
         {
             this.configuration = configuration;
             this.logger = logger;
+            Autostart = true;
         }
 
-        public virtual void Start()
+        public virtual void Start(params object[] args)
         {
 
         }
@@ -24,6 +25,8 @@ namespace WhoSol.Contracts.Base
         {
 
         }
+
+        public bool Autostart { get; protected set; }
 
         public virtual string Name
         {
