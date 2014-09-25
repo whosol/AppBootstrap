@@ -37,7 +37,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Ninject.Extensions.Logging">
-      <HintPath>..\..\packages\Ninject.Extensions.Logging.3.2.1.0\lib\net45-full\Ninject.Extensions.Logging.dll</HintPath>
+      <HintPath>..\packages\Ninject.Extensions.Logging.3.2.1.0\lib\net45-full\Ninject.Extensions.Logging.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />

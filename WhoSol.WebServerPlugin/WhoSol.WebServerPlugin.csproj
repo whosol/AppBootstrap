@@ -33,27 +33,27 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Owin">
-      <HintPath>..\..\packages\Microsoft.Owin.3.0.0\lib\net45\Microsoft.Owin.dll</HintPath>
+      <HintPath>..\packages\Microsoft.Owin.3.0.0\lib\net45\Microsoft.Owin.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.Owin.Diagnostics">
-      <HintPath>..\..\packages\Microsoft.Owin.Diagnostics.3.0.0\lib\net45\Microsoft.Owin.Diagnostics.dll</HintPath>
+      <HintPath>..\packages\Microsoft.Owin.Diagnostics.3.0.0\lib\net45\Microsoft.Owin.Diagnostics.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.Owin.FileSystems">
-      <HintPath>..\..\packages\Microsoft.Owin.FileSystems.3.0.0\lib\net45\Microsoft.Owin.FileSystems.dll</HintPath>
+      <HintPath>..\packages\Microsoft.Owin.FileSystems.3.0.0\lib\net45\Microsoft.Owin.FileSystems.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.Owin.Host.HttpListener">
-      <HintPath>..\..\packages\Microsoft.Owin.Host.HttpListener.3.0.0\lib\net45\Microsoft.Owin.Host.HttpListener.dll</HintPath>
+      <HintPath>..\packages\Microsoft.Owin.Host.HttpListener.3.0.0\lib\net45\Microsoft.Owin.Host.HttpListener.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.Owin.Hosting">
-      <HintPath>..\..\packages\Microsoft.Owin.Hosting.3.0.0\lib\net45\Microsoft.Owin.Hosting.dll</HintPath>
+      <HintPath>..\packages\Microsoft.Owin.Hosting.3.0.0\lib\net45\Microsoft.Owin.Hosting.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.Owin.StaticFiles">
-      <HintPath>..\..\packages\Microsoft.Owin.StaticFiles.3.0.0\lib\net45\Microsoft.Owin.StaticFiles.dll</HintPath>
+      <HintPath>..\packages\Microsoft.Owin.StaticFiles.3.0.0\lib\net45\Microsoft.Owin.StaticFiles.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Ninject">
@@ -61,7 +61,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Ninject.Extensions.Logging">
-      <HintPath>..\..\packages\Ninject.Extensions.Logging.3.2.1.0\lib\net45-full\Ninject.Extensions.Logging.dll</HintPath>
+      <HintPath>..\packages\Ninject.Extensions.Logging.3.2.1.0\lib\net45-full\Ninject.Extensions.Logging.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
