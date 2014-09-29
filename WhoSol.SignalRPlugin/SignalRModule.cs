@@ -7,8 +7,8 @@ namespace WhoSol.SignalRPlugin
     {
         public override void Load()
         {
-            Bind<IPlugin>().To<SignalRPlugin>();
-            Bind<IStartup>().To<SignalRStartup>();
+            Bind<IPlugin>().To<SignalRPlugin>().InSingletonScope();
+            Bind<IStartup>().To<SignalRStartup>().InSingletonScope();
         }
     }
 }

@@ -7,7 +7,7 @@ namespace WhoSol.OwinSelfHostPlugin
     {
         public override void Load()
         {
-            Bind<IPlugin>().To<OwinSelfHostPlugin>().InSingletonScope();
+            Bind<IPlugin>().To<OwinSelfHostPlugin>().Named("OWIN");
         }
     }
 }

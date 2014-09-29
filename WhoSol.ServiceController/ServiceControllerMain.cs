@@ -17,7 +17,10 @@ namespace WhoSol.ServiceController
         {
             foreach (var plugin in plugins)
             {
-                plugin.Stop();
+                if (plugin.Autostart)
+                {
+                    plugin.Stop();                    
+                }
             }
         }
 

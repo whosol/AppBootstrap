@@ -1,4 +1,4 @@
-﻿using WhoSol.Contracts;
+﻿ using WhoSol.Contracts;
 using WhoSol.WebApiPlugin.Formatters;
 using Ninject;
 using Owin;
@@ -6,6 +6,7 @@ using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
 using System.Web.Http;
 using Ninject.Extensions.Logging;
+using System.Web.Http.Dispatcher;
 
 namespace WhoSol.WebApiPlugin
 {
@@ -33,6 +34,7 @@ namespace WhoSol.WebApiPlugin
             webApiConfiguration.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
+
                 defaults: new { id = RouteParameter.Optional, controller = "test" }
                 );
 

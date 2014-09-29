@@ -14,7 +14,7 @@ namespace WhoSol.SignalRPlugin
         public SignalRPlugin(ILogger logger, IConfiguration configuration)
             : base(logger, configuration)
         {
-
+            Autostart = false;
         }
     }
 }

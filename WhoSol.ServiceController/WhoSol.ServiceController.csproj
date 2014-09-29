@@ -37,6 +37,25 @@
   <PropertyGroup>
     <StartupObject />
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug - Lecce|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug - Lecce\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release - Lecce|AnyCPU'">
+    <OutputPath>bin\Release - Lecce\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug - Basildon|AnyCPU'">
+    <OutputPath>bin\Debug - Basildon\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release - Basildon|AnyCPU'">
+    <OutputPath>bin\Release - Basildon\</OutputPath>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="log4net">
       <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
@@ -73,6 +92,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\Dto\LogDto.cs" />
+    <Compile Include="Controllers\LogsController.cs" />
+    <Compile Include="Controllers\Dto\LogsDto.cs" />
     <Compile Include="ServiceControllerBootstrapper.cs" />
     <Compile Include="Configuration.cs" />
     <Compile Include="Controllers\Dto\PluginDto.cs" />

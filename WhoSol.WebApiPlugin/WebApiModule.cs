@@ -8,8 +8,8 @@ namespace WhoSol.WebApiPlugin
     {
         public override void Load()
         {
-            Bind<IPlugin>().To<WebApiPlugin>().InSingletonScope();
-            Bind<IStartup>().To<WebApiStartup>().InSingletonScope();
+            Bind<IPlugin>().To<WebApiPlugin>();
+            Bind<IStartup>().To<WebApiStartup>();
         }
     }
 }

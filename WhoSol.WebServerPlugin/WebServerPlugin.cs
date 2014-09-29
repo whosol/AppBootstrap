@@ -15,6 +15,7 @@ namespace WhoSol.WebServerPlugin
         public WebServerPlugin(ILogger logger, IConfiguration configuration)
             : base(logger, configuration)
         {
+            Autostart = false;
         }
     }
 }

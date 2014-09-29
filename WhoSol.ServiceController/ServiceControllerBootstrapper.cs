@@ -1,4 +1,8 @@
-﻿using log4net.Config;
+﻿using log4net;
+using log4net.Appender;
+using log4net.Config;
+using log4net.Layout;
+using log4net.Repository.Hierarchy;
 using Ninject;
 using Ninject.Extensions.Logging;
 using Ninject.Extensions.Logging.Log4net;
@@ -118,13 +122,41 @@ namespace WhoSol.ServiceController
 
         private static void CreateLogger()
         {
-            var loggerFactory = kernel.Get<ILoggerFactory>();
+            var loggerFactory = kernel.Get<Ninject.Extensions.Logging.ILoggerFactory>();
             logger = loggerFactory.GetCurrentClassLogger();
+            
+            ConfigureLogger();
+        }
+
+        private static void ConfigureLogger()
+        {
             if (!Directory.Exists(configuration.Get<string>(Config.LogDirectory)))
             {
                 Directory.CreateDirectory(configuration.Get<string>(Config.LogDirectory));
             }
-            BasicConfigurator.Configure();
+
+            Hierarchy hierarchy = (Hierarchy)LogManager.GetRepository();
+            hierarchy.Root.RemoveAllAppenders(); /*Remove any other appenders*/
+
+            PatternLayout pl = new PatternLayout
+            {
+                ConversionPattern = "%date{dd MMM yyyy HH:mm:ss.fff} [%2%t] %-5p [%-10c] %m%n"
+            };
+            pl.ActivateOptions();
+
+            RollingFileAppender rollingFileAppender = new RollingFileAppender
+            {
+                File = configuration.Get<string>(Config.LogDirectory) + "log.txt",
+                AppendToFile = false,
+                RollingStyle = RollingFileAppender.RollingMode.Size,
+                MaxSizeRollBackups = 10,
+                MaximumFileSize = "50GB",
+                LockingModel = new FileAppender.MinimalLock(),
+                Layout = pl
+            };
+            rollingFileAppender.ActivateOptions();
+
+            BasicConfigurator.Configure(rollingFileAppender);
         }
 
         private static string AssemblyDirectory

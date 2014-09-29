@@ -31,6 +31,24 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug - Lecce|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug - Lecce\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release - Lecce|AnyCPU'">
+    <OutputPath>bin\Release - Lecce\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug - Basildon|AnyCPU'">
+    <OutputPath>bin\Debug - Basildon\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release - Basildon|AnyCPU'">
+    <OutputPath>bin\Release - Basildon\</OutputPath>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Ninject">
       <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
@@ -62,6 +80,7 @@
     <Compile Include="Base\BaseController.cs" />
     <Compile Include="Base\BaseCollectionDto.cs" />
     <Compile Include="Constants\Config.cs" />
+    <Compile Include="Enums\LogLevel.cs" />
     <Compile Include="Enums\PersistStatus.cs" />
     <Compile Include="Enums\ErrorLevel.cs" />
     <Compile Include="Exceptions\StratusException.cs" />

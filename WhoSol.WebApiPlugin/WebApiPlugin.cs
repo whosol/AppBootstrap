@@ -15,6 +15,7 @@ namespace WhoSol.WebApiPlugin
         public WebApiPlugin(ILogger logger, IConfiguration configuration)
             : base(logger, configuration)
         {
+            Autostart = false;
         }
     }
 }

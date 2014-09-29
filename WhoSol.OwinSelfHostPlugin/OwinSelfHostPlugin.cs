@@ -31,17 +31,37 @@ namespace WhoSol.OwinSelfHostPlugin
 
         public override void Start(params object[] args)
         {
-            owinServer = WebApp.Start(
-                string.Format("http://*:{0}", 
-                moduleConfig[ConfigSection.WebServer][ConfigKey.Port]), 
-                this.startup.Configuration);
-        }
+            int? port = 0;
+            if (args.Length == 0)
+            {
+                port = int.Parse(moduleConfig[ConfigSection.WebServer][ConfigKey.Port] as string);
 
+            }
+            else if (args.Length == 1)
+            {
+                port = args[0] as int?;
+                if (port == null)
+                {
+                    throw new ArgumentException("Port is in incorrect format");
+                }
+            }
+
+            if (port != null)
+            {
+                logger.Info("Opening OWIN Server on port {0}", port);
+                owinServer = WebApp.Start(string.Format("http://*:{0}", port), this.startup.Configuration);
+            }
+            else
+            {
+                throw new ApplicationException("Cannot open OWIN server as no port is specified");
+            }
+        }
         public override void Stop()
         {
-            owinServer.Dispose();
+            if (owinServer != null)
+            {
+                owinServer.Dispose();
+            }
         }
-
-      
     }
 }
