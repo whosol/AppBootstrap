@@ -18,12 +18,12 @@ namespace WhoSol.Contracts.Base
 
         public virtual void Start(params object[] args)
         {
-
+            logger.Info("Started {0} Plugin", this.ToString());
         }
 
         public virtual void Stop()
         {
-
+            logger.Info("Stopped {0} Plugin", this.ToString());
         }
 
         public bool Autostart { get; protected set; }

@@ -5,6 +5,7 @@ namespace WhoSol.ServiceController.Enums
     {
         Debug,
         Info,
+        Error,
         Warn,
         Fatal
     }
