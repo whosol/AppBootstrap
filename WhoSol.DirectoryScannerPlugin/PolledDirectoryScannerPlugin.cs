@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using WhoSol.Contracts;
 using WhoSol.Contracts.Base;
 using WhoSol.Contracts.Constants;
+using WhoSol.DirectoryScannerPlugin.Properties;
 
 namespace WhoSol.DirectoryScannerPlugin
 {
@@ -18,6 +19,7 @@ namespace WhoSol.DirectoryScannerPlugin
         private readonly CancellationTokenSource cts;
         private readonly CancellationToken ct;
         private string processedFile;
+        private int delay = 30000;
 
         public PolledDirectoryScannerPlugin(ILogger logger, IConfiguration configuration)
             : base(logger, configuration)
@@ -49,7 +51,7 @@ namespace WhoSol.DirectoryScannerPlugin
 
         public void AddDirectory(string path, string filter)
         {
-            logger.Info("Adding {0} with file filter {1} to polled directories", path, filter);
+            logger.Info(Resources.AddingDirectory, path, filter);
             if (directories == null)
             {
                 directories = new Dictionary<string, string>();
@@ -59,22 +61,45 @@ namespace WhoSol.DirectoryScannerPlugin
 
         public override void Start(params object[] args)
         {
-            int delay = 30000;
-
             if (args.Length == 1)
             {
                 delay = int.Parse(args[0] as string) * 1000;
             }
 
-            logger.Info("Directory polling every {0} seconds", delay / 1000);
+            logger.Info(Resources.DirectoryPollRate, delay / 1000);
 
             if (!string.IsNullOrEmpty(ProcessedFile) && File.Exists(ProcessedFile))
             {
                 foundFiles.AddRange(File.ReadAllLines(ProcessedFile));
-                logger.Info("Found {0} files that have already been parsed", foundFiles.Count);
+                logger.Info(Resources.FoundAlreadyParsed, foundFiles.Count);
             }
 
-            Task.Factory.StartNew(async () =>
+            Task.Factory.StartNew<Task>(PollDirectory, ct);
+
+            logger.Info(Resources.StartedPlugin);
+        }
+
+        public override void Stop()
+        {
+            cts.Cancel();
+
+            logger.Info(Resources.StoppedPlugin);
+        }
+
+        public event Action<IEnumerable<string>> FoundFiles;
+
+
+        public override string Description
+        {
+            get
+            {
+                return Resources.PluginDescription;
+            }
+        }
+
+        private async Task PollDirectory()
+        {
+            try
             {
                 while (!ct.IsCancellationRequested)
                 {
@@ -82,7 +107,7 @@ namespace WhoSol.DirectoryScannerPlugin
                     {
                         if (!Directory.Exists(directory.Key))
                         {
-                            logger.Warn("Directory {0} does not exist. Please check configuration!", directory.Key);
+                            logger.Warn(Resources.DirectoryDoesNotExist, directory.Key);
                             continue;
                         }
 
@@ -90,9 +115,9 @@ namespace WhoSol.DirectoryScannerPlugin
 
                         var newFiles = files.Except(foundFiles);
 
-                        if (newFiles.Count() > 0)
+                        if (newFiles != null && newFiles.Count() > 0)
                         {
-                            logger.Info("{0} new files found", newFiles.Count());
+                            logger.Info(Resources.NewFilesFound, newFiles.Count());
 
                             foundFiles = files.ToList();
 
@@ -102,26 +127,22 @@ namespace WhoSol.DirectoryScannerPlugin
                             }
                             FoundFiles(newFiles);
                         }
+                        else
+                        {
+                            logger.Info(Resources.NoNewFilesFound);
+                        }
                     }
                     await Task.Delay(delay, ct);
                 }
-            }, ct);
-
-            logger.Info("Started Polled Directory Scanner Plugin");
-        }
-
-        public override void Stop()
-        {
-            cts.Cancel();
-            logger.Info("Stopped Polled Directory Scanner Plugin");
-        }
-
-        public event Action<IEnumerable<string>> FoundFiles;
-
-
-        public override string Description
-        {
-            get { return "Polled Directory Scanner Plugin"; }
+            }
+            catch (TaskCanceledException)
+            { 
+                //TaskCancelledException expected during shutdown
+            }
+            catch (Exception ex)
+            {
+                logger.ErrorException(Resources.PluginTaskException, ex);
+            }
         }
     }
 }

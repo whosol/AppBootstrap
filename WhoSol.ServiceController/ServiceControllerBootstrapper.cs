@@ -94,6 +94,7 @@ namespace WhoSol.ServiceController
                     s.WhenStopped(controller => controller.Stop());
 
                 });
+                x.DependsOnMsSql();
                 x.RunAsLocalSystem();
                 x.StartAutomatically();
 

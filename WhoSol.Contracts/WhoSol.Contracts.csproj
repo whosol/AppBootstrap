@@ -63,6 +63,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web.Http, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -79,6 +80,7 @@
   <ItemGroup>
     <Compile Include="Base\BaseController.cs" />
     <Compile Include="Base\BaseCollectionDto.cs" />
+    <Compile Include="Base\BaseUnitOfWork.cs" />
     <Compile Include="Constants\Config.cs" />
     <Compile Include="Enums\LogLevel.cs" />
     <Compile Include="Enums\PersistStatus.cs" />
@@ -89,6 +91,8 @@
     <Compile Include="IController.cs" />
     <Compile Include="IDescribable.cs" />
     <Compile Include="IDirectoryScanner.cs" />
+    <Compile Include="IEntity.cs" />
+    <Compile Include="INamedEntity.cs" />
     <Compile Include="IParser.cs" />
     <Compile Include="IPlugin.cs" />
     <Compile Include="IRepository.cs" />

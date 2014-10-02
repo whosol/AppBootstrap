@@ -6,14 +6,11 @@ namespace WhoSol.Contracts
 {
     public interface IUnitOfWork : IDisposable
     {
-
-        //TODO: Add IRepository calls for the entity groups.
-
+        object Store { get; set; }
         void Commit();
         int ExecuteSp(string p, params SqlParameter[] zoneParam);
         bool Exists { get; }
         string ConnectionString { get; }
-
-        void Initialise();
+        void Initialise(params object[] args);
     }
 }

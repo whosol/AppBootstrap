@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace WhoSol.Utilities
+namespace WhoSol.Utilities.Extensions
 {
     public static class SplitExtensions
     {
