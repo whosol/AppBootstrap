@@ -97,7 +97,7 @@ namespace WhoSol.DirectoryScannerPlugin.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} new files found.
+        ///   Looks up a localized string similar to {0} new files found {1}.
         /// </summary>
         internal static string NewFilesFound {
             get {
@@ -106,7 +106,7 @@ namespace WhoSol.DirectoryScannerPlugin.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No new files found.
+        ///   Looks up a localized string similar to No new files found in {0}.
         /// </summary>
         internal static string NoNewFilesFound {
             get {

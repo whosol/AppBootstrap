@@ -1,5 +1,6 @@
 ﻿using Ninject.Extensions.Logging;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Web.Http;
@@ -25,7 +26,22 @@ namespace WhoSol.ServiceController.Controllers
         {
             return new LogsDto
             {
-                LogEntry = File.ReadAllLines(configuration.Get<string>(Config.LogDirectory) + "log.txt").Select(line =>
+                LogEntry = CreateDtos()
+            };
+        }
+
+        public LogsDto Get(LogLevel level)
+        {
+            return new LogsDto
+            {
+                LogEntry = CreateDtos().Where(l => l.LogLevel == level)
+            };
+        }
+
+        private IEnumerable<LogDto> CreateDtos()
+        {
+            return File.ReadAllLines(configuration.Get<string>(Config.LogDirectory) + "log.txt")
+                .Select(line =>
                 {
                     var entry = line.Split('[', ']');
                     return new LogDto
@@ -36,8 +52,7 @@ namespace WhoSol.ServiceController.Controllers
                         Class = entry[3].Trim(),
                         Message = entry[4].Trim(),
                     };
-                })
-            };
+                });
         }
     }
 }

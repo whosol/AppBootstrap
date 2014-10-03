@@ -39,13 +39,21 @@ namespace WhoSol.XMLDBPlugin
             if (FindById(newEntity.Id) == null)
             {
                 db.Add(newEntity.ToXElement<T>());
-                entitySet.Add(newEntity);       
+                entitySet.Add(newEntity);
             }
         }
 
         public void Remove(T entity)
         {
             entitySet.RemoveAll(o => o.Id == entity.Id);
+            var entityToRemove = db.Elements()
+                .Where(el => (int)el.Attribute("Id") == entity.Id)
+                .SingleOrDefault();
+
+            if (entityToRemove!=null)
+            {
+                entityToRemove.Remove();               
+            }
         }
 
         public object Store

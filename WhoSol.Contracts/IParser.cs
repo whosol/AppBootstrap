@@ -1,8 +1,7 @@
-﻿
-namespace WhoSol.Contracts
+﻿namespace WhoSol.Contracts
 {
-    public interface IParser
+    public interface IParser<T>
     {
-        void Parse(string filename);
+        T Parse(string filename);
     }
 }

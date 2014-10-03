@@ -1,12 +1,13 @@
 ﻿using log4net;
 using log4net.Appender;
 using log4net.Config;
+using log4net.Core;
 using log4net.Layout;
 using log4net.Repository.Hierarchy;
 using Ninject;
-using Ninject.Extensions.Logging;
 using Ninject.Extensions.Logging.Log4net;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using Topshelf;
@@ -18,18 +19,23 @@ namespace WhoSol.ServiceController
 {
     public class ServiceControllerBootstrapper : IBootstrapper
     {
-        private static ILogger logger;
-        private static IKernel kernel;
-        private static IConfiguration configuration;
+        private Ninject.Extensions.Logging.ILogger logger;
+        private IKernel kernel;
+        private IConfiguration configuration;
         private readonly string serviceName;
         private readonly string serviceDisplayName;
         private readonly string serviceDescription;
-
-        public ServiceControllerBootstrapper(string serviceName, string serviceDisplayName, string serviceDescription)
+        private readonly bool localDb;
+        private readonly bool eventLog;
+        private readonly bool consoleLog;
+        public ServiceControllerBootstrapper(string serviceName, string serviceDisplayName, string serviceDescription, bool localDb, bool eventLog, bool consoleLog)
         {
             this.serviceName = serviceName;
             this.serviceDisplayName = serviceDisplayName;
             this.serviceDescription = serviceDescription;
+            this.localDb = localDb;
+            this.eventLog = eventLog;
+            this.consoleLog = consoleLog;
         }
 
         public void Start()
@@ -44,17 +50,18 @@ namespace WhoSol.ServiceController
 
         }
 
-        private static void InitialiseConfiguration()
+        private void InitialiseConfiguration()
         {
             configuration = kernel.Get<IConfiguration>();
 
             configuration.Set(Config.RootDirectory, AssemblyDirectory);
             configuration.Set(Config.PluginDirectory, AssemblyDirectory + "Plugins\\");
             configuration.Set(Config.ThirdPartyDirectory, AssemblyDirectory + "ThirdParty\\");
+            configuration.Set(Config.ApplicationName, serviceDisplayName);
             configuration.Set(Config.LogDirectory, AssemblyDirectory + "Logs\\");
         }
 
-        private static void CreateKernel()
+        private void CreateKernel()
         {
 
             kernel = new StandardKernel(new ServiceControllerModule(), new Log4NetModule());
@@ -94,7 +101,10 @@ namespace WhoSol.ServiceController
                     s.WhenStopped(controller => controller.Stop());
 
                 });
-                x.DependsOnMsSql();
+                if (localDb)
+                {
+                    x.DependsOnMsSql();
+                }
                 x.RunAsLocalSystem();
                 x.StartAutomatically();
 
@@ -105,7 +115,7 @@ namespace WhoSol.ServiceController
             });
         }
 
-        private static void LoadAssemblies(string directoryKey, string filter)
+        private void LoadAssemblies(string directoryKey, string filter)
         {
             string assemblySearchFilter = string.Empty;
             if (Directory.Exists(configuration.Get<string>(directoryKey)))
@@ -121,33 +131,35 @@ namespace WhoSol.ServiceController
             logger.Debug(string.Format("Loaded assemblies from {0}", assemblySearchFilter));
         }
 
-        private static void CreateLogger()
+        private void CreateLogger()
         {
             var loggerFactory = kernel.Get<Ninject.Extensions.Logging.ILoggerFactory>();
             logger = loggerFactory.GetCurrentClassLogger();
-            
+
             ConfigureLogger();
         }
 
-        private static void ConfigureLogger()
+        private void ConfigureLogger()
         {
+            var appenders = new List<IAppender>();
+
             if (!Directory.Exists(configuration.Get<string>(Config.LogDirectory)))
             {
                 Directory.CreateDirectory(configuration.Get<string>(Config.LogDirectory));
             }
 
-            Hierarchy hierarchy = (Hierarchy)LogManager.GetRepository();
+            var hierarchy = (Hierarchy)LogManager.GetRepository();
             hierarchy.Root.RemoveAllAppenders(); /*Remove any other appenders*/
 
-            PatternLayout pl = new PatternLayout
+            var pl = new PatternLayout
             {
                 ConversionPattern = "%date{dd MMM yyyy HH:mm:ss.fff} [%2%t] %-5p [%-10c] %m%n"
             };
             pl.ActivateOptions();
 
-            RollingFileAppender rollingFileAppender = new RollingFileAppender
+            var rollingFileAppender = new RollingFileAppender
             {
-                File = configuration.Get<string>(Config.LogDirectory) + "log.txt",
+                File = configuration.Get<string>(Config.LogDirectory) + configuration.Get<string>(Config.ApplicationName) + ".log",
                 AppendToFile = false,
                 RollingStyle = RollingFileAppender.RollingMode.Size,
                 MaxSizeRollBackups = 10,
@@ -157,10 +169,65 @@ namespace WhoSol.ServiceController
             };
             rollingFileAppender.ActivateOptions();
 
-            BasicConfigurator.Configure(rollingFileAppender);
+            appenders.Add(rollingFileAppender);
+
+            if (eventLog)
+            {
+                var eventLogAppender = new EventLogAppender
+                {
+                    ApplicationName = configuration.Get<string>(Config.ApplicationName),
+                    LogName = "Application",
+                    Layout = pl
+                };
+                eventLogAppender.ActivateOptions();
+                appenders.Add(eventLogAppender);
+            }
+            if (consoleLog)
+            {
+                var consoleLogAppender = new ColoredConsoleAppender
+                {
+                    Threshold = Level.All,
+                    Layout = pl
+                };
+                consoleLogAppender.AddMapping(new ColoredConsoleAppender.LevelColors
+                {
+                    Level = Level.Debug,
+                    ForeColor = ColoredConsoleAppender.Colors.Cyan
+                        | ColoredConsoleAppender.Colors.HighIntensity
+                });
+                consoleLogAppender.AddMapping(new ColoredConsoleAppender.LevelColors
+                {
+                    Level = Level.Info,
+                    ForeColor = ColoredConsoleAppender.Colors.Green
+                        | ColoredConsoleAppender.Colors.HighIntensity
+                });
+                consoleLogAppender.AddMapping(new ColoredConsoleAppender.LevelColors
+                {
+                    Level = Level.Info,
+                    ForeColor = ColoredConsoleAppender.Colors.Green
+                        | ColoredConsoleAppender.Colors.HighIntensity
+                });
+                consoleLogAppender.AddMapping(new ColoredConsoleAppender.LevelColors
+                {
+                    Level = Level.Error,
+                    ForeColor = ColoredConsoleAppender.Colors.Red
+                        | ColoredConsoleAppender.Colors.HighIntensity
+                });
+                consoleLogAppender.AddMapping(new ColoredConsoleAppender.LevelColors
+                {
+                    Level = Level.Fatal,
+                    ForeColor = ColoredConsoleAppender.Colors.White
+                        | ColoredConsoleAppender.Colors.HighIntensity,
+                    BackColor = ColoredConsoleAppender.Colors.Red
+                });
+                consoleLogAppender.ActivateOptions();
+                appenders.Add(consoleLogAppender);
+            }
+
+            BasicConfigurator.Configure(appenders.ToArray());
         }
 
-        private static string AssemblyDirectory
+        private string AssemblyDirectory
         {
             get
             {

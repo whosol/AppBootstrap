@@ -20,6 +20,7 @@ namespace WhoSol.DirectoryScannerPlugin
         private readonly CancellationToken ct;
         private string processedFile;
         private int delay = 30000;
+        private Timer pollTimer;
 
         public PolledDirectoryScannerPlugin(ILogger logger, IConfiguration configuration)
             : base(logger, configuration)
@@ -74,9 +75,51 @@ namespace WhoSol.DirectoryScannerPlugin
                 logger.Info(Resources.FoundAlreadyParsed, foundFiles.Count);
             }
 
-            Task.Factory.StartNew<Task>(PollDirectory, ct);
 
+            pollTimer = new Timer(new TimerCallback(ReadDirectories));
+
+            pollTimer.Change(0, delay);
             logger.Info(Resources.StartedPlugin);
+        }
+
+        private void ReadDirectories(object state)
+        {
+            try
+            {
+                foreach (var directory in directories)
+                {
+                    if (!Directory.Exists(directory.Key))
+                    {
+                        logger.Warn(Resources.DirectoryDoesNotExist, directory.Key);
+                        continue;
+                    }
+
+                    var files = Directory.EnumerateFiles(directory.Key, directory.Value);
+
+                    var newFiles = files.Except(foundFiles);
+
+                    if (newFiles != null && newFiles.Count() > 0)
+                    {
+                        logger.Info(Resources.NewFilesFound, newFiles.Count(), directory);
+
+                        foundFiles = files.ToList();
+
+                        if (!string.IsNullOrEmpty(ProcessedFile))
+                        {
+                            File.AppendAllLines(ProcessedFile, newFiles);
+                        }
+                        FoundFiles(newFiles);
+                    }
+                    else
+                    {
+                        logger.Info(Resources.NoNewFilesFound, directory);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.ErrorException(Resources.PluginTaskException, ex);
+            }
         }
 
         public override void Stop()
@@ -97,52 +140,5 @@ namespace WhoSol.DirectoryScannerPlugin
             }
         }
 
-        private async Task PollDirectory()
-        {
-            try
-            {
-                while (!ct.IsCancellationRequested)
-                {
-                    foreach (var directory in directories)
-                    {
-                        if (!Directory.Exists(directory.Key))
-                        {
-                            logger.Warn(Resources.DirectoryDoesNotExist, directory.Key);
-                            continue;
-                        }
-
-                        var files = Directory.EnumerateFiles(directory.Key, directory.Value);
-
-                        var newFiles = files.Except(foundFiles);
-
-                        if (newFiles != null && newFiles.Count() > 0)
-                        {
-                            logger.Info(Resources.NewFilesFound, newFiles.Count());
-
-                            foundFiles = files.ToList();
-
-                            if (!string.IsNullOrEmpty(ProcessedFile))
-                            {
-                                File.AppendAllLines(ProcessedFile, newFiles);
-                            }
-                            FoundFiles(newFiles);
-                        }
-                        else
-                        {
-                            logger.Info(Resources.NoNewFilesFound);
-                        }
-                    }
-                    await Task.Delay(delay, ct);
-                }
-            }
-            catch (TaskCanceledException)
-            { 
-                //TaskCancelledException expected during shutdown
-            }
-            catch (Exception ex)
-            {
-                logger.ErrorException(Resources.PluginTaskException, ex);
-            }
-        }
     }
 }

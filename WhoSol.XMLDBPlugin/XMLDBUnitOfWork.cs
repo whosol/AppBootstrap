@@ -42,23 +42,36 @@ namespace WhoSol.XMLDBPlugin
 
         public void Initialise(params object[] args)
         {
-            if (args.Length == 2 && args[0] is string && (args[1] == null || args[1] is XDocument))
+
+            //Expected 3 arguments, Root Directory, Database Filename & Database schema as an XDocument 
+            if (args.Length == 3 && args[0] is string && args[1] is string && (args[2] == null || args[2] is XDocument))
             {
-                ConnectionString = args[0] as string;
+
+                string xmlDbPath = args[0] as string + "XMLDB\\";
+                string xmlDbFileName = args[1] as string;
+                XDocument schema = args[2] as XDocument;
+
+                ConnectionString = xmlDbPath + xmlDbFileName;
+
+                if (!Directory.Exists(xmlDbPath))
+                {
+                    Directory.CreateDirectory(xmlDbPath);
+                }
+
                 if (File.Exists(ConnectionString))
                 {
                     db = XDocument.Load(ConnectionString);
 
-                    if (!ValidateSchema(db, args[1] as XDocument))
+                    if (!ValidateSchema(db, schema))
                     {
                         logger.Error("Incorrect Schema");
-                        db = args[1] as XDocument;
+                        db = schema;
                         db.Save(ConnectionString);
                     }
                 }
                 else
                 {
-                    db = args[1] as XDocument;
+                    db = schema;
                     db.Save(ConnectionString);
                 }
                 Exists = true;

@@ -130,7 +130,7 @@
     <value>Directory {0} does not exist. Please check configuration!</value>
   </data>
   <data name="NewFilesFound" xml:space="preserve">
-    <value>{0} new files found</value>
+    <value>{0} new files found {1}</value>
   </data>
   <data name="StartedPlugin" xml:space="preserve">
     <value>Started Polled Directory Scanner Plugin</value>
@@ -142,9 +142,9 @@
     <value>Polled Directory Scanner Plugin</value>
   </data>
   <data name="NoNewFilesFound" xml:space="preserve">
-    <value>No new files found</value>
+    <value>No new files found in {0}</value>
   </data>
-  <data name="PluginTaskException" space="preserve">
+  <data name="PluginTaskException" xml:space="preserve">
     <value>Polled directory plugin caused an exception</value>
   </data>
 </root>
