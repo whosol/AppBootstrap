@@ -39,6 +39,19 @@ namespace WhoSol.EntityFrameworkPlugin
             objectSet.DeleteObject(entity);
         }
 
+        public bool Update(T entity)
+        {
+            if (entity == null)
+            {
+                return false;
+            }
+            else
+            {
+                objectSet.Attach(entity);
+                return true;
+            }
+        }
+
         public object Store
         {
             get { return dbContext; }

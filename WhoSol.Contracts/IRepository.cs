@@ -12,5 +12,6 @@ namespace WhoSol.Contracts
         T FindById(int id);
         void Add(T newEntity);
         void Remove(T entity);
+        bool Update(T entity);
     }
 }

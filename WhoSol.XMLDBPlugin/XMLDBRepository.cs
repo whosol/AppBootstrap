@@ -56,6 +56,22 @@ namespace WhoSol.XMLDBPlugin
             }
         }
 
+        public bool Update(T entity)
+        {
+            T entityToUpdate = FindById(entity.Id);
+
+            if (entityToUpdate != null)
+            {
+                Remove(entityToUpdate);
+                Add(entity);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public object Store
         {
             get { return db; }
