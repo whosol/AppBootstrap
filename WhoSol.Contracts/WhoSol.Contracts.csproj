@@ -94,6 +94,7 @@
     <Compile Include="IDescribable.cs" />
     <Compile Include="IDirectoryScanner.cs" />
     <Compile Include="IEntity.cs" />
+    <Compile Include="IFactory.cs" />
     <Compile Include="INamedEntity.cs" />
     <Compile Include="IParser.cs" />
     <Compile Include="IPlugin.cs" />

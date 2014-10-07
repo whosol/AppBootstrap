@@ -2,6 +2,6 @@
 {
     public interface IParser<T>
     {
-        T Parse(string filename);
+        T Parse(string data);
     }
 }

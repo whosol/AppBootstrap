@@ -128,7 +128,7 @@ namespace WhoSol.ServiceController
             }
 
             kernel.Load(assemblySearchFilter);
-            logger.Debug(string.Format("Loaded assemblies from {0}", assemblySearchFilter));
+            logger.Info(string.Format("Loaded assemblies from {0}", assemblySearchFilter));
         }
 
         private void CreateLogger()
