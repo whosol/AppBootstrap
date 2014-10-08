@@ -92,6 +92,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\VersionInfo.cs">
+      <Link>VersionInfo.cs</Link>
+    </Compile>
     <Compile Include="Controllers\Dto\LogDto.cs" />
     <Compile Include="Controllers\LogsController.cs" />
     <Compile Include="Controllers\Dto\LogsDto.cs" />

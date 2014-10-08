@@ -25,17 +25,18 @@ namespace WhoSol.ServiceController
         private readonly string serviceName;
         private readonly string serviceDisplayName;
         private readonly string serviceDescription;
-        private readonly bool localDb;
         private readonly bool eventLog;
         private readonly bool consoleLog;
-        public ServiceControllerBootstrapper(string serviceName, string serviceDisplayName, string serviceDescription, bool localDb, bool eventLog, bool consoleLog)
+        private readonly string[] dependencies;
+
+        public ServiceControllerBootstrapper(string serviceName, string serviceDisplayName, string serviceDescription, bool eventLog, bool consoleLog, params string[] dependencies)
         {
             this.serviceName = serviceName;
             this.serviceDisplayName = serviceDisplayName;
             this.serviceDescription = serviceDescription;
-            this.localDb = localDb;
             this.eventLog = eventLog;
             this.consoleLog = consoleLog;
+            this.dependencies = dependencies;
         }
 
         public void Start()
@@ -101,9 +102,9 @@ namespace WhoSol.ServiceController
                     s.WhenStopped(controller => controller.Stop());
 
                 });
-                if (localDb)
+                foreach (var dependency in dependencies)
                 {
-                    x.DependsOnMsSql();
+                    x.DependsOn(dependency);
                 }
                 x.RunAsLocalSystem();
                 x.StartAutomatically();
@@ -203,8 +204,8 @@ namespace WhoSol.ServiceController
                 });
                 consoleLogAppender.AddMapping(new ColoredConsoleAppender.LevelColors
                 {
-                    Level = Level.Info,
-                    ForeColor = ColoredConsoleAppender.Colors.Green
+                    Level = Level.Warn,
+                    ForeColor = ColoredConsoleAppender.Colors.Yellow
                         | ColoredConsoleAppender.Colors.HighIntensity
                 });
                 consoleLogAppender.AddMapping(new ColoredConsoleAppender.LevelColors

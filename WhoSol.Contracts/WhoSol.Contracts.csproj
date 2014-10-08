@@ -78,6 +78,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\VersionInfo.cs">
+      <Link>VersionInfo.cs</Link>
+    </Compile>
     <Compile Include="Base\BaseController.cs" />
     <Compile Include="Base\BaseCollectionDto.cs" />
     <Compile Include="Base\BaseUnitOfWork.cs" />

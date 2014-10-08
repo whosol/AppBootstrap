@@ -113,6 +113,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\VersionInfo.cs">
+      <Link>VersionInfo.cs</Link>
+    </Compile>
     <Compile Include="Formatters\XmlFormatter.cs" />
     <Compile Include="NinjectDependencyResolver.cs" />
     <Compile Include="NinjectDependencyScope.cs" />

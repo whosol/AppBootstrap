@@ -84,9 +84,9 @@ namespace WhoSol.DirectoryScannerPlugin
 
         private void ReadDirectories(object state)
         {
-            try
+            foreach (var directory in directories)
             {
-                foreach (var directory in directories)
+                try
                 {
                     if (!Directory.Exists(directory.Key))
                     {
@@ -104,21 +104,23 @@ namespace WhoSol.DirectoryScannerPlugin
 
                         foundFiles = files.ToList();
 
-                        if (!string.IsNullOrEmpty(ProcessedFile))
+                        FoundFiles(newFiles);
+
+                        if (!string.IsNullOrEmpty(ProcessedFile) && newFiles != null)
                         {
                             File.AppendAllLines(ProcessedFile, newFiles);
                         }
-                        FoundFiles(newFiles);
                     }
                     else
                     {
                         logger.Info(Resources.NoNewFilesFound, directory);
                     }
+
                 }
-            }
-            catch (Exception ex)
-            {
-                logger.ErrorException(Resources.PluginTaskException, ex);
+                catch (Exception ex)
+                {
+                    logger.ErrorException(Resources.PluginTaskException, ex);
+                }
             }
         }
 

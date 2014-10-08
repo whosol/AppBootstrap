@@ -1,4 +1,6 @@
-﻿using WhoSol.Contracts;
+﻿using Ninject.Extensions.Logging;
+using System;
+using WhoSol.Contracts;
 using WhoSol.Contracts.Enums;
 using WhoSol.Contracts.Exceptions;
 
@@ -7,9 +9,11 @@ namespace WhoSol.ServiceController
     public class ServiceControllerMain : IController
     {
         private readonly IPlugin[] plugins;
+        private readonly ILogger logger;
 
-        public ServiceControllerMain(IPlugin[] plugins)
+        public ServiceControllerMain(ILogger logger, IPlugin[] plugins)
         {
+            this.logger = logger;
             this.plugins = plugins;
         }
 
@@ -50,6 +54,11 @@ namespace WhoSol.ServiceController
                             break;
                     }
 
+                }
+                catch(Exception ex)
+                {
+                    logger.ErrorException(string.Format("Failed to start plugin {0}", plugin), ex);
+                    plugin.Stop();
                 }
             }
         }

@@ -181,6 +181,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\VersionInfo.cs">
+      <Link>VersionInfo.cs</Link>
+    </Compile>
     <Compile Include="Controllers\ThirdPartyLibraries.cs" />
     <Compile Include="Controllers\ThirdPartyLibrary.cs" />
     <Compile Include="Controllers\ThirdPartyController.cs" />
