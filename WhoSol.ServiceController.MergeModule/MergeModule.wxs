@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Module Id="WhoSol.ServiceController" Language="1033" Version="1.0.1.0">
+    <Package Id="{19C757FD-65B5-4331-B257-C3DDEC41B209}" Manufacturer="Who Solutions Ltd" InstallerVersion="200" />
+
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="MergeRedirectFolder">
+        <Component Id="ServiceController" Guid="{5DE189A5-C2A4-4A6D-9697-FBCB17F8006D}">
+          <File Id="WhoSol.ServiceController" Name="WhoSol.ServiceController.dll" Source="$(var.WhoSol.ServiceController.TargetPath)" KeyPath="yes"/>
+        </Component>
+        <Component Id="Contracts" Guid="{02DEA16E-C817-490D-93C5-3FA9C0A3D3F8}">
+          <File Id="WhoSol.Contracts" Name="WhoSol.Contracts.dll" Source="$(var.WhoSol.Contracts.TargetPath)" KeyPath="yes"/>
+        </Component>
+        <Component Id="Utilities" Guid="{7F725AF4-5ADB-4F5A-8F1F-2D6BD5F7BE47}">
+          <File Id="WhoSol.Utilities" Name="WhoSol.Utilities.dll" Source="$(var.WhoSol.Utilities.TargetPath)" KeyPath="yes"/>
+        </Component>
+        <Directory Id="ThirdParty" Name="ThirdParty">
+          <Component Id="ThirdParty" Guid="{3A8C8C5C-E32E-4421-820D-0D9AB5E30ABA}">
+            <File Id="WhoSol.ThirdParty" Name="WhoSol.ThirdParty.dll" Source="$(var.WhoSol.ThirdParty.TargetPath)" KeyPath="yes"/>
+          </Component>
+          <Component Id="EntityFramework" Guid="{85600621-C0ED-4234-9351-E40A80FB102C}">
+            <File Id="EntityFramework" Name="EntityFramework.dll" Source="$(var.WhoSol.ThirdParty.TargetDir)EntityFramework.dll" KeyPath="yes"/>
+          </Component>
+          <Component Id="EntityFramework.SqlServer" Guid="{E3FF2B51-8C91-4AFB-803F-02367BAB40BB}">
+            <File Id="EntityFramework.SqlServer" Name="EntityFramework.SqlServer.dll" Source="$(var.WhoSol.ThirdParty.TargetDir)EntityFramework.SqlServer.dll" KeyPath="yes"/>
+          </Component>
+          <Component Id="log4net" Guid="{9D5314B3-AE93-4092-9221-74D059F277C0}">
+            <File Id="log4net" Name="log4net.dll" Source="$(var.WhoSol.ThirdParty.TargetDir)log4net.dll" KeyPath="yes"/>
+          </Component>
+          <Component Id="Microsoft.AspNet.SignalR.Core" Guid="{0A5562D4-AC86-43AD-93D3-79AF10F28FFF}">
+            <File Id="Microsoft.AspNet.SignalR.Core" Name="Microsoft.AspNet.SignalR.Core.dll" Source="$(var.WhoSol.ThirdParty.TargetDir)Microsoft.AspNet.SignalR.Core.dll" KeyPath="yes"/>
+          </Component>
+          <Component Id="Microsoft.AspNet.SignalR.SystemWeb" Guid="{FB897225-78F6-408A-B3D7-85EB15350BB7}">
+            <File Id="Microsoft.AspNet.SignalR.SystemWeb" Name="Microsoft.AspNet.SignalR.SystemWeb.dll" Source="$(var.WhoSol.ThirdParty.TargetDir)Microsoft.AspNet.SignalR.SystemWeb.dll" KeyPath="yes"/>
+          </Component>
+          <Component Id="Microsoft.Owin" Guid="{2A259AD7-E7A7-41D1-BD0E-65DEF8D5510D}">
+            <File Id="Microsoft.Owin" Name="Microsoft.Owin.dll" Source="$(var.WhoSol.ThirdParty.TargetDir)Microsoft.Owin.dll" KeyPath="yes"/>
+          </Component>
+          <Component Id="Microsoft.Owin.Cors" Guid="{BB59EFF9-27E5-464C-AE0C-D0EC7D34B71E}">
+            <File Id="Microsoft.Owin.Cors" Name="Microsoft.Owin.Cors.dll" Source="$(var.WhoSol.ThirdParty.TargetDir)Microsoft.Owin.Cors.dll" KeyPath="yes"/>
+          </Component>
+          <Component Id="Microsoft.Owin.Diagnostics" Guid="{08F193CE-95F4-481B-9653-D013BC2DA67B}">
+            <File Id="Microsoft.Owin.Diagnostics" Name="Microsoft.Owin.Diagnostics.dll" Source="$(var.WhoSol.ThirdParty.TargetDir)Microsoft.Owin.Diagnostics.dll" KeyPath="yes"/>
+          </Component>
+          <Component Id="Microsoft.Owin.FileSystems" Guid="{171AC62C-4F89-4A54-AD57-596FF26CBF8B}">
+            <File Id="Microsoft.Owin.FileSystems" Name="Microsoft.Owin.FileSystems.dll" Source="$(var.WhoSol.ThirdParty.TargetDir)Microsoft.Owin.FileSystems.dll" KeyPath="yes"/>
+          </Component>
+          <Component Id="Microsoft.Owin.Host.HttpListener" Guid="{A7826BF7-C28E-4EF0-8CAB-045D2B08CB5C}">
+            <File Id="Microsoft.Owin.Host.HttpListener" Name="Microsoft.Owin.Host.HttpListener.dll" Source="$(var.WhoSol.ThirdParty.TargetDir)Microsoft.Owin.Host.HttpListener.dll" KeyPath="yes"/>
+          </Component>
+          <Component Id="Microsoft.Owin.Host.SystemWeb" Guid="{327B726F-8C17-40FD-9CFF-347E12E13AA0}">
+            <File Id="Microsoft.Owin.Host.SystemWeb" Name="Microsoft.Owin.Host.SystemWeb.dll" Source="$(var.WhoSol.ThirdParty.TargetDir)Microsoft.Owin.Host.SystemWeb.dll" KeyPath="yes"/>
+          </Component>
+          <Component Id="Microsoft.Owin.Hosting" Guid="{11137E57-75DA-4FB3-86F1-AF622C867A11}">
+            <File Id="Microsoft.Owin.Hosting" Name="Microsoft.Owin.Hosting.dll" Source="$(var.WhoSol.ThirdParty.TargetDir)Microsoft.Owin.Hosting.dll" KeyPath="yes"/>
+          </Component>
+          <Component Id="Microsoft.Owin.Security" Guid="{1CBC83F5-3EEE-49AA-8F2C-0A067AE4EF60}">
+            <File Id="Microsoft.Owin.Security" Name="Microsoft.Owin.Security.dll" Source="$(var.WhoSol.ThirdParty.TargetDir)Microsoft.Owin.Security.dll" KeyPath="yes"/>
+          </Component>
+          <Component Id="Microsoft.Owin.StaticFiles" Guid="{E288EB1A-5DA6-4B88-AD72-171FE552BE16}">
+            <File Id="Microsoft.Owin.StaticFiles" Name="Microsoft.Owin.StaticFiles.dll" Source="$(var.WhoSol.ThirdParty.TargetDir)Microsoft.Owin.StaticFiles.dll" KeyPath="yes"/>
+          </Component>
+          <Component Id="Newtonsoft.Json" Guid="{D258F3E3-15C2-47A4-AEC1-1220887C8603}">
+            <File Id="Newtonsoft.Json" Name="Newtonsoft.Json.dll" Source="$(var.WhoSol.ThirdParty.TargetDir)Newtonsoft.Json.dll" KeyPath="yes"/>
+          </Component>
+          <Component Id="Ninject" Guid="{956DE5DF-576D-4011-AB36-C09F978B9015}">
+            <File Id="Ninject" Name="Ninject.dll" Source="$(var.WhoSol.ThirdParty.TargetDir)Ninject.dll" KeyPath="yes"/>
+          </Component>
+          <Component Id="Ninject.Extensions.Logging" Guid="{229D0C31-DFEC-4CDE-967D-F701C8AAAD36}">
+            <File Id="Ninject.Extensions.Logging" Name="Ninject.Extensions.Logging.dll" Source="$(var.WhoSol.ThirdParty.TargetDir)Ninject.Extensions.Logging.dll" KeyPath="yes"/>
+          </Component>
+          <Component Id="Ninject.Extensions.Logging.Log4Net" Guid="{8B26FB40-4FD1-46C3-B8EF-95C0FC1F1802}">
+            <File Id="Ninject.Extensions.Logging.Log4Net" Name="Ninject.Extensions.Logging.Log4Net.dll" Source="$(var.WhoSol.ThirdParty.TargetDir)Ninject.Extensions.Logging.Log4Net.dll" KeyPath="yes"/>
+          </Component>
+          <Component Id="Owin" Guid="{F1125FD8-4BE6-4CC0-A0F7-7F189393989A}">
+            <File Id="Owin" Name="Owin.dll" Source="$(var.WhoSol.ThirdParty.TargetDir)Owin.dll" KeyPath="yes"/>
+          </Component>
+          <Component Id="System.Net.Http.Formatting" Guid="{BEA1B8C4-D783-4714-B1A2-951237BA4A02}">
+            <File Id="System.Net.Http.Formatting" Name="System.Net.Http.Formatting.dll" Source="$(var.WhoSol.ThirdParty.TargetDir)System.Net.Http.Formatting.dll" KeyPath="yes"/>
+          </Component>
+          <Component Id="System.Web.Cors" Guid="{033ABF20-3173-4C52-BFC0-0C6369C21074}">
+            <File Id="System.Web.Cors" Name="System.Web.Cors.dll" Source="$(var.WhoSol.ThirdParty.TargetDir)System.Web.Cors.dll" KeyPath="yes"/>
+          </Component>
+          <Component Id="System.Web.Http" Guid="{9B8725E9-5782-4217-999E-2EF6107749D5}">
+            <File Id="System.Web.Http" Name="System.Web.Http.dll" Source="$(var.WhoSol.ThirdParty.TargetDir)System.Web.Http.dll" KeyPath="yes"/>
+          </Component>
+          <Component Id="System.Web.Http.Owin" Guid="{C7C528C1-4CF2-478F-B4C0-01AB97199B23}">
+            <File Id="System.Web.Http.Owin" Name="System.Web.Http.Owin.dll" Source="$(var.WhoSol.ThirdParty.TargetDir)System.Web.Http.Owin.dll" KeyPath="yes"/>
+          </Component>
+          <Component Id="Topshelf" Guid="{9825E3BF-E718-403F-987D-5E0E6B281358}">
+            <File Id="Topshelf" Name="Topshelf.dll" Source="$(var.WhoSol.ThirdParty.TargetDir)Topshelf.dll" KeyPath="yes"/>
+          </Component>
+        </Directory>
+        <Directory Id="Plugins" Name="Plugins">
+          <Component Id="DirectoryScannerPlugin" Guid="{C2C67B52-C48F-4C30-B733-914DAD680F04}">
+            <File Id="WhoSol.DirectoryScannerPlugin" Name="WhoSol.DirectoryScannerPlugin.dll" Source="$(var.WhoSol.DirectoryScannerPlugin.TargetPath)" KeyPath="yes"/>
+          </Component>
+          <Component Id="EntityFrameworkPlugin" Guid="{8499E409-BBD4-4B95-A441-C06925A09681}">
+            <File Id="WhoSol.EntityFrameworkPlugin" Name="WhoSol.EntityFrameworkPlugin.dll" Source="$(var.WhoSol.EntityFrameworkPlugin.TargetPath)" KeyPath="yes"/>
+          </Component>
+          <Component Id="OwinSelfHostPlugin" Guid="{32CE6017-D953-4056-AD11-696219E853F2}">
+            <File Id="WhoSol.OwinSelfHostPlugin" Name="WhoSol.OwinSelfHostPlugin.dll" Source="$(var.WhoSol.OwinSelfHostPlugin.TargetPath)" KeyPath="yes"/>
+          </Component>
+          <Component Id="OwinSelfHostSettings" Guid="{F88F9885-8546-44E4-8A2F-E94B748E1D82}">
+            <File Id="WhoSol.OwinSelfHostSettings" Name="WhoSol.OwinSelfHostPlugin.pisettings" Source="$(var.WhoSol.OwinSelfHostPlugin.TargetDir)WhoSol.OwinSelfHostPlugin.pisettings" KeyPath="yes"/>
+          </Component>
+          <Component Id="SignalRPlugin" Guid="{D209EB34-E7AB-409C-A50B-2D909193388E}">
+            <File Id="WhoSol.SignalRPlugin" Name="WhoSol.SignalRPlugin.dll" Source="$(var.WhoSol.SignalRPlugin.TargetPath)" KeyPath="yes"/>
+          </Component>
+          <Component Id="WebApiPlugin" Guid="{03651884-CB8E-465C-B2B5-456CC39E2DCF}">
+            <File Id="WhoSol.WebApiPlugin" Name="WhoSol.WebApiPlugin.dll" Source="$(var.WhoSol.WebApiPlugin.TargetPath)" KeyPath="yes"/>
+          </Component>
+          <Component Id="WebServerPlugin" Guid="{52148B15-A47A-4387-9CE5-A2892C1F18C3}">
+            <File Id="WhoSol.WebServerPlugin" Name="WhoSol.WebServerPlugin.dll" Source="$(var.WhoSol.WebServerPlugin.TargetPath)" KeyPath="yes"/>
+          </Component>
+          <Component Id="XMLDBPlugin" Guid="{C3B7ED0F-BD73-4AF2-A3AA-482017100E7C}">
+            <File Id="WhoSol.XMLDBPlugin" Name="WhoSol.XMLDBPlugin.dll" Source="$(var.WhoSol.XMLDBPlugin.TargetPath)" KeyPath="yes"/>
+          </Component>
+        </Directory>
+      </Directory>
+    </Directory>
+  </Module>
+</Wix>
