@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>3.8</ProductVersion>
+    <ProjectGuid>018334b0-9243-4935-9d6c-3b02c26cb344</ProjectGuid>
+    <SchemaVersion>2.0</SchemaVersion>
+    <OutputName>SetupMergeModule</OutputName>
+    <OutputType>Module</OutputType>
+    <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' AND '$(MSBuildExtensionsPath32)' != '' ">$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets</WixTargetsPath>
+    <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' ">$(MSBuildExtensionsPath)\Microsoft\WiX\v3.x\Wix.targets</WixTargetsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
+    <DefineConstants>Debug</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="MergeModule.wxs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WhoSol.Contracts\WhoSol.Contracts.csproj">
+      <Name>WhoSol.Contracts</Name>
+      <Project>{d4a30411-3dff-4516-b30f-8071e5975599}</Project>
+      <Private>True</Private>
+      <DoNotHarvest>True</DoNotHarvest>
+      <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
+      <RefTargetDir>INSTALLFOLDER</RefTargetDir>
+    </ProjectReference>
+    <ProjectReference Include="..\WhoSol.DirectoryScannerPlugin\WhoSol.DirectoryScannerPlugin.csproj">
+      <Name>WhoSol.DirectoryScannerPlugin</Name>
+      <Project>{2686af09-ed09-4cee-b4b0-1ce0a63434d5}</Project>
+      <Private>True</Private>
+      <DoNotHarvest>True</DoNotHarvest>
+      <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
+      <RefTargetDir>INSTALLFOLDER</RefTargetDir>
+    </ProjectReference>
+    <ProjectReference Include="..\WhoSol.EntityFrameworkPlugin\WhoSol.EntityFrameworkPlugin.csproj">
+      <Name>WhoSol.EntityFrameworkPlugin</Name>
+      <Project>{67574294-1352-48ee-a1ab-da6a9c99dd00}</Project>
+      <Private>True</Private>
+      <DoNotHarvest>True</DoNotHarvest>
+      <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
+      <RefTargetDir>INSTALLFOLDER</RefTargetDir>
+    </ProjectReference>
+    <ProjectReference Include="..\WhoSol.OwinSelfHostPlugin\WhoSol.OwinSelfHostPlugin.csproj">
+      <Name>WhoSol.OwinSelfHostPlugin</Name>
+      <Project>{b5bd75b4-90b4-4bde-9a6e-76a23a6d8b2d}</Project>
+      <Private>True</Private>
+      <DoNotHarvest>True</DoNotHarvest>
+      <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
+      <RefTargetDir>INSTALLFOLDER</RefTargetDir>
+    </ProjectReference>
+    <ProjectReference Include="..\WhoSol.ServiceController\WhoSol.ServiceController.csproj">
+      <Name>WhoSol.ServiceController</Name>
+      <Project>{48dc2126-b15a-4302-b120-dc22d88756d6}</Project>
+      <Private>True</Private>
+      <DoNotHarvest>True</DoNotHarvest>
+      <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
+      <RefTargetDir>INSTALLFOLDER</RefTargetDir>
+    </ProjectReference>
+    <ProjectReference Include="..\WhoSol.SignalRPlugin\WhoSol.SignalRPlugin.csproj">
+      <Name>WhoSol.SignalRPlugin</Name>
+      <Project>{4d120018-56d3-4127-87b9-289433b8dce3}</Project>
+      <Private>True</Private>
+      <DoNotHarvest>True</DoNotHarvest>
+      <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
+      <RefTargetDir>INSTALLFOLDER</RefTargetDir>
+    </ProjectReference>
+    <ProjectReference Include="..\WhoSol.ThirdParty\WhoSol.ThirdParty.csproj">
+      <Name>WhoSol.ThirdParty</Name>
+      <Project>{ffa826de-dc5b-4c21-a72c-88caea3d218a}</Project>
+      <Private>True</Private>
+      <DoNotHarvest>True</DoNotHarvest>
+      <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
+      <RefTargetDir>INSTALLFOLDER</RefTargetDir>
+    </ProjectReference>
+    <ProjectReference Include="..\WhoSol.Utilities\WhoSol.Utilities.csproj">
+      <Name>WhoSol.Utilities</Name>
+      <Project>{04ae621b-2b85-4695-be42-46d070c76782}</Project>
+      <Private>True</Private>
+      <DoNotHarvest>True</DoNotHarvest>
+      <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
+      <RefTargetDir>INSTALLFOLDER</RefTargetDir>
+    </ProjectReference>
+    <ProjectReference Include="..\WhoSol.WebApiPlugin\WhoSol.WebApiPlugin.csproj">
+      <Name>WhoSol.WebApiPlugin</Name>
+      <Project>{7d161f5b-e039-4155-bc66-d2ff760903a8}</Project>
+      <Private>True</Private>
+      <DoNotHarvest>True</DoNotHarvest>
+      <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
+      <RefTargetDir>INSTALLFOLDER</RefTargetDir>
+    </ProjectReference>
+    <ProjectReference Include="..\WhoSol.WebServerPlugin\WhoSol.WebServerPlugin.csproj">
+      <Name>WhoSol.WebServerPlugin</Name>
+      <Project>{ce9dd8be-d281-4aea-9da2-0e99ce5edef2}</Project>
+      <Private>True</Private>
+      <DoNotHarvest>True</DoNotHarvest>
+      <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
+      <RefTargetDir>INSTALLFOLDER</RefTargetDir>
+    </ProjectReference>
+    <ProjectReference Include="..\WhoSol.XMLDBPlugin\WhoSol.XMLDBPlugin.csproj">
+      <Name>WhoSol.XMLDBPlugin</Name>
+      <Project>{91155618-169b-4057-906d-e06753d76166}</Project>
+      <Private>True</Private>
+      <DoNotHarvest>True</DoNotHarvest>
+      <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
+      <RefTargetDir>INSTALLFOLDER</RefTargetDir>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(WixTargetsPath)" />
+  <!--
+	To modify your build process, add your task inside one of the targets below and uncomment it.
+	Other similar extension points exist, see Wix.targets.
+	<Target Name="BeforeBuild">
+	</Target>
+	<Target Name="AfterBuild">
+	</Target>
+	-->
+</Project>
