@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-  <Module Id="WhoSol.ServiceController" Language="1033" Version="1.0.1.0">
+  <Module Id="WhoSol.AppBootstrap" Language="1033" Version="1.0.1.0">
     <Package Id="{19C757FD-65B5-4331-B257-C3DDEC41B209}" Manufacturer="Who Solutions Ltd" InstallerVersion="200" />
-
     <Directory Id="TARGETDIR" Name="SourceDir">
       <Directory Id="MergeRedirectFolder">
         <Component Id="ServiceController" Guid="{5DE189A5-C2A4-4A6D-9697-FBCB17F8006D}">

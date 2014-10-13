@@ -6,19 +6,19 @@
     <ProductVersion>3.8</ProductVersion>
     <ProjectGuid>018334b0-9243-4935-9d6c-3b02c26cb344</ProjectGuid>
     <SchemaVersion>2.0</SchemaVersion>
-    <OutputName>WhoSol.ServiceController.MergeModule</OutputName>
+    <OutputName>WhoSol.AppBootstrap.MergeModule</OutputName>
     <OutputType>Module</OutputType>
     <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' AND '$(MSBuildExtensionsPath32)' != '' ">$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets</WixTargetsPath>
     <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' ">$(MSBuildExtensionsPath)\Microsoft\WiX\v3.x\Wix.targets</WixTargetsPath>
-    <Name>WhoSol.ServiceController.MergeModule</Name>
+    <Name>WhoSol.AppBootstrap.MergeModule</Name>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-    <OutputPath>..\..\Setup\WhoSol.ServiceController\</OutputPath>
+    <OutputPath>..\..\Setup\MergeModules\WhoSol.AppBootstrap\</OutputPath>
     <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
     <DefineConstants>Debug</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
-    <OutputPath>..\..\Setup\WhoSol.ServiceController\</OutputPath>
+    <OutputPath>..\..\Setup\MergeModules\WhoSol.AppBootstrap\</OutputPath>
     <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
   </PropertyGroup>
   <ItemGroup>

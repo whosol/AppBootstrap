@@ -50,7 +50,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		VersionInfo.cs = VersionInfo.cs
 	EndProjectSection
 EndProject
-Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "WhoSol.ServiceController.MergeModule", "WhoSol.ServiceController.MergeModule\WhoSol.ServiceController.MergeModule.wixproj", "{018334B0-9243-4935-9D6C-3B02C26CB344}"
+Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "WhoSol.AppBootstrap.MergeModule", "WhoSol.AppBootstrap.MergeModule\WhoSol.AppBootstrap.MergeModule.wixproj", "{018334B0-9243-4935-9D6C-3B02C26CB344}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
