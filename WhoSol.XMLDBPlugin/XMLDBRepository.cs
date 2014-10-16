@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Xml.Linq;
-using System.Xml.Serialization;
 using WhoSol.Contracts;
 using WhoSol.Utilities.Extensions;
 
@@ -36,8 +35,12 @@ namespace WhoSol.XMLDBPlugin
 
         public void Add(T newEntity)
         {
+            //if there are any entities found get the next ID else it must be the first
+            int nextId = entitySet.Any()? entitySet.Max(o => o.Id) + 1 : 1;
+
             if (FindById(newEntity.Id) == null)
             {
+                newEntity.Id = nextId;
                 db.Add(newEntity.ToXElement<T>());
                 entitySet.Add(newEntity);
             }
@@ -50,9 +53,9 @@ namespace WhoSol.XMLDBPlugin
                 .Where(el => (int)el.Attribute("Id") == entity.Id)
                 .SingleOrDefault();
 
-            if (entityToRemove!=null)
+            if (entityToRemove != null)
             {
-                entityToRemove.Remove();               
+                entityToRemove.Remove();
             }
         }
 
