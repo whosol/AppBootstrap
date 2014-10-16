@@ -34,13 +34,16 @@ namespace WhoSol.XMLDBPlugin
         }
 
         public void Add(T newEntity)
-        {
+        {  
             //if there are any entities found get the next ID else it must be the first
-            int nextId = entitySet.Any()? entitySet.Max(o => o.Id) + 1 : 1;
+            int nextId = entitySet.Any() ? entitySet.Max(o => o.Id) + 1 : 1;
 
             if (FindById(newEntity.Id) == null)
             {
-                newEntity.Id = nextId;
+                if (newEntity.Id == 0)
+                {
+                    newEntity.Id = nextId;
+                }
                 db.Add(newEntity.ToXElement<T>());
                 entitySet.Add(newEntity);
             }
