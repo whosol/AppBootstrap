@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
-using System.Text;
 
 namespace WhoSol.ServiceController.Controllers.Dto
 {
@@ -10,6 +9,6 @@ namespace WhoSol.ServiceController.Controllers.Dto
     public class LogsDto
     {
         [DataMember]
-        public IEnumerable<LogDto> LogEntry;
+        public IEnumerable<LogDto> Logs;
     }
 }

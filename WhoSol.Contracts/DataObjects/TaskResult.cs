@@ -1,6 +1,6 @@
 ﻿using WhoSol.Contracts.Enums;
 
-namespace WhoSol.DirectoryScannerPlugin
+namespace WhoSol.Contracts
 {
     public class TaskResult<T>
     {

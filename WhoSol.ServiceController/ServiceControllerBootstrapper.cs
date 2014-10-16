@@ -28,15 +28,17 @@ namespace WhoSol.ServiceController
         private readonly bool eventLog;
         private readonly bool consoleLog;
         private readonly string[] dependencies;
+        private readonly string logFile;
 
-        public ServiceControllerBootstrapper(string serviceName, string serviceDisplayName, string serviceDescription, bool eventLog, bool consoleLog, params string[] dependencies)
+        public ServiceControllerBootstrapper(BootstrapperStartInfo startInfo)
         {
-            this.serviceName = serviceName;
-            this.serviceDisplayName = serviceDisplayName;
-            this.serviceDescription = serviceDescription;
-            this.eventLog = eventLog;
-            this.consoleLog = consoleLog;
-            this.dependencies = dependencies;
+            this.serviceName = startInfo.ServiceName;
+            this.serviceDisplayName = startInfo.ServiceDisplayName;
+            this.serviceDescription = startInfo.ServiceDescription;
+            this.eventLog = startInfo.EventLog;
+            this.consoleLog = startInfo.ConsoleLog;
+            this.logFile = startInfo.LogFile;
+            this.dependencies = startInfo.Dependencies;
         }
 
         public void Start()
@@ -60,6 +62,7 @@ namespace WhoSol.ServiceController
             configuration.Set(Config.ThirdPartyDirectory, AssemblyDirectory + "ThirdParty\\");
             configuration.Set(Config.ApplicationName, serviceDisplayName);
             configuration.Set(Config.LogDirectory, AssemblyDirectory + "Logs\\");
+            configuration.Set(Config.LogFile, logFile);
         }
 
         private void CreateKernel()
@@ -160,7 +163,7 @@ namespace WhoSol.ServiceController
 
             var rollingFileAppender = new RollingFileAppender
             {
-                File = configuration.Get<string>(Config.LogDirectory) + configuration.Get<string>(Config.ApplicationName) + ".log",
+                File = configuration.Get<string>(Config.LogDirectory) + configuration.Get<string>(Config.LogFile),
                 AppendToFile = false,
                 RollingStyle = RollingFileAppender.RollingMode.Size,
                 MaxSizeRollBackups = 10,

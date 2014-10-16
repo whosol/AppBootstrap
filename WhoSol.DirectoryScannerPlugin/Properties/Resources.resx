@@ -142,7 +142,7 @@
     <value>Polled Directory Scanner Plugin</value>
   </data>
   <data name="NoNewFilesFound" xml:space="preserve">
-    <value>No new files found in {0}</value>
+    <value>No new files found in {0} with file filter {1}</value>
   </data>
   <data name="PluginTaskException" xml:space="preserve">
     <value>Polled directory plugin caused an exception</value>

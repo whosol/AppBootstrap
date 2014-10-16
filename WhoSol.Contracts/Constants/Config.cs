@@ -8,5 +8,7 @@ namespace WhoSol.Contracts.Constants
         public const string ThirdPartyDirectory = "ThirdPartyDirectory";
         public const string LogDirectory = "LogDirectory";
         public const string ApplicationName = "ApplicationName";
+        public const string LogFile = "LogFile";
+
     }
 }

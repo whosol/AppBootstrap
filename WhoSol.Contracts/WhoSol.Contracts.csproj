@@ -71,6 +71,7 @@
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.0\lib\net45\System.Web.Http.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -84,6 +85,7 @@
     <Compile Include="Base\BaseController.cs" />
     <Compile Include="Base\BaseCollectionDto.cs" />
     <Compile Include="Base\BaseUnitOfWork.cs" />
+    <Compile Include="BootstrapperStartInfo.cs" />
     <Compile Include="Constants\Config.cs" />
     <Compile Include="Enums\LogLevel.cs" />
     <Compile Include="Enums\PersistStatus.cs" />

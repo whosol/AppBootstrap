@@ -113,7 +113,7 @@ namespace WhoSol.DirectoryScannerPlugin
                     }
                     else
                     {
-                        logger.Info(Resources.NoNewFilesFound, directory);
+                        logger.Info(Resources.NoNewFilesFound, directory.Key, directory.Value);
                     }
 
                 }

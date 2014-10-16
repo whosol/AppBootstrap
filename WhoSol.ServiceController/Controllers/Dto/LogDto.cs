@@ -8,9 +8,9 @@ namespace WhoSol.ServiceController.Controllers.Dto
     public class LogDto
     {
         [DataMember(Order = 1)]
-        public DateTime DateTime { get; set; }
+        public string Timestamp { get; set; }
         [DataMember(Order = 2)]
-        public LogLevel LogLevel { get; set; }
+        public string LogLevel { get; set; }
         [DataMember(Order = 3)]
         public string Class { get; set; }
         [DataMember(Order = 4)]

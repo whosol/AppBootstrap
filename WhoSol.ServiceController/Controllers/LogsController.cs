@@ -26,7 +26,7 @@ namespace WhoSol.ServiceController.Controllers
         {
             return new LogsDto
             {
-                LogEntry = CreateDtos()
+                Logs = CreateDtos()
             };
         }
 
@@ -34,25 +34,34 @@ namespace WhoSol.ServiceController.Controllers
         {
             return new LogsDto
             {
-                LogEntry = CreateDtos().Where(l => l.LogLevel == level)
+                Logs = CreateDtos().Where(l => l.LogLevel.ToLower() == level.ToString().ToLower())
             };
         }
 
         private IEnumerable<LogDto> CreateDtos()
         {
-            return File.ReadAllLines(configuration.Get<string>(Config.LogDirectory) + "log.txt")
+            return File.ReadAllLines(configuration.Get<string>(Config.LogDirectory) + configuration.Get<string>(Config.LogFile))
                 .Select(line =>
                 {
                     var entry = line.Split('[', ']');
-                    return new LogDto
+                    try
                     {
-                        DateTime = DateTime.Parse(entry[0].Trim()),
-                        Thread = int.Parse(entry[1].Trim()),
-                        LogLevel = (LogLevel)Enum.Parse(typeof(LogLevel), entry[2].Trim(), true),
-                        Class = entry[3].Trim(),
-                        Message = entry[4].Trim(),
-                    };
-                });
+                        return new LogDto
+                        {
+                            Timestamp = entry[0].Trim(),
+                            Thread = int.Parse(entry[1].Trim()),
+                            LogLevel = entry[2].Trim(),
+                            Class = entry[3].Trim(),
+                            Message = entry[4].Trim(),
+                        };
+                    }
+                    catch
+                    {
+                        return null;
+                    }
+                })
+                .Where(dto => dto != null)
+                .OrderByDescending(dto => DateTime.Parse(dto.Timestamp));
         }
     }
 }
