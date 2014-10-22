@@ -92,7 +92,7 @@
     <Compile Include="Enums\ErrorLevel.cs" />
     <Compile Include="DataObjects\TaskResult.cs" />
     <Compile Include="Enums\TaskStatus.cs" />
-    <Compile Include="Exceptions\StratusException.cs" />
+    <Compile Include="Exceptions\ServiceException.cs" />
     <Compile Include="IBootstrapper.cs" />
     <Compile Include="IConfiguration.cs" />
     <Compile Include="IController.cs" />

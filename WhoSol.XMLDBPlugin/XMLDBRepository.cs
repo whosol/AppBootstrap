@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ninject.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -12,9 +13,11 @@ namespace WhoSol.XMLDBPlugin
     {
         private XElement db;
         private readonly List<T> entitySet;
+        private ILogger logger;
 
-        public XMLDBRepository()
+        public XMLDBRepository(ILogger logger)
         {
+            this.logger = logger;
             this.entitySet = new List<T>();
         }
 
@@ -44,8 +47,15 @@ namespace WhoSol.XMLDBPlugin
                 {
                     newEntity.Id = nextId;
                 }
-                db.Add(newEntity.ToXElement<T>());
-                entitySet.Add(newEntity);
+                if (db != null)
+                {
+                    db.Add(newEntity.ToXElement<T>());
+                    entitySet.Add(newEntity);
+                }
+                else
+                {
+                    logger.Error("DB Not initialised");
+                }
             }
         }
 

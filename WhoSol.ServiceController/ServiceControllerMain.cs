@@ -39,7 +39,7 @@ namespace WhoSol.ServiceController
                         plugin.Start();
                     }
                 }
-                catch (StratusException ex)
+                catch (ServiceException ex)
                 {
                     switch (ex.ErrorLevel)
                     {

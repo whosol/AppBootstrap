@@ -95,7 +95,7 @@ namespace WhoSol.ServiceController
                         {
                             controller.Start();
                         }
-                        catch (StratusException ex)
+                        catch (ServiceException ex)
                         {
                             logger.FatalException(ex.Message, ex);
                             return;
